@@ -1,0 +1,1477 @@
+---
+geometry: margin=1in
+fontsize: 12pt
+documentclass: report
+output: 
+  pdf_document: 
+      fig_caption: yes
+      citation_package: natbib
+      highlight: tango
+bibliography: lazbibreg.bib
+biblio-style: jabes
+subparagraph: yes
+header-includes:
+  \usepackage{mdwlist}
+  \usepackage[compact]{titlesec}
+  \usepackage{titling}
+  \usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+  \usepackage{float}
+  \floatstyle{plaintop}
+ \restylefloat{table}
+  \usepackage{lastpage} 
+  \usepackage{hyperref}
+  \usepackage{colortbl}
+  \usepackage{array}
+  \hypersetup{backref,colorlinks=true}
+  \usepackage{framed,color}
+  \definecolor{shadecolor}{rgb}{0.95, 0.92, 0.88}
+  \usepackage{graphicx}
+  \usepackage{booktabs}
+  \usepackage{fancyhdr}
+  \usepackage[none]{hyphenat}
+  \raggedright
+  \usepackage{amsmath, amsthm, amssymb, bm}
+  \usepackage{marginnote}
+  \usepackage{subfig}
+  \def\mygraphcaption{Here are my graphs.}
+  \newlength{\mygraphwidth}\setlength{\mygraphwidth}{0.9\textwidth}
+  \usepackage{listings}
+---
+  \lstset{
+	basicstyle=\small\ttfamily,
+	columns=flexible,
+	breaklines=true}
+	
+  \pagestyle{fancy}
+  \fancyhead[L]{\textbf{Brendan Stevens}}
+  \fancyhead[C]{}
+  \fancyhead[R]{\textbf{DATA 824 Project}}
+  \fancyfoot[L]{}
+  \fancyfoot[C]{}
+  \fancyfoot[R]{Page -\thepage- of \pageref{LastPage}}
+  \fancypagestyle{plain}{\pagestyle{fancy}}
+  \renewcommand{\headrulewidth}{2pt}
+  \renewcommand{\footrulewidth}{2pt}
+ 
+ \hypersetup{
+	colorlinks   = true,
+	citecolor    = blue,
+	linkcolor    = black,
+	urlcolor     = blue
+  }
+  
+  \begin{titlepage}
+   \begin{center}
+       \vspace*{2cm}
+ 
+       \textbf{\textit{\LARGE Witch Hunting: Disenchantment with Magic’s Modern Format}}
+ 
+       \vspace{0.5cm}
+      
+       \textbf{\Large DATA 824: Summer Class Project, 2020} 
+       
+        \vspace{0.5cm}
+        
+        \textbf{\large Brendan Stevens}
+        
+       \vfill
+ 
+       \vspace{0.7cm}
+ 
+       \large Department of Biostatistics and Data Science \\
+       University of Kansas, USA \\
+       `r format(Sys.time(), '%B %e, %Y')`
+ 
+   \end{center}
+\end{titlepage}
+  
+```{r setup, include=FALSE}
+# load packages
+library(knitr)
+library(formatR)
+library(stargazer)
+library(xtable)
+library(readxl)
+library(summarytools)
+library(ggplot2)
+library(ggiraph)
+knitr::opts_chunk$set(echo = TRUE)
+options(digits = 5, width = 60, xtable.comment = FALSE)
+opts_chunk$set(tidy.opts = list(width.cutoff=60), tidy=TRUE)
+out_type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
+
+ \setlength{\headheight}{45pt}
+ 
+\thispagestyle{empty}
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\pagestyle{plain}
+\tableofcontents
+\cleardoublepage
+\phantomsection
+\listoftables
+\phantomsection
+\listoffigures
+\newpage
+\pagenumbering{arabic}
+
+\section{Abstract}
+The popularity of the trading card game, "Magic: the Gathering" has grown tremendously in the last ten years, leading to an increase in demand without additional supply and an inevitable conversation about the cost barrier to entry of playing in the various formats offered by the game.
+
+This study seeks to shed light on cost prediction in the Modern Format based on a subset of the cards played in Modern, the "Fetchlands". The goal is to find the best model for predicting the cost of a deck for a player based upon as few variables as possible, while maintaining a high degree of accuracy. The analysis methods used in this study are linear regression and multiple regression.
+
+Contrary to the what many in the playerbase view as accepted truth, the "Fetchlands" as a whole group of 11 cards (including Prismatic Vista) are not in totality statistically more significant predictors for the price of a deck than other cards in the format. There are, however, only five pieces of information necessary in order to predict over 70% of the variability in a deck's cost.
+
+
+\newpage
+
+\section{Introduction}
+Magic: the Gathering is a collectable created by [Richard Garfield first debuting in 1993](https://en.wikipedia.org/wiki/Magic:_The_Gathering). As it is and remains a _collectible_ card game, the cost of cards varies - as in any economy - based upon supply and demand. With the release of  [Shards of Alara](https://mtg.gamepedia.com/Shards_of_Alara) in 2008, the game saw an explosion of growth through the next decade. However, with this growth in playerbase came an increase in demand on older collectible product that was not printed at the new playerbase supply level needed. This demand has generated a price increase acrossed much of the product as well as generated a [growing](https://bleedingcool.com/games/opinion-magic-the-gathering-is-getting-expensive/) narrative in [subsections](https://www.mtgnexus.com/viewtopic.php?t=24448) of the community is that [cards in general](https://www.channelfireball.com/all-strategy/articles/help-my-cards-are-too-expensive-to-play-with/) and specific [formats](https://www.reddit.com/r/magicTCG/comments/8csrwc/does_anyone_else_find_it_depressing_how_expensive/) (formats are ways to play the game) are too hard to get into due to their cost barriers. In particular, the cost of a specific subgroup of cards, nicknamed the "[Fetchlands](https://woodsthoughts.wordpress.com/2015/11/05/why-fetchlands-are-so-good/)", has created an outcry of [frustration](https://www.youtube.com/watch?v=KjvjZV-XYRo&feature=youtu.be), due to the fact that many players believe that the cards are "[required to play the game](https://www.youtube.com/watch?v=tNXTljya_po)".
+The statement that a card is "too expensive" is an often an emotional one based upon a player's desire to aquire the card, but not being able to justify the cost personally. Lest it be forgotton, Magic: the Gathering is a _collectible_ card game founded around the concept of scarcity and rarity. It is not by nature a standalone card game like Uno or games played with a standard deck of 52 playing cards. Without this structure, it is entirely possible that Magic would not have found the financial success and therefore the funds necessary to continue making the game better every year.
+However, when the game becomes so cost prohibitive that the very scarcity that let it grow begins to stave off new players or disenfranchise long time players, the designers of the game must consider the possibility that some of the outcry is reasonable.
+In the pursuit of understanding cost prohibition and better arming the average player with the knowledge necessary to navigate the ocean of new cards, formats, and other players, the aim of this study is to help those interested to understand the subtleties of one of the most popular and longest running formats in the game, "Modern". For example, the claim that "Some colors (there are five colors in Magic) are more expensive to play than others". Or, "Aggro decks are cheap and Control decks are expensive". These are things that a player can use in order to make educated decisions when choosing decks to play.
+But better yet, what if estimating the price of a deck wasn't based on "conventional wisdom", and instead a quantifiable exercise which required nothing more than answering a few questions.
+The aim of this study is to do just that. To create a model that can reasonably predict the cost of purchasing an entire 60 card, Modern-format-ready deck with no starting collection. All the player would have to know is few choice pieces of information about what the deck contains in order to forcast the price.
+
+_A Quick Note: Other than "Basic Lands", a Deck may only contain anywhere between 1-4 copies of a uniquely named card. Fetchlands are not basic. This means that a deck may only have between 1-4 copies of a uniquely named Fetchland._
+
+\subsection{Primary Analysis Objectives}
+
+Determine whether there exists a good model to predict the price of a deck in modern. This will be done in part by determining if there are statistically significant predictor variables useful in the creation of a model that can predict the price of a Modern deck given certain information.
+
+\subsection{Secondary Analysis Objectives}
+
+Visualize the relationship between the number of Fetchlands in a deck and the Deck Price. Summarize the statistics of the decks in the format as a whole. Determine if specific Fetchlands are more price predictive on the cost of a deck than others. Determine if the number of decks of a specfic name correlates with the price of that deck. Determine if the number of decks of a specific "[archetype](https://mtg.gamepedia.com/Archetype)" is dependent on the number of fetchlands required for that deck. 
+
+\section{Materials and Methods}
+\subsection{Data Sources}
+The data are available in .csv (comma separated value) format. They include 59 unique observations which were the top 59 most played decks in the format on the date that the data were gathered, June 14, 2020, from the popular article and data aggregation site for the game, "[MTG Goldfish](https://www.mtggoldfish.com/)".
+The data include a number of variables. Here is a list and a basic explanation of what that variable is:
+
+* "Deck Name", the deck's name, sometimes indicates the colors, othertimes indicates the iconic cards that the deck is built around
+* "Archetype", the general method the deck uses to win the game
+* "Format", the various ways in which the game can be played, though this analysis only considers the "Modern" format
+* "Deck Count 1 Year", how many decks of that name were recorded by MTG Goldfish during the last calendar year
+* "Percent of Meta", what percent of the decks are this deck
+* "Deck Price", cost of buying each of the cards for the deck from TCGPlayer and CardKindgom, online retailers for singles
+* "Flooded Strand", the White-Blue Fetchland
+* "Polluted Delta", the Blue-Black Fetchland
+* "Bloodstained Mire", the Black-Red Fetchland
+* "Wooded Foothills", the Red-Green Fetchland
+* "Windswept Heath", the White-Green Fetchland
+* "Marsh Flats", the White-Black Fetchland
+* "Scalding Tarn", the Blue-Red Fetchland
+* "Verdant Catacombs", the Black-Green Fetchland
+* "Arid Mesa", the White-Red Fetchland
+* "Misty Rainforest", the Blue-Green Fetchland
+* "Prismatic Vista", the basic land Fetchland
+* "Total Fetchlands", total fetchlands in the average deck of that name
+* "Total Fetch Price", total price of the average combination of fetchlands present in deck of that name
+* "Deck Price No Fetch", total price of the average deck of that name without any fetchlands
+* "Fetch Price Cost Proportion", total cost of average combination of fetchlands in deck of that name divided by average price of that deck including average combination of fetchlands
+
+This data was chosen due to the relevance of the topic in the community at this time, the explosion in popularity of the game in the last ten years, and the personal interest of the individual writing this report and analyzing the data.
+
+
+\subsection{Statistical Analysis}
+
+The analysis is done using the statistical software program R, version 3.6.3 (2020-02-29). The analysis is primarily focused on single and multiple linear regression. The data was provided in with some missing information. That information was what "Archetype" each deck was, and that data was solely researched and added by the writer of this report.  The visualizations in the report begin with univariate regression in order to explore each predictor variable in isolation. After this, a multivariable regression model is fitted, and the process of removing "bad" predictor variables is conducted.
+
+\subsubsection{Model Assumptions}
+
+All inferences are conducted using $\alpha = 0.05$ unless stated otherwise.  No adjustments for multiplicity are made as this is an exploratory analysis. Discrete variables are summarized with proportions and frequencies.  Continuous variables are summarized using mean, median, standard deviation, and other common summary statistics.
+
+```{r, include = FALSE}
+############### Initial data wrangling and cleaning
+my_data <- read.csv("Modern_Meta_6.21.2020.csv", header = T, sep = ',')
+
+# Also we'll cut out the unnecessary attributes
+# for our analysis
+
+my_data <- my_data[, c(1:5, 9, 10, 12, 14, 16, 18,
+                       20, 22, 24, 26, 28, 30, 32:35)]
+
+colnames(my_data) <- c("Deck Name", "Archetype", "Format", "Deck Count 1 Year", "Percent of Meta", "Deck Price", "Flooded Strand", "Polluted Delta", "Bloodstained Mire", "Wooded Foothills", "Windswept Heath", "Marsh Flats", "Scalding Tarn", "Verdant Catacombs", "Arid Mesa", "Misty Rainforest", "Prismatic Vista", "Total Fetchlands", "Total Fetch Price", "Deck Price No Fetch", "Fetch Price Cost Proportion")
+
+# add the format "modern" to all entries in the format category
+my_data$Format[my_data$Format == ''] <- "Modern"
+
+# combine two observations that are
+# the same deck that were accidentlly 
+# recorded separately.
+# observation 53 combines with 27
+# 9 decks added to observation 27
+my_data[27, 4] <- my_data[27, 4] + 9
+# observation 53 deleted
+my_data <- my_data[-53, ]
+# re index the rows
+row.names(my_data) <- 1:59
+# Check to see how many different archtypes
+# were recorded
+levels(my_data$Archetype)
+# combining both "Aggro Control" Variants
+my_data$Archetype[my_data$Archetype == "Aggro - Control"] <- "Aggro-Control"
+
+# renaming the mis-archetyped "Aggro-Tempo"
+# To "Aggro-Control"
+my_data$Archetype[my_data$Archetype == "Aggro-Tempo"] <- "Aggro-Control"
+
+# drop the unused level
+my_data$Archetype <- droplevels(my_data$Archetype)
+
+#checked to see if it worked
+levels(my_data$Archetype)
+
+# now add deck archtypes to the 5
+# missing a deck archetype entry
+# by researching deck
+my_data[17,2] <- "Midrange"
+my_data[31,2] <- "Combo"
+my_data[38,2] <- "Control"
+my_data[45,2] <- "Control"
+my_data[59,2] <- "Control"
+
+# See how many of each archetype
+# was played this last year
+summary(my_data$Archetype)
+############### Initial data wrangling and cleaning
+```
+
+\subsubsection{Secondary Objective Analysis}
+
+To begin the analysis, consider the relationship of the Deck Prices of the top 59 most played decks in the format versus the number of Fetchlands present in said deck.
+
+```{r, echo = FALSE, message = FALSE}
+ggplot(data = my_data) +
+  geom_point(aes(`Total Fetchlands`,
+                             `Deck Price`,
+                             color = Archetype,
+                 size = `Deck Count 1 Year`)) +
+  ggtitle("Do Fetchlands Increase Deck Price?") +
+  geom_smooth(method = "lm",
+              color = 'black',
+              data = my_data,
+              aes(`Total Fetchlands`, `Deck Price`)) +
+  theme_bw()
+
+# Interactive version below
+# 
+# interactive_plot <- ggplot(data = my_data) +
+#   geom_point_interactive(aes(`Total Fetchlands`,
+#                             `Deck Price`,
+#                             color = Archetype,
+#                             size = `Deck Count 1 Year`,
+#                             tooltip = `Deck Name`)) +
+#   ggtitle("Do Fetchlands Increase Deck Price?") +
+#   geom_smooth(method = "lm",
+#              color = 'black',
+#              data = my_data,
+#              aes(`Total Fetchlands`, `Deck Price`)) +
+#   theme_bw()
+# 
+# ggiraph(code = print(interactive_plot))
+```
+
+The graph almost speaks for itself here. There is absolutely a positive linear relationship between the number of Fetchlands in a deck and the Price of the deck. This is not trivial, because to put more Fetchlands into a deck means to remove other cards from the deck. This means that Fetchlands are, on average, more expensive than all of the other cards that people are running in Modern.
+
+The following two tables display the summary statistics of the base data.
+
+```{r, warning = FALSE, echo = FALSE, results = 'asis'}
+kable(descr(my_data[, c(4:6,19:21)]), caption = "Summary Statistics of the Data Part 1")
+
+kable(descr(my_data[,7:12]), caption = "Summary Statistics of the Data Part 2")
+
+kable(descr(my_data[,13:18]), caption = "Summary Statistics of the Data Part 3")
+```
+
+\subsubsection{Primary Objective Analysis}
+
+Before moving onto the 13 quantitative predictor variables, the sole categorical variable, Archetype is considered.
+
+```{r, echo = FALSE, fig.cap="Archetype vs Deck Price"}
+# Regression models
+# Plot of single predictor variable against outcome variable
+# trendline
+# summary
+# tests for normality qqnorm, qqline, shapiro.test
+
+############### Archetype, Linear Model, Test for Normality
+m1 <- lm(`Deck Price` ~ `Archetype`, my_data)
+
+ggplot(my_data, aes(x = `Archetype`, y = `Deck Price`)) +
+  geom_boxplot() + 
+  xlab("Archetype") +
+  theme(text = element_text(size=10),
+  axis.text.x = element_text(angle=90, hjust=1)) +
+  ylab("Deck Price (USD)")
+```
+
+What can be seen in figure 1 is better understood by considering only the pure archetypes, or non-hybrid. The price of an "Aggro" deck is less than the other three, "Combo", "Control", and "Midrange". Combo and Midrange decks are about the same price, which makes sense to a long-time player of the game, because midrange decks have slowly replaced combo decks in the design philosophy of the game designers, but that's another conversation. Finally, the Control Archetype has the most expensive decks.
+
+In fact, if all of the archetypes are considered, the most expensive decks are mainly the ones that have "Control" in their name, and the least expense? Aggro. No surprise to long time players of the game, but nonetheless, it may be interesting to see that the intuition of the playerbase on which decks are cheaper and which decks are more expensive is rather accurate.
+
+What remains to be seen is if the intuition is right about the Fetchlands!
+
+\newpage
+
+There are a total of 14 predictor quantitative variables to consider. The scatter plots of each of the single predictor variables should be analyzed in order to determine if there are any predictors that would aid in the creation of a strong predictive model for the Deck Price before moving on to multiple regression.
+
+Each one of the models also needs to be tested for the regression requirements of normality, which will be done with the help of the Shapiro-Wilk tests and Q-Q Norm plots.
+
+Special attention will be given to data that has promising Goodness of Fit indicator values, in our case limited to the $R^2$ value or Coefficient of Determination.
+
+```{r, echo = FALSE, fig.cap="Deck Count 1 Year vs Deck Price"}
+############### Deck Count 1 Year, Linear Model, Test for Normality
+m2 <- lm(`Deck Price` ~ `Deck Count 1 Year`, my_data)
+
+with(my_data, plot(`Deck Count 1 Year`, `Deck Price`))
+abline(m2)
+```
+
+```{r, echo = FALSE, fig.cap="Deck Count 1 Year vs Deck Price Test for Normality"}
+qqnorm(residuals(m2))
+qqline(residuals(m2))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m2))
+summary(m2)
+############### Deck Count 1 Year, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. However, the Shapiro Wilk test gives a p-value of .034, which is less than .05, the normal cutoff. This should be kept in mind, as too many variables failing part of the normality test will affect the final model.
+
+\newpage
+
+
+```{r, echo = FALSE, fig.cap="Flooded Strand vs Deck Price"}
+############### Flooded strand, Linear Model, Test for Normality
+m3 <- lm(`Deck Price` ~ `Flooded Strand`, my_data)
+
+with(my_data, plot(`Flooded Strand`, `Deck Price`))
+abline(m3)
+```
+
+```{r, echo = FALSE, fig.cap="Flooded Strand vs Deck Price Test for Normality"}
+qqnorm(residuals(m3))
+qqline(residuals(m3))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m3))
+summary(m3)
+############### Flooded strand, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .089$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Polluted Delta vs Deck Price"}
+############### Polluted Delta, Linear Model, Test for Normality
+m4 <- lm(`Deck Price` ~ `Polluted Delta`, my_data)
+
+with(my_data, plot(`Polluted Delta`, `Deck Price`))
+abline(m4)
+```
+
+```{r, echo = FALSE, fig.cap="Polluted Delta vs Deck Price Test for Normality"}
+qqnorm(residuals(m4))
+qqline(residuals(m4))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m4))
+summary(m4)
+############### Polluted Delta, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .015$, which is less than our threshold of $\alpha = .05$ , so we have another solo predictor value that would not be good for regression alone.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Bloodstained Mire vs Deck Price"}
+############### Bloodstained Mire, Linear Model, Test for Normality
+m5 <- lm(`Deck Price` ~ `Bloodstained Mire`, my_data)
+
+with(my_data, plot(`Bloodstained Mire`, `Deck Price`))
+abline(m5)
+```
+
+```{r, echo = FALSE, fig.cap="Bloodstained Mire vs Deck Price Test for Normality"}
+qqnorm(residuals(m5))
+qqline(residuals(m5))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m5))
+summary(m5)
+############### Bloodstained Mire, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .11$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Wooded Foothills vs Deck Price"}
+############### Wooded Foothills, Linear Model, Test for Normality
+m6 <- lm(`Deck Price` ~ `Wooded Foothills`, my_data)
+
+with(my_data, plot(`Wooded Foothills`, `Deck Price`))
+abline(m6)
+```
+
+```{r, echo = FALSE, fig.cap="Wooded Foothills vs Deck Price Test for Normality"}
+qqnorm(residuals(m6))
+qqline(residuals(m6))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m6))
+summary(m6)
+############### Wooded Foothills, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .091$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Windswept Heath vs Deck Price"}
+############### Windswept Heath, Linear Model, Test for Normality
+m7 <- lm(`Deck Price` ~ `Windswept Heath`, my_data)
+
+with(my_data, plot(`Windswept Heath`, `Deck Price`))
+abline(m7)
+```
+
+```{r, echo = FALSE, fig.cap="Windswept Heath vs Deck Price Test for Normality"}
+qqnorm(residuals(m7))
+qqline(residuals(m7))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m7))
+summary(m7)
+############### Windswept Heath, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .17$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Marsh Flats vs Deck Price"}
+############### Marsh Flats, Linear Model, Test for Normality
+m8 <- lm(`Deck Price` ~ `Marsh Flats`, my_data)
+
+with(my_data, plot(`Marsh Flats`, `Deck Price`))
+abline(m8)
+```
+
+```{r, echo = FALSE, fig.cap="Marsh Flats vs Deck Price Test for Normality"}
+qqnorm(residuals(m8))
+qqline(residuals(m8))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m8))
+summary(m8)
+############### Marsh Flats, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .075$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Scalding Tarn vs Deck Price"}
+############### Scalding Tarn, Linear Model, Test for Normality
+m9 <- lm(`Deck Price` ~ `Scalding Tarn`, my_data)
+
+with(my_data, plot(`Scalding Tarn`, `Deck Price`))
+abline(m9)
+```
+
+```{r, echo = FALSE, fig.cap="Scalding Tarn vs Deck Price Test for Normality"}
+qqnorm(residuals(m9))
+qqline(residuals(m9))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m9))
+summary(m9)
+############### Scalding Tarn, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .011$, which is less than our threshold of $\alpha = .05$ , so we have another solo predictor value that would not be good for regression alone.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Verdant Catacombs vs Deck Price"}
+############### Verdant Catacombs, Linear Model, Test for Normality
+m10 <- lm(`Deck Price` ~ `Verdant Catacombs`, my_data)
+
+with(my_data, plot(`Verdant Catacombs`, `Deck Price`))
+abline(m10)
+```
+
+```{r, echo = FALSE, fig.cap="Verdant Catacombs vs Deck Price Test for Normality"}
+qqnorm(residuals(m10))
+qqline(residuals(m10))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m10))
+summary(m10)
+############### Verdant Catacombs, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .054$, which is barely more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is "appropriate".
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Arid Mesa vs Deck Price"}
+############### Arid Mesa, Linear Model, Test for Normality
+m11 <- lm(`Deck Price` ~ `Arid Mesa`, my_data)
+
+with(my_data, plot(`Arid Mesa`, `Deck Price`))
+abline(m11)
+```
+
+```{r, echo = FALSE, fig.cap="Arid Mesa vs Deck Price Test for Normality"}
+qqnorm(residuals(m11))
+qqline(residuals(m11))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m11))
+summary(m11)
+############### Arid Mesa, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .12$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Misty Rainforest vs Deck Price"}
+############### Misty Rainforest, Linear Model, Test for Normality
+m12 <- lm(`Deck Price` ~ `Misty Rainforest`, my_data)
+
+with(my_data, plot(`Misty Rainforest`, `Deck Price`))
+abline(m12)
+```
+
+```{r, echo = FALSE, fig.cap="Misty Rainforest vs Deck Price Test for Normality"}
+qqnorm(residuals(m12))
+qqline(residuals(m12))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m12))
+summary(m12)
+############### Misty Rainforest, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .54$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Prismatic Vista vs Deck Price"}
+############### Prismatic Vista, Linear Model, Test for Normality
+m13 <- lm(`Deck Price` ~ `Prismatic Vista`, my_data)
+
+with(my_data, plot(`Prismatic Vista`, `Deck Price`))
+abline(m13)
+```
+
+```{r, echo = FALSE, fig.cap="Prismatic Vista vs Deck Price Test for Normality"}
+qqnorm(residuals(m13))
+qqline(residuals(m13))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m13))
+summary(m13)
+############### Prismatic Vista, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .11$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+
+
+```{r, echo = FALSE, fig.cap="Total Fetchlands vs Deck Price"}
+############### Total Fetchlands, Linear Model, Test for Normality
+m14 <- lm(`Deck Price` ~ `Total Fetchlands`, my_data)
+
+with(my_data, plot(`Total Fetchlands`, `Deck Price`))
+abline(m14)
+```
+
+```{r, echo = FALSE, fig.cap="Total Fetchlands vs Deck Price Test for Normality"}
+qqnorm(residuals(m14))
+qqline(residuals(m14))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(m14))
+summary(m14)
+############### Total Fetchlands, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality. The Shapiro Wilk test produces $p-value = .2$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+\newpage
+
+Below are the intercepts and coefficients of each of the 15 single predictor models. Again, special attention should be given to any $R^2$ values that larger, and any coefficients with p-values that are less than our threshold, $\alpha = .05$ (p-values are in the far right column in all of these tables). Beginning with Table 4.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m1)$coefficients, caption = "Archetype vs Deck Price")
+```
+
+The p-value for Combo and Control-Combo are both below the $\alpha = .05$ threshold, and are thus statistically significant values in the model. These dummy variables may be important to look for in the full model, later. It is also of note that the multiple $R^2$ value is .32, indicating a relationship between Archetype and Deck Price.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m2)$coefficients, caption = "Deck Count 1 Year vs Deck Price")
+```
+
+The p-value for Deck Count 1 Year is above the .05 threshold at .36. It would not be a good predictor variable on its own. $R^2=.0145$, which is decidedly low, so again, no obvious linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m3)$coefficients, caption = "Flooded Strand vs Deck Price")
+```
+
+The p-value for Flooded Strand is below the threshold at .04. This means that there is a statistically significant relationship between the deck price and the number of Flooded Strand Fetchlands a deck has. It would not be a good predictor variable on its own, though, however, as $R^2=.0719$
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m4)$coefficients, caption = "Polluted Delta vs Deck Price")
+```
+
+The p-value for Polluted Delta is below the threshold at .013. This means that there is a statistically significant relationship between the deck price and the number of Polluted Delta Fetchlands a deck has. It would not be a good predictor variable on its own, though, however, as $R^2=.104$
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m5)$coefficients, caption = "Bloodstained Mire vs Deck Price")
+```
+
+The p-value for Bloodstained Mire is above the .05 threshold at .49. It would not be a good predictor variable on its own. $R^2=.00856$, so no obvious linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m6)$coefficients, caption = "Wooded Foothills vs Deck Price")
+```
+
+The p-value for Wooded Foothills is above the .05 threshold at 1. It would not be a good predictor variable on its own, and perhaps at all, considering how hight the p-value is. $R^2=.00000001$, so no linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m7)$coefficients, caption = "Windswept Heath vs Deck Price")
+```
+
+The p-value for Windswept Heath is above the .05 threshold at .49. It would not be a good predictor variable on its own. $R^2=.00842$, so no obvious linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m8)$coefficients, caption = "Marsh Flats vs Deck Price")
+```
+
+The p-value for Bloodstained Mire is above the .05 threshold at .66. It would not be a good predictor variable on its own. $R^2=.00347$, so no obvious linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m9)$coefficients, caption = "Scalding Tarn vs Deck Price")
+```
+
+The p-value for Scalding Tarn is below the threshold at .0015. This means that there is a statistically significant relationship between the deck price and the number of Scalding Tarn Fetchlands a deck has. It would not be a good predictor variable on its own, though, however, as $R^2=.164$. It is, however, the strongest predictor so far.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m10)$coefficients, caption = "Verdant Catacombs vs Deck Price")
+```
+
+The p-value for Verdant Catacombs is above the .05 threshold at .15. It would not be a good predictor variable on its own. $R^2=.00367$, so no obvious linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m11)$coefficients, caption = "Arid Mesa vs Deck Price")
+```
+
+The p-value for Arid Mesa is above the .05 threshold at .20. It would not be a good predictor variable on its own. $R^2=.0284$, so no obvious linear relationship.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m12)$coefficients, caption = "Misty Rainforest vs Deck Price")
+```
+
+The p-value for Misty Rainforest is below the threshold at .0000. There is a statistically significant relationship between the deck price and the number of Misty Fetchlands a deck has. It also appears to be a good predictor variable _on its own_ as $R^2=.429$.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m13)$coefficients, caption = "Prismatic Vista vs Deck Price")
+```
+
+The p-value for Prismatic Vista is below the threshold at .04. There is a statistically significant relationship between the deck price and the number of Prismatic Vista Fetchlands a deck has. It would not be a good predictor variable on its own, though, however, as $R^2=.0716$.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(m14)$coefficients, caption = "Total Fetchlands vs Deck Price")
+```
+
+The p-value for the Total number of Fetchlands a deck contains is below the threshold at .0000. There is a statistically significant relationship between the deck price and the number of Total Fetchlands a deck has. It also appears to be a good predictor variable _on its own_ as $R^2=.448$.
+
+\newpage
+
+Now that each of the individual 14 individual predictor models has been assessed, it is time to consider a full model multiple linear regression analysis.
+
+To begin, the full model would look as follows:
+
+\begin{center} $Y_i = b0 + b1X_{AgCom} + b2X_{AgCon} + b3X_{AgMid} + b4X_{Com} +$ \end{center}
+\begin{center} $b5X_{ComCon} + b6X_{Con} + b7X_{ConCom} + b8X_{Mid} + b9X_{MidCom} +$ \end{center}
+\begin{center} $b10X_{DC1Y} + b11X_{FS} + b12X_{PD} + b13X_{BM} + b14X_{WF} +$ \end{center}
+\begin{center} $b15X_{WF} + b16X_{WH} + b17X_{MF} + b18X_{ST} + b19X_{VC} +$ \end{center}
+\begin{center} $b20X_{AM} + b21X_{MR} + b22X_{PV} + b23X_{TotFetch}$ \end{center}
+
+
+```{r, include = FALSE}
+############### Full Model, Linear Model, Test for Normality
+full_model <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Flooded Strand` + `Polluted Delta` +
+                   `Bloodstained Mire` + `Wooded Foothills` +
+                   `Windswept Heath` + `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Arid Mesa` + `Misty Rainforest` +
+                   `Prismatic Vista` + `Total Fetchlands`,
+                 data = my_data)
+```
+
+```{r, echo = FALSE, fig.cap="Full Model vs Deck Price Test for Normality"}
+qqnorm(residuals(full_model))
+qqline(residuals(full_model))
+```
+
+```{r, include = FALSE}
+shapiro.test(residuals(full_model))
+summary(full_model)
+############### Full Model, Linear Model, Test for Normality
+```
+
+These Residuals appear to "hug" the line quite well, indicating normality for the full model. The Shapiro Wilk test produces $p-value = .68$, which is more than our threshold of $\alpha = .05$ , so we fail to reject normality. This data appears to be normal and regression analysis is appropriate.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(full_model)$coefficients, caption = "Full Model vs Deck Price Intercept and Coefficients")
+```
+
+The NA value in the last row indicates that the last predictor, Total Fetchlands, is linearly dependent on the other 13 variables, and can thus be dropped.
+
+After this, the process of removing less effective predictors begins by "dropping off" the "bad predictors" by dropping the highest p-value (starting with Windswept Heath) and running the model again. Doing this process until the model contains only coefficents with p-values under the $\alpha = .05$ threshold.
+
+```{r, include = FALSE}
+############### Reducing Model
+reduced_model_1 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Flooded Strand` + `Polluted Delta` +
+                   `Bloodstained Mire` + `Wooded Foothills` +
+                     `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Arid Mesa` + `Misty Rainforest` +
+                   `Prismatic Vista`,
+                 data = my_data)
+# Windswept Heath
+
+reduced_model_2 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Flooded Strand` +
+                   `Bloodstained Mire` + `Wooded Foothills` +
+                     `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Arid Mesa` + `Misty Rainforest` +
+                   `Prismatic Vista`,
+                 data = my_data)
+# Polluted Delta
+
+reduced_model_3 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Flooded Strand` +
+                   `Bloodstained Mire` +
+                     `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Arid Mesa` + `Misty Rainforest` +
+                   `Prismatic Vista`,
+                 data = my_data)
+# Wooded Foothills
+
+reduced_model_4 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Flooded Strand` +
+                   `Bloodstained Mire` +
+                     `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Misty Rainforest` +
+                   `Prismatic Vista`,
+                 data = my_data)
+# Arid Mesa
+
+reduced_model_5 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Bloodstained Mire` +
+                     `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Misty Rainforest` +
+                   `Prismatic Vista`,
+                 data = my_data)
+# Flooded Strand
+
+reduced_model_6 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Bloodstained Mire` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Misty Rainforest` +
+                   `Prismatic Vista`,
+                 data = my_data)
+# Marsh Flats
+
+reduced_model_7 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Bloodstained Mire` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Misty Rainforest`,
+                 data = my_data)
+# Prismatic Vista
+
+reduced_model_8 <- lm(`Deck Price` ~ `Archetype` +
+                   `Bloodstained Mire` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Misty Rainforest`,
+                 data = my_data)
+# Deck Count 1 Year
+
+reduced_model_9 <- lm(`Deck Price` ~ `Archetype` +
+                   `Bloodstained Mire` + `Verdant Catacombs` +
+                   `Misty Rainforest`,
+                 data = my_data)
+# Scalding Tarn
+############### Reducing Model
+```
+
+Here is last table that includes only stastically significant values for the coefficents. Note that Scalding Tarn should be the next one to drop. However, doing so drops the $R^2$ value by .02, the largest loss yet. Also, the significance level of Scalding Tarn is very close to our .05 threshold at .0507. With it being this close, it should be kept in the model.
+
+```{r, echo = FALSE, results = 'asis'}
+kable(summary(reduced_model_8)$coefficients, caption = "Reduced Model vs Deck Price Intercept and Coefficients")
+```
+
+\subsubsection{Goodness of Fit Test}
+
+The goodness of fit analysis used include examining the residuals from the model, outlier detection, and the adjusted R-Squared values.
+
+```{r,  echo=FALSE, message=FALSE,  include=TRUE, fig.cap="Fitted vs Residual graphs for the phases of the model.", fig.pos="H", fig.align='center', out.width="0.99\\linewidth"}
+
+plot(fitted(full_model), residuals(full_model),
+     sub = "Full Model", xlab = "Fitted Values", ylab = "Residuals")
+abline(h=0)
+
+plot(fitted(reduced_model_8), residuals(reduced_model_8),
+     sub = "Removing 9 Bad Predictor Variables", xlab = "Fitted Values", ylab = "Residuals")
+abline(h=0)
+# There appear to be no outliers!
+```
+
+The Fitted vs Residual plot for the original full model including all the predictor variables appeared to be realtively well-behaved. The homoscedasticity principle is not violated. The errors seem to be normally distributed and the $R^2=.76$. There appear to be no outliers, so Cook's Distance is not necessary.
+
+The Fitted vs Residual plot for the reduced version of the model also meet the requirements of regression analysis. The $R^2=.726$
+
+\section{Results}
+
+For each of the variables, it is important to test if there is a linear association between the outcome variable, Deck Price, and the 13 predictor variables. This is done by using the t-test and applying the following hypothesis:
+
+*Null Hypothesis:: $H_0 : \beta_1 = 0$
+*Alternative Hypothesis:: $H_1 : \beta_1 \neq 0$
+
+Stated another way, the Null Hypothesis is that there is no linear association between the Marketshare and the predictor variables, meaning that nothing can be predicted. The Alternative Hypothesis, on the other hand, states that there is a linear association between them.
+
+__Effect of Archetype on Deck Price__
+With a significance level of $\alpha = 0.05$, multiple coefficients dictate success in rejecting the null hypothesis, $H_0$. This means that there is sufficient evidence that the Archetype that a person chooses to play is a predictor variable for the Price of their Deck. With an R-Squared value of only .32, this variable would explain 32% of the variation in the model.
+
+__Effect of Deck Count 1 Year on Deck Price__
+With a significance level of $\alpha = 0.05$, there is failure to reject null hypothesis, $H_0$. There is not sufficient evidence that the number of people playing a deck in a year can predict how much that deck costs. $R^2=.0145$, the variable alone would only explain 1.45% of the variation in the model. Not an acceptable predictive model.
+
+__Effect of Flooded Strand on Deck Price__
+With a significance level of $\alpha = 0.05$, reject the null hypothesis, $H_0$. There is sufficient evidence that the number of Flooded Strand Fetchlands in a deck can help predict how much that deck costs. $R^2=.0719$, the variable alone would only explain 7.19% of the variation in the model. Not an acceptable predictive model alone.
+
+__Effect of Polluted Delta on Deck Price__
+With a significance level of $\alpha = 0.05$, reject the null hypothesis, $H_0$. There is sufficient evidence that the number of Polluted Delta Fetchlands in a deck can help predict how much that deck costs. $R^2=.104$, the variable alone would explain 10.4% of the variation in the model. Not an acceptable predictive model alone.
+
+__Effect of Bloodstained Mire on Deck Price__
+With a significance level of $\alpha = 0.05$, fail to reject the null hypothesis, $H_0$. There is not sufficient evidence that the number of Bloodstained Mire Fetchlands in a deck can help predict how much that deck costs. $R^2=.00856$, the variable alone would only explain .856% of the variation in the model. Terrible as a predictive model alone.
+
+__Effect of Wooded Foothills on Deck Price__
+With a significance level of $\alpha = 0.05$, fail to reject the null hypothesis, $H_0$. There is not sufficient evidence that the number of Wooded Foothills Fetchlands in a deck can help predict how much that deck costs. $R^2=.0000$, the variable alone would explain 0.00% of the variation in the model. This means the presence of a Wooded Foothills in a deck alone yields no predictive information.
+
+__Effect of Windswept Heath on Deck Price__
+With a significance level of $\alpha = 0.05$, fail to reject the null hypothesis, $H_0$. There is not sufficient evidence that the number of Windswept Heath Fetchlands in a deck can help predict how much that deck costs. $R^2=.00842$, the variable alone would only explain .842% of the variation in the model. Terrible as a predictive model alone.
+
+__Effect of Marsh Flats on Deck Price__
+With a significance level of $\alpha = 0.05$, fail to reject the null hypothesis, $H_0$. There is not sufficient evidence that the number of Marsh Flats Fetchlands in a deck can help predict how much that deck costs. $R^2=.00347$, the variable alone would only explain .347% of the variation in the model. Terrible as a predictive model alone.
+
+__Effect of Scalding Tarn on Deck Price__
+With a significance level of $\alpha = 0.05$, reject the null hypothesis, $H_0$. There is sufficient evidence that the number of Scalding Tarn Fetchlands in a deck can help predict how much that deck costs. $R^2=.164$, the variable alone would only explain 16.4% of the variation in the model. Not a strong predictor alone, but worth noting.
+
+__Effect of Verdant Catacombs on Deck Price__
+With a significance level of $\alpha = 0.05$, fail to reject the null hypothesis, $H_0$. There is not sufficient evidence that the number of Verdant Catacomb Fetchlands in a deck can help predict how much that deck costs. $R^2=.0367$, the variable alone would only explain 3.67% of the variation in the model. Terrible as a predictive model alone. Oh how Jund has fallen.
+
+__Effect of Arid Mesa on Deck Price__
+With a significance level of $\alpha = 0.05$, fail to reject the null hypothesis, $H_0$. There is not sufficient evidence that the number of Arid Mesa Fetchlands in a deck can help predict how much that deck costs. $R^2=.0284$, the variable alone would only explain 2.84% of the variation in the model.
+
+__Effect of Misty Rainforest on Deck Price__
+With a significance level of $\alpha = 0.05$, reject the null hypothesis, $H_0$. There is sufficient evidence that the number of Misty Rainforest Fetchlands in a deck can help predict how much that deck costs. $R^2=.429$, the variable alone would explain _42.9%_ of the variation in the model. This is powerful predictor variable on its own.
+
+__Effect of Prismatic Vista on Deck Price__
+With a significance level of $\alpha = 0.05$, reject the null hypothesis, $H_0$. There is sufficient evidence that the number of Prismatic Vista Fetchlands in a deck can help predict how much that deck costs. $R^2=.0716$, the variable alone would explain 7.16% of the variation in the model. Not great as a solo predictor model, but worth considering for the full model. Not bad for a card that just came out.
+
+__Effect of Total Fetchlands on Deck Price__
+With a significance level of $\alpha = 0.05$, reject the null hypothesis, $H_0$. There is sufficient evidence that the number of Fetchlands in a deck can help predict how much that deck costs. $R^2=.448$, the variable alone would explain _44.8%_ of the variation in the model. The total number of Fetchlands in a deck is thus a powerful predictor variable on its own.
+
+## Primary Objective Results
+
+Bottom line: The results from the $t$-test indicate that there is a linear association between Deck Price and the following: the __Archtype__ you play and the number of __Bloodstained Mires__, __Scalding Tarns__, __Verdant Catacombs__, and __Misty Rainforests__ your deck has in it. 
+To find the most effective predictor variable, the coefficient of determination, $R^2$, is used. This value indicates what percentage of the variance in the outcome can be predicted by the model. The R-Squared value ranged from 0 to 1, with a higher value indicating a higher predictive association/responsibility for the model. For example, a linear model with an $R^2$ value of .92 can be said to be 92% responsible for the outcome of the real outcome, Y.
+
+That said, the most influential predictor variables for the model in order are:
+1. The number of Misty Rainforest
+2. If the deck is Control or contains Bloodstained Mire or Verdant Catacombs
+3. The number of Scalding Tarn
+
+\section{Discussion and Conclusion}
+
+The long and short of this study is basically that, yes, Fetchlands can predict the price of a deck, to a degree. It is beyond the scope of statistics and this study to discuss what should or should not happen moving forward with the game, but this information is a powerful tool for anyone looking to predict the cost of a deck, should that person decide to play in the Modern format.
+
+The most statistically significant predictor on the cost of a deck, or said another way, "the thing that really predicts a deck's price the most accurately", is the presence of a Misty Rainforest. While the conventional wisdom is to talk about the price of Scalding Tarn, this study is not disproving or proving that cards are "too expensive" or not. That is an emotional topic, and one that statistics cannot answer.
+
+This study is only concerned with the most predictive information. Using the model that will be introduced in a moment, a person interested in building a deck with 3 Misty Rainforests will have a statistically stronger chance of predicting the price of the deck that player wants to build than a player that builds a deck with 3 Scalding Tarn in it.
+
+To find the most effective predictor variable, the coefficient of determination, $R^2$, is used. This value will indicates what percentage of the Deck Price variation can be attributed to this model. In this case, the $R^2$ value is .726. Or, said another way, 72.6% of the Deck Price variation can be attributed to _these_ predictors.
+
+So, without further delay, here is the model:
+
+\begin{center} $Y_i = 518.14 + 3.86X_{AgCom} +77.912X_{AgCon} - 87.14X_{AgMid} + 112.41X_{Com} +$ \end{center}
+\begin{center} $-89.21X_{ComCon} + 259.89X_{Con} + 171.20X_{ConCom} + 132.16X_{Mid} + 75.74X_{MidCom} +$ \end{center}
+\begin{center} $70.65X_{BM} + 43.52X_{ST} + 62.75X_{VC} + 135.04X_{MR}$ \end{center}
+
+Let's look at an example.
+
+Suppose that you are a Control player (I'm sorry). You choose a deck that includes 4 Flooded Strand and 2 Scalding Tarn. How much would the deck cost?
+
+The first number in the equation is our baseline. On average, we can assume knowing nothing else, that a "could-be-anything" Modern deck is going to cost 518.14 USD. It will go up or down from there, based upon the decisions selected above. To start, Control was chosen as the deck Archetype. There are only 2 values that can be entered into Archetype variables in the equation, 0 or 1. 0 indicates that that archetype is not chosen. 1 indicated that it is chosen.
+
+From here, we consider the Fetchland information. Based on this model and this study, the number of Flooded Strand in a player's deck does not help predict the price of that deck. So that information can be ignored. However, having 2 Scalding tarn in the deck does affect the model prediction.
+
+The following the predicted price of the deck based upon the scenario:
+
+\begin{center} $Y_i = 518.14 + 3.86(0) +77.912(0) - 87.14(0) + 112.41(0) +$ \end{center}
+\begin{center} $-89.21(0) + 259.89(1) + 171.20(0) + 132.16(0) + 75.74(0) +$ \end{center}
+\begin{center} $70.65(0) + 43.52(2) + 62.75(0) + 135.04(0)$ \end{center}
+
+Everything being multiplied by zero goes away, and the final predicted price, after adding up the 3 remaining terms, is $Y_1=865.07$ USD.
+
+As we can see, the price of a Modern Format deck can be predicted using the model above.
+
+But, are Fetchlands too expensive? Who knows. Maybe. That's an opinion. But they should reprint them. Cowards.
+
+\newpage
+
+\section{Appendix: R-code}
+
+\begin{lstlisting}
+rm(list = ls(all=TRUE))
+
+my_data <- read.csv("Modern_Meta_6.21.2020.csv", header = T, sep = ',')
+
+# Also we'll cut out the unnecessary attributes
+# for our analysis
+
+my_data <- my_data[, c(1:5, 9, 10, 12, 14, 16, 18,
+                       20, 22, 24, 26, 28, 30, 32:35)]
+
+colnames(my_data) <- c("Deck Name", "Archetype", "Format", "Deck Count 1 Year", "Percent of Meta", "Deck Price", "Flooded Strand", "Polluted Delta", "Bloodstained Mire", "Wooded Foothills", "Windswept Heath", "Marsh Flats", "Scalding Tarn", "Verdant Catacombs", "Arid Mesa", "Misty Rainforest", "Prismatic Vista", "Total Fetchlands", "Total Fetch Price", "Deck Price No Fetch", "Fetch Price Cost Proportion")
+
+# add the format "modern" to all entries in the format category
+my_data$Format[my_data$Format == ''] <- "Modern"
+
+# combine two observations that are
+# the same deck that were accidentlly 
+# recorded separately.
+# observation 53 combines with 27
+# 9 decks added to observation 27
+my_data[27, 4] <- my_data[27, 4] + 9
+# observation 53 deleted
+my_data <- my_data[-53, ]
+# re index the rows
+row.names(my_data) <- 1:59
+# Check to see how many different archtypes
+# were recorded
+levels(my_data$Archetype)
+# combining both "Aggro Control" Variants
+my_data$Archetype[my_data$Archetype == "Aggro - Control"] <- "Aggro-Control"
+
+# renaming the mis-archetyped "Aggro-Tempo"
+# To "Aggro-Control"
+my_data$Archetype[my_data$Archetype == "Aggro-Tempo"] <- "Aggro-Control"
+
+# drop the unused level
+my_data$Archetype <- droplevels(my_data$Archetype)
+
+#checked to see if it worked
+levels(my_data$Archetype)
+
+# now add deck archtypes to the 5
+# missing a deck archetype entry
+# by researching deck
+my_data[17,2] <- "Midrange"
+my_data[31,2] <- "Combo"
+my_data[38,2] <- "Control"
+my_data[45,2] <- "Control"
+my_data[59,2] <- "Control"
+
+# See how many of each archetype
+# was played this last year
+summary(my_data$Archetype)
+############### Initial data wrangling and cleaning
+
+\subsubsection{Secondary Objective Analysis}
+
+To begin the analysis, consider the relationship of the Deck Prices of the top 59 most played decks in the format versus the number of Fetchlands present in said deck.
+
+
+ggplot(data = my_data) +
+  geom_point(aes(`Total Fetchlands`,
+                 `Deck Price`,
+                 color = Archetype)) +
+  ggtitle("Do Fetchlands Increase Deck Price?") +
+  geom_smooth(method = "lm",
+              color = 'black',
+              data = my_data,
+              aes(`Total Fetchlands`, `Deck Price`)) +
+  theme_bw()
+
+# Interactive version below
+# 
+# interactive_plot <- ggplot(data = my_data) +
+#   geom_point_interactive(aes(`Total Fetchlands`,
+#                             `Deck Price`,
+#                             color = Archetype,
+#                             tooltip = `Deck Name`)) +
+#   ggtitle("Do Fetchlands Increase Deck Price?") +
+#   geom_smooth(method = "lm",
+#              color = 'black',
+#              data = my_data,
+#              aes(`Total Fetchlands`, `Deck Price`)) +
+#   theme_bw()
+# 
+# ggiraph(code = print(interactive_plot))
+
+
+
+
+kable(descr(my_data[, c(4:6,19:21)]), caption = "Summary Statistics of the Data Part 1")
+
+kable(descr(my_data[,7:12]), caption = "Summary Statistics of the Data Part 2")
+
+kable(descr(my_data[,13:18]), caption = "Summary Statistics of the Data Part 3")
+
+
+
+
+# Regression models
+# Plot of single predictor variable against outcome variable
+# trendline
+# summary
+# tests for normality qqnorm, qqline, shapiro.test
+
+############### Archetype, Linear Model, Test for Normality
+m1 <- lm(`Deck Price` ~ `Archetype`, my_data)
+
+ggplot(my_data, aes(x = `Archetype`, y = `Deck Price`)) +
+  geom_boxplot() + 
+  xlab("Archetype") +
+  theme(text = element_text(size=10),
+        axis.text.x = element_text(angle=90, hjust=1)) +
+  ylab("Deck Price (USD)")
+
+
+
+
+############### Deck Count 1 Year, Linear Model, Test for Normality
+m2 <- lm(`Deck Price` ~ `Deck Count 1 Year`, my_data)
+
+with(my_data, plot(`Deck Count 1 Year`, `Deck Price`))
+abline(m2)
+
+
+qqnorm(residuals(m2))
+qqline(residuals(m2))
+
+
+
+shapiro.test(residuals(m2))
+summary(m2)
+############### Deck Count 1 Year, Linear Model, Test for Normality
+
+
+
+
+############### Flooded strand, Linear Model, Test for Normality
+m3 <- lm(`Deck Price` ~ `Flooded Strand`, my_data)
+
+with(my_data, plot(`Flooded Strand`, `Deck Price`))
+abline(m3)
+
+
+qqnorm(residuals(m3))
+qqline(residuals(m3))
+
+
+shapiro.test(residuals(m3))
+summary(m3)
+############### Flooded strand, Linear Model, Test for Normality
+
+
+
+
+############### Polluted Delta, Linear Model, Test for Normality
+m4 <- lm(`Deck Price` ~ `Polluted Delta`, my_data)
+
+with(my_data, plot(`Polluted Delta`, `Deck Price`))
+abline(m4)
+
+
+qqnorm(residuals(m4))
+qqline(residuals(m4))
+
+
+
+shapiro.test(residuals(m4))
+summary(m4)
+############### Polluted Delta, Linear Model, Test for Normality
+
+
+
+
+############### Bloodstained Mire, Linear Model, Test for Normality
+m5 <- lm(`Deck Price` ~ `Bloodstained Mire`, my_data)
+
+with(my_data, plot(`Bloodstained Mire`, `Deck Price`))
+abline(m5)
+
+
+qqnorm(residuals(m5))
+qqline(residuals(m5))
+
+
+shapiro.test(residuals(m5))
+summary(m5)
+############### Bloodstained Mire, Linear Model, Test for Normality
+
+
+
+
+############### Wooded Foothills, Linear Model, Test for Normality
+m6 <- lm(`Deck Price` ~ `Wooded Foothills`, my_data)
+
+with(my_data, plot(`Wooded Foothills`, `Deck Price`))
+abline(m6)
+
+
+qqnorm(residuals(m6))
+qqline(residuals(m6))
+
+
+shapiro.test(residuals(m6))
+summary(m6)
+############### Wooded Foothills, Linear Model, Test for Normality
+
+
+
+
+############### Windswept Heath, Linear Model, Test for Normality
+m7 <- lm(`Deck Price` ~ `Windswept Heath`, my_data)
+
+with(my_data, plot(`Windswept Heath`, `Deck Price`))
+abline(m7)
+
+
+
+qqnorm(residuals(m7))
+qqline(residuals(m7))
+
+
+shapiro.test(residuals(m7))
+summary(m7)
+############### Windswept Heath, Linear Model, Test for Normality
+
+
+
+
+############### Marsh Flats, Linear Model, Test for Normality
+m8 <- lm(`Deck Price` ~ `Marsh Flats`, my_data)
+
+with(my_data, plot(`Marsh Flats`, `Deck Price`))
+abline(m8)
+
+
+qqnorm(residuals(m8))
+qqline(residuals(m8))
+
+
+shapiro.test(residuals(m8))
+summary(m8)
+############### Marsh Flats, Linear Model, Test for Normality
+
+
+
+
+############### Scalding Tarn, Linear Model, Test for Normality
+m9 <- lm(`Deck Price` ~ `Scalding Tarn`, my_data)
+
+with(my_data, plot(`Scalding Tarn`, `Deck Price`))
+abline(m9)
+
+
+qqnorm(residuals(m9))
+qqline(residuals(m9))
+
+
+shapiro.test(residuals(m9))
+summary(m9)
+############### Scalding Tarn, Linear Model, Test for Normality
+
+
+
+
+############### Verdant Catacombs, Linear Model, Test for Normality
+m10 <- lm(`Deck Price` ~ `Verdant Catacombs`, my_data)
+
+with(my_data, plot(`Verdant Catacombs`, `Deck Price`))
+abline(m10)
+
+
+
+qqnorm(residuals(m10))
+qqline(residuals(m10))
+
+
+shapiro.test(residuals(m10))
+summary(m10)
+############### Verdant Catacombs, Linear Model, Test for Normality
+
+
+
+
+############### Arid Mesa, Linear Model, Test for Normality
+m11 <- lm(`Deck Price` ~ `Arid Mesa`, my_data)
+
+with(my_data, plot(`Arid Mesa`, `Deck Price`))
+abline(m11)
+
+
+qqnorm(residuals(m11))
+qqline(residuals(m11))
+
+
+shapiro.test(residuals(m11))
+summary(m11)
+############### Arid Mesa, Linear Model, Test for Normality
+
+
+
+
+############### Misty Rainforest, Linear Model, Test for Normality
+m12 <- lm(`Deck Price` ~ `Misty Rainforest`, my_data)
+
+with(my_data, plot(`Misty Rainforest`, `Deck Price`))
+abline(m12)
+
+
+qqnorm(residuals(m12))
+qqline(residuals(m12))
+
+
+shapiro.test(residuals(m12))
+summary(m12)
+############### Misty Rainforest, Linear Model, Test for Normality
+
+
+
+
+############### Prismatic Vista, Linear Model, Test for Normality
+m13 <- lm(`Deck Price` ~ `Prismatic Vista`, my_data)
+
+with(my_data, plot(`Prismatic Vista`, `Deck Price`))
+abline(m13)
+
+
+qqnorm(residuals(m13))
+qqline(residuals(m13))
+
+
+shapiro.test(residuals(m13))
+summary(m13)
+############### Prismatic Vista, Linear Model, Test for Normality
+
+
+
+
+############### Total Fetchlands, Linear Model, Test for Normality
+m14 <- lm(`Deck Price` ~ `Total Fetchlands`, my_data)
+
+with(my_data, plot(`Total Fetchlands`, `Deck Price`))
+abline(m14)
+
+
+qqnorm(residuals(m14))
+qqline(residuals(m14))
+
+
+shapiro.test(residuals(m14))
+summary(m14)
+############### Total Fetchlands, Linear Model, Test for Normality
+
+
+
+
+kable(summary(m1)$coefficients, caption = "Archetype vs Deck Price")
+kable(summary(m2)$coefficients, caption = "Deck Count 1 Year vs Deck Price")
+kable(summary(m3)$coefficients, caption = "Flooded Strand vs Deck Price")
+kable(summary(m4)$coefficients, caption = "Polluted Delta vs Deck Price")
+kable(summary(m5)$coefficients, caption = "Bloodstained Mire vs Deck Price")
+kable(summary(m6)$coefficients, caption = "Wooded Foothills vs Deck Price")
+kable(summary(m7)$coefficients, caption = "Windswept Heath vs Deck Price")
+kable(summary(m8)$coefficients, caption = "Marsh Flats vs Deck Price")
+kable(summary(m9)$coefficients, caption = "Scalding Tarn vs Deck Price")
+kable(summary(m10)$coefficients, caption = "Verdant Catacombs vs Deck Price")
+kable(summary(m11)$coefficients, caption = "Arid Mesa vs Deck Price")
+kable(summary(m12)$coefficients, caption = "Misty Rainforest vs Deck Price")
+kable(summary(m13)$coefficients, caption = "Prismatic Vista vs Deck Price")
+kable(summary(m14)$coefficients, caption = "Total Fetchlands vs Deck Price")
+
+
+
+
+
+############### Full Model, Linear Model, Test for Normality
+full_model <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                   `Flooded Strand` + `Polluted Delta` +
+                   `Bloodstained Mire` + `Wooded Foothills` +
+                   `Windswept Heath` + `Marsh Flats` +
+                   `Scalding Tarn` + `Verdant Catacombs` +
+                   `Arid Mesa` + `Misty Rainforest` +
+                   `Prismatic Vista` + `Total Fetchlands`,
+                 data = my_data)
+
+qqnorm(residuals(full_model))
+qqline(residuals(full_model))
+
+shapiro.test(residuals(full_model))
+summary(full_model)
+############### Full Model, Linear Model, Test for Normality
+
+
+
+############### Reducing Model
+reduced_model_1 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Flooded Strand` + `Polluted Delta` +
+                        `Bloodstained Mire` + `Wooded Foothills` +
+                        `Marsh Flats` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Arid Mesa` + `Misty Rainforest` +
+                        `Prismatic Vista`,
+                      data = my_data)
+# Windswept Heath
+
+reduced_model_2 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Flooded Strand` +
+                        `Bloodstained Mire` + `Wooded Foothills` +
+                        `Marsh Flats` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Arid Mesa` + `Misty Rainforest` +
+                        `Prismatic Vista`,
+                      data = my_data)
+# Polluted Delta
+
+reduced_model_3 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Flooded Strand` +
+                        `Bloodstained Mire` +
+                        `Marsh Flats` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Arid Mesa` + `Misty Rainforest` +
+                        `Prismatic Vista`,
+                      data = my_data)
+# Wooded Foothills
+
+reduced_model_4 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Flooded Strand` +
+                        `Bloodstained Mire` +
+                        `Marsh Flats` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Misty Rainforest` +
+                        `Prismatic Vista`,
+                      data = my_data)
+# Arid Mesa
+
+reduced_model_5 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Bloodstained Mire` +
+                        `Marsh Flats` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Misty Rainforest` +
+                        `Prismatic Vista`,
+                      data = my_data)
+# Flooded Strand
+
+reduced_model_6 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Bloodstained Mire` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Misty Rainforest` +
+                        `Prismatic Vista`,
+                      data = my_data)
+# Marsh Flats
+
+reduced_model_7 <- lm(`Deck Price` ~ `Archetype` + `Deck Count 1 Year` +
+                        `Bloodstained Mire` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Misty Rainforest`,
+                      data = my_data)
+# Prismatic Vista
+
+reduced_model_8 <- lm(`Deck Price` ~ `Archetype` +
+                        `Bloodstained Mire` +
+                        `Scalding Tarn` + `Verdant Catacombs` +
+                        `Misty Rainforest`,
+                      data = my_data)
+# Deck Count 1 Year
+
+reduced_model_9 <- lm(`Deck Price` ~ `Archetype` +
+                        `Bloodstained Mire` + `Verdant Catacombs` +
+                        `Misty Rainforest`,
+                      data = my_data)
+# Scalding Tarn
+############### Reducing Model
+
+
+
+
+kable(summary(reduced_model_8)$coefficients, caption = "Reduced Model vs Deck Price Intercept and Coefficients")
+
+
+
+
+plot(fitted(full_model), residuals(full_model),
+     sub = "Full Model", xlab = "Fitted Values", ylab = "Residuals")
+abline(h=0)
+
+plot(fitted(reduced_model_8), residuals(reduced_model_8),
+     sub = "Removing year", xlab = "Fitted Values", ylab = "Residuals")
+abline(h=0)
+# There appear to be no outliers!
+
+\end{lstlisting}
