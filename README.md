@@ -1,6 +1,8 @@
-# Brendan's Data Science Portfolio
-Hello! If you're reading this, then you have found my Data Science GitHub Portfolio. Welcome.
+# Brendan Stevens' Data Science Portfolio
+Hello! Welcome to my Data Science GitHub Portfolio.
 
-A the root level of this Repository, you will find different directories that contain within them specific projects targeted at some of the more common Data Science questions today, such as exploratory data analysis, regression/prediction, and classification of dichotomous/binary outcome varaibles. Choose a subfolder, and then further read the readme in that folder for more information about where you are, and what there is to see.
+A the root level of this Repository, you will find different directories targeted at some of the more common Data Science tasks today, such as exploratory data analysis, regression, and classification. Within each themed directory, you will find modules of projects that have been split into bite-sized, focused tasks, along with directory descriptions to help further guide you.
+
+If you have any questions for me
 
 Thank you for viewing my portfolio.
