@@ -1,5 +1,0 @@
-The aim of this project was to learn and practice the methods for testing association between categorical variables, build a multiple logistic regression classification model that could be used to predict the answer to the question, "Do you desire to switch careers" posed to the just short of 20,000 observed individuals in the dataset, and to assess the model predicitive capacity by use of Sensitivity and Specificity with aid of a Receiver Operating Characteristic (ROC) curve and the Area Under the Curve (AUC).
-
-Methods used to test association included in the study were the Chi-Squared Test for Independence, Fisher's Exact Test, and Cramer's V, as well as a few continuous tests such as Pearson's Correlation Coefficient and the Rank- and Point Biserial Correlation Coefficients.
-
-The method of model building is Purposeful Selection, in which a main effects model is first created, followed by being pitted against more complex models through a screening process that utilizes the Likelihood Ratio Test and Deviances between the models. Interaction terms are also included, but only second degree were considered, as parsimony of the model was a concern.
