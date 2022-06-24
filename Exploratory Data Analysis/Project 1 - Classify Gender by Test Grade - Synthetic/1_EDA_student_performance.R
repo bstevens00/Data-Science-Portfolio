@@ -15,7 +15,7 @@
 # as they merge 1a through 1i together into one big, ensemble model that uses
 # the strengths of all the models combined.
 
-# Link: https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Classification
+# Link: https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Classification/Project 1 - Classify Gender by Test Grade - Synthetic/
 
 #        . 1a - KNN - Classify Gender by Test Grade - Synthetic
 #        . 1b - Simple Tree - Classify Gender by Test Grade - Synthetic
