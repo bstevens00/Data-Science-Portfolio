@@ -39,8 +39,7 @@ Technically, the Simple Ensemble performs slightly worse than a few individual m
 
 We also find that the overall model performs well with Confusion Matrix metrics, such as Sensitivity, Specificity, and Accuracy, which are all scores that range from 0 to 1, and are all stronger when closer to 1.
 
-![Simple Ensemble Confusion Matrix and Metrics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_simple_ensemble_confusion_matrix.PNG
-> "Simple Ensemble Confusion Matrix and Metrics")
+![Simple Ensemble Confusion Matrix and Metrics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_simple_ensemble_confusion_matrix.PNG> "Simple Ensemble Confusion Matrix and Metrics")
 
 ## Navigating this Project
 
