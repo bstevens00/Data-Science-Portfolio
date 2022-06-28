@@ -388,7 +388,7 @@ legend("bottomright",
                "goldenrod1",
                "darkorange2"),
        lwd = 4,
-       cex = 0.5)
+       cex = 1)
 
 
 
