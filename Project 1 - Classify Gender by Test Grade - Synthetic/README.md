@@ -20,15 +20,15 @@ I have included a handy flowchart, "Project_1.drawio.png", to help visualize the
 1. Exploratory Data Analysis
 	* 1_Exploratory_Data_Analysis.R
 2. Individual Model Analyses
-	a. 2a_k_nearest_neighbors.R
-	b. 2b_simple_classification_tree.R
-	c. 2c_logistic_regression.R
-	d. 2d_random_forest.R
-	e. 2e_naive_bayes.R
-	f. 2f_support_vector_machine.R
-	g. 2g_linear_discriminant_analysis.R
-	h. 2h_quadratic_discriminant_analysis.R
-	i. 2i_neural_net.R
+	* 2a_k_nearest_neighbors.R
+	* 2b_simple_classification_tree.R
+	* 2c_logistic_regression.R
+	* 2d_random_forest.R
+	* 2e_naive_bayes.R
+	* 2f_support_vector_machine.R
+	* 2g_linear_discriminant_analysis.R
+	* 2h_quadratic_discriminant_analysis.R
+	* 2i_neural_net.R
 3. Simple Ensemble Model
 	* 3_simple_ensemble.R
 4. Complex Ensemble
