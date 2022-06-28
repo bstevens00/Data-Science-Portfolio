@@ -1,11 +1,3 @@
-# This is a branch or continuation of the Exploratory Data Analysis of the 
-# StudentsPerformance.csv data. It is a possible and natural last step after
-# considering all of the solo models. You may begin here, but all visualizations
-# of the data will be absent. For a fuller view of this data, view the file 
-# below, titled 1_EDA_student_performance.R:
-
-# URL: https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Exploratory%20Data%20Analysis/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic
-
 ###############################################
 # Reading in the data in the format last seen #
 ###############################################
@@ -262,14 +254,3 @@ roc_curve <- roc(response = test_labels$gender,
                  ylab = "True Positive Percentage (Sensitivity)",
                  legacy.axes = TRUE)
 roc_curve # 83.66% is good too, but not as good as the unpruned model.
-
-
-
-
-#########################################
-# Meta Content - Where to go from here? #
-#########################################
-
-# At this point, the reader may choose to move horizontally to another one
-# of the models by viewing files 1a, 1c - 1i or see how all the models work
-# together to make a potentially better model in 1j, the ensemble model.
