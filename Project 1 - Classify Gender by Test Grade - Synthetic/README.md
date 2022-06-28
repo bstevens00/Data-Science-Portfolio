@@ -34,7 +34,7 @@ I have included a handy flowchart, "Project_1.drawio.png", to help visualize the
 4. Complex Ensemble
 	* 4_complex_ensemble.R
 
-![Project 1 Flowchart](https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project1-ClassifyGenderbyTestGrade-Synthetic/Project_1.drawio.png "Project 1 Flowchart")
+![Project 1 Flowchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project 1 - Classify Gender by Test Grade - Synthetic/Project_1.drawio.png> "Project 1 Flowchart")
 
 ## Methods for Models
 
