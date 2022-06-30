@@ -23,7 +23,7 @@ Yes. We can predict/classify the gender of a student knowing only their math, re
 * 0.5-0.7 = We consider this poor discrimination, not much better than a coin toss.
 * 0.7-0.8 = Acceptable discrimination
 * 0.8-0.9= Excellent discrimination
-* >0.9 = Outstanding discrimination"
+* \>0.9 = Outstanding discrimination"
 
 Here are ROC graphs for the nine single models and the simple ensemble model, which combined their individual results together.
 
