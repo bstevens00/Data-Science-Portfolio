@@ -91,15 +91,23 @@ Since there aren't any signs of multicollinearity (low correlation between the p
 
 We'll need to scale the values, since Deck Count is orders of magnitude larger than the Fetchland counts.
 
-Before we do that. Here is a picture of a mountain. Random? No. I've Googled an image of a moutain and cliffside to help explain what we're looking for with Principal Components.
+![Importance of Components](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_PCA.PNG> "Importance of Components")
+
+So what we're seeing above is the importance of the components. Multiple predictor variables combine to make PC1, multiple for PC2, etc. We can see the Proportion of the Variance in the data that is explained by each of these Components. What we want to see is a large first number, close to 0.6 or so, and ideally the first ~3 or so Principal Components accounting for a cumulative proportion of the variance in the high 70% to low 90%. This isn't the case. It looks like dimension reduction using PCA isn't happening.
+
+But we'll visualize this. Before we do that. Here is a picture of a mountain. Not random. I've Googled an image of a moutain and cliffside to help explain what we're looking for with a Scree Plot of the Principal Components.
 
 ![Principal Component Analysis](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Principal_Component_Analysis.png> "Principal Component Analysis")
 
-In a moment, we will plot the Principal Components using a Scree Plot. But a word about what a "good" plot looks like. If Principal Component Analysis is useful in the data, then starting on the upper-left corner, the graph will steeply drop like this mountain, hit a *clear* incline change ("Elbow") and then slowly trail off. That "Elbow" is the number of Principal Components we want to keep. Another method for doing this is called the "Kaiser Rule", which states that any Eigenvalue/Variance under 1 should be discarded. This is because an eigenvalue less than 1 means that the PC explains less than a single original variable explained, i.e. it has no dimensional reduction value, as the original variable was better than the new variable. In this picture, we're pretending the horizon is the Eigenvalue of one, or 
+In a moment, we will plot the Principal Components using a Scree Plot. But a word about what a "good" plot looks like. If Principal Component Analysis is useful in the data, then starting on the upper-left corner, the graph will steeply drop like this mountain, hit a *clear* incline change ("Elbow") and then slowly trail off. That "Elbow" is the number of Principal Components we want to keep. Another method for doing this is called the "Kaiser Rule", which states that any Eigenvalue/Variance under 1 should be discarded. This is because an eigenvalue less than 1 means that the PC explains less than a single original variable explained, i.e. it has no dimensional reduction value, as the original variable was better than the new variable. In this picture, we're pretending the horizon is the Eigenvalue of one, or λ = 1.
 
 <img src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" data-canonical-src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" width=50% height=50% />
 
+Now, let's compare a good Scree Plot (mountain above) to our Scree Plot (below).
+
 ![Scree Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Scree_Plot.png> "Scree Plot")
+
+It's not the greatest. But we expected that, as there isn't 
 
 ![Biplot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Biplot.png> "Biplot")
 
