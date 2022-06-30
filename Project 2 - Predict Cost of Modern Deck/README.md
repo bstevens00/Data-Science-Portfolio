@@ -40,7 +40,13 @@ Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data 
 
 ## Exploratory Data Analysis
 
+The color that appeared in the most decks overall was Red, followed by Blue. It appears people like their Lightning Bolts and Thought Scours. Black made an appearance in the least amount of the top 60 most played decks. An important detail, however, is a single Red card in the deck would qualify that deck as having Red in it. So this data cannot claim which color is the most commonly played, only that Red and Blue are the two colors most likely to be used "on the splash".
+
 ![Most Pervasive Color](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Percent_of_Decks_with_This_Color.png> "Most Pervasive Color")
+
+Below we see which the number of appearances each Archetype has in the top 60 most played decks in the Modern Format. There are many different ways to play midrange. This bar chart doesn't show *how many of each deck*, so it would not be a good visualization for which Archetypes are the most popular, only the most diverse in build options.
+
+![Which Archetypes in Top 60 Decks](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Which_Archetypes_in_Top_60.png> "Which Archetypes in Top 60 Decks")
 
 ![Big Picture Stats](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Big_Picture_Stats.PNG> "Big Picture Stats")
 
@@ -53,8 +59,6 @@ Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data 
 ![Fetchlands Count Table with Marginal Totals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Table_with_Marginal_Totals.PNG> "Fetchlands Count Table with Marginal Totals")
 
 ![Principal Component Analysis](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Principal_Component_Analysis.png> "Principal Component Analysis")
-
-![Which Archetypes in Top 60 Decks](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Which_Archetypes_in_Top_60.png> "Which Archetypes in Top 60 Decks")
 
 <img src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" data-canonical-src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" width=50% height=50% />
 
