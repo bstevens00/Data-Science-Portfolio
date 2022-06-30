@@ -40,6 +40,7 @@ Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data 
 
 ## Exploratory Data Analysis
 
+### Univariate Analysis
 The color that appeared in the most decks overall was Red, followed by Blue. It appears people like their Lightning Bolts and Thought Scours. Black made an appearance in the least amount of the top 60 most played decks. An important detail, however, is a single Red card in the deck would qualify that deck as having Red in it. So this data cannot claim which color is the most commonly played, only that Red and Blue are the two colors most likely to be used "on the splash".
 
 ![Most Pervasive Color](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Percent_of_Decks_with_This_Color.png> "Most Pervasive Color")
@@ -62,11 +63,39 @@ As can be seen above, we've broken down the barchart in 3 dimensions. Number of 
 
 Interestingly, Most decks that run Fetchlands do so in even multiples, with the most common number of *any* Fetchland in *any* strategy being 4, 2, 3, 1, in that order. Perhaps this is because people tend to like even numbers more than odd?
 
+Next, let's get some overview statistics. Below, we see that for each of the 60 strategies in the database on the MTG Goldfish website, there was an average of 150.72 decks of that type submitted, with a median of 110.5, indicating a right skew, as the popular decks have captured a larger portion of the playerbase's attention and strategy choice. We also see that the minimum number of decks of a particular stategy is 43, so we have a healthy amount of data to work with.
+
 ![Big Picture Stats](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Big_Picture_Stats.PNG> "Big Picture Stats")
+
+In addition to this, we see that the mean and median cost of a deck in Modern is ~$900, which gives us a nice number to remember when we're considering the prediction models later. Further and finally, we see that if we were to randomly select a deck from a tournament player, their deck would have an mean of 6.95 and median of 7.00 Fetchlands, indicating that while there are many unique strategies that don't run Fetchlands, the number of players *choosing* those strategies is lower, overall. People are playing decks with Fetchlands.
+
+### Bivariate Analysis
+
+Later, we're going to create a prediction model for the response, Deck Price. However, before doing so, since there are quite a few numeric predictors, we should check the correlation matrix to see if there are any highly correlated variables that might lead to multicollinearity, and if so, perhaps we can collapse these predictors into a subset using something like Principal Component Analysis.
 
 ![Correlation Matrix](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Correlation_Matrix.png> "Correlation Matrix")
 
+Here we see lower correlations across the board. For Fetchland-to-Fetchland relationships, a positive correlation means the more of one of the two Fetchlands is played in a strategy, the more the other is as well. We see no high correlations here, but the 0.49 correlation between Misty Rainforest and Prismatic Vista Fetchlands seems suspiciously reasonable, as Landfall strategies are strongest in Green, which both of these Fetchlands search.
+
+More telling, however, is the relationships these predictor variables have with Deck Count. We see that as the number of people playing a strategy goes up, the less likely it is that that strategy plays Misty Rainforest, Flooded Strand, and Scalding Tarn. These are the most expensive Fetchlands, so less people play these strategies, as made clear by the data.
+
+Finally, We see a negative correlation between the number of playing a deck (Deck Count) and the price of playing that deck (Deck Price), further reinforcing the claims from before.
+
+It doesn't appear that there is any real multicollinearity, as none of the results are higher than 0.56, and most are lower than 0.20. Rule of Thumb for Multicollinearity: As a rule of thumb, one might suspect multicollinearity when the correlation between two (predictor) variables is below -0.9 or above +0.9.
+
+### Dimension Reduction
+
+A popular method of reducing the number of predictors to be considered in models or to gain insight into clustering and other bivariate relationships in the data is Principal Component Analysis. [StatQuest](https://www.youtube.com/watch?v=FgakZw6K1QQ) does a fantastic job of explaining this topic.
+
+Since there aren't any signs of multicollinearity (low correlation between the predictors is that sign), Principal Component Analysis may bear no fruit for dimension reduction, as most of the predictors are closer to orthogonal/perpendicular already. But, we can still try, and maybe even provide some insights by finding clusters that tell us more about the our data.
+
+We'll need to scale the values, since Deck Count is orders of magnitude larger than the Fetchland counts.
+
+Before we do that. Here is a picture of a mountain. Random? No. I've Googled an image of a moutain and cliffside to help explain what we're looking for with Principal Components.
+
 ![Principal Component Analysis](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Principal_Component_Analysis.png> "Principal Component Analysis")
+
+In a moment, we will plot the Principal Components using a Scree Plot. But a word about what a "good" plot looks like. If Principal Component Analysis is useful in the data, then starting on the upper-left corner, the graph will steeply drop like this mountain, hit a *clear* incline change ("Elbow") and then slowly trail off. That "Elbow" is the number of Principal Components we want to keep. Another method for doing this is called the "Kaiser Rule", which states that any Eigenvalue/Variance under 1 should be discarded. This is because an eigenvalue less than 1 means that the PC explains less than a single original variable explained, i.e. it has no dimensional reduction value, as the original variable was better than the new variable. In this picture, we're pretending the horizon is the Eigenvalue of one, or 
 
 <img src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" data-canonical-src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" width=50% height=50% />
 
