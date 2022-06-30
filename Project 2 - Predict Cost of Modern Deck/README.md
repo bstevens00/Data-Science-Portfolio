@@ -2,21 +2,21 @@
 
 ## The Goals
 
-	1. Summarize and visualize the data, seeking interesting relationships, such as the most played color in the format.
-		+ File: 1_Exploratory_Data_Analysis.R
-	2. Look for evidence that deck prices significantly differ based upon the archetype being played.
-		+ File: 2_Differences_in_Archetype_Prices.R
-	3. Create an accurate deck price prediction model based on the the number of a specific Fetchlands being played and the deck's Archetype.
-		+ File: 3_modern_deck_prices.R.
+1. Summarize and visualize the data, seeking interesting relationships, such as the most played color in the format.
+	+ File: 1_Exploratory_Data_Analysis.R
+2. Look for evidence that deck prices significantly differ based upon the archetype being played.
+	+ File: 2_Differences_in_Archetype_Prices.R
+3. Create an accurate deck price prediction model based on the the number of a specific Fetchlands being played and the deck's Archetype.
+	+ File: 3_modern_deck_prices.R.
 
 ## Simplified and Necessary Terminology and Understandings for the Reader
 
 There are a few things that the reader will need to understand in order to understand this README.
 
-	* "Magic: the Gathering" is a collectible, trading card game, with huge tournaments in which people compete against one another using unique card strategies
-	* A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own cards
-	* Some decks are similar enough in their overarching strategies, like "stall the game out to win later", "win as fast as possible", or "assemble two different cards that work in combination to win the game instantly" that they're categorized into "Archetypes"
-	* A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, just assume it's 4)
+* "Magic: the Gathering" is a collectible, trading card game, with huge tournaments in which people compete against one another using unique card strategies
+* A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own cards
+* Some decks are similar enough in their overarching strategies, like "stall the game out to win later", "win as fast as possible", or "assemble two different cards that work in combination to win the game instantly" that they're categorized into "Archetypes"
+* A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, just assume it's 4)
 	
 ## Why these goals? Why do this?
 
