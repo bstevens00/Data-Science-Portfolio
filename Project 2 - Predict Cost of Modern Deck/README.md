@@ -113,4 +113,10 @@ All is not lost, though. Let's plot the variance in the first and second Princip
 
 When two vectors are close, forming a small angle, the two variables they represent are positively correlated. This plot shows 3 distinct clusters affecting the creating/affecting the first two Principal Components. First, the number of Flooded Strand, Polluted Delta, and Scalding Tarn. These are 3 of the 4 Blue lands, the primary color of the Control Archetype. Next, the group with Bloodstained Mire, Arid Mesa, and Marsh Flats. These lands are all Black, Red, and White. These are the colors most associated with Aggro strategies. This is very interesting. Finally, the last group are the Green lands, which is the color most associated with Midrange strategies, which play slower than Aggro, faster than Control, sitting in the middle of the Archetypes, speedwise. It'll be interesting to see if the Midrange decks also sit in the middle, price wise! We may have found a new question. "Does the time it takes for your deck to win the game positively correlate with the price of the deck?"
 
+As a last exercise with the Exploratory Data Analysis, let's visualize the clusters of this biplot.
+
 ![Biplot with 95% Confidence Ellipses](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Biplot_95_Confidence_Ellipses.png> "Biplot with 95% Confidence Ellipses")
+
+While a little noisy, this graph confirms the sentiment "Aggro = Red" and "Control = Blue", as we can see the "Aggro" ellipse is clustered around the Red Fetchlands, and the "Control" ellipse around the 3 Blue Fetchlands in the Southwest corner of the graph. Actually, part of the Control ellipse contains the Misty Rainforest and Prismatic Vista vectors, which also happen to be the only other 2 lands in the picture than help the player in their endeavors to produce Blue mana!
+
+So, while we won't be able to reduce the number of numeric predictors using PCA, it can't be stated that it wasn't without insight.
