@@ -97,18 +97,20 @@ So what we're seeing above is the importance of the components. Multiple predict
 
 But we'll visualize this. Before we do that. Here is a picture of a mountain. Not random. I've Googled an image of a moutain and cliffside to help explain what we're looking for with a Scree Plot of the Principal Components.
 
-![Principal Component Analysis](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Principal_Component_Analysis.png> "Principal Component Analysis")
-
-In a moment, we will plot the Principal Components using a Scree Plot. But a word about what a "good" plot looks like. If Principal Component Analysis is useful in the data, then starting on the upper-left corner, the graph will steeply drop like this mountain, hit a *clear* incline change ("Elbow") and then slowly trail off. That "Elbow" is the number of Principal Components we want to keep. Another method for doing this is called the "Kaiser Rule", which states that any Eigenvalue/Variance under 1 should be discarded. This is because an eigenvalue less than 1 means that the PC explains less than a single original variable explained, i.e. it has no dimensional reduction value, as the original variable was better than the new variable. In this picture, we're pretending the horizon is the Eigenvalue of one, or λ = 1.
-
 <img src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" data-canonical-src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" width=50% height=50% />
+
+A word on what a "good" Scree Plot looks like. If Principal Component Analysis is useful in the data, then starting on the upper-left corner, the graph will steeply drop like this mountain, hit a *clear* incline change ("Elbow") and then slowly trail off. That "Elbow" is the number of Principal Components we want to keep. Another method for doing this is called the "Kaiser Rule", which states that any Eigenvalue/Variance under 1 should be discarded. This is because an eigenvalue less than 1 means that the PC explains less than a single original variable explained, i.e. it has no dimensional reduction value, as the original variable was better than the new variable. In this picture, we're pretending the horizon is the Eigenvalue of one, or λ = 1.
 
 Now, let's compare a good Scree Plot (mountain above) to our Scree Plot (below).
 
 ![Scree Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Scree_Plot.png> "Scree Plot")
 
-It's not the greatest. But we expected that, as there isn't 
+It's not the greatest. But we expected that. The best Principal Component cutoff here is the elbow at PC3. And that's not great, because the cumulative proportion of the variance explained by the first three components is only 51.87%.
+
+All is not lost, though. Let's plot the variance in the first and second Principal Components. This kind of a plot is known as a "Biplot". And it can sometimes tell us about interesting relationships or clusters in the data.
 
 ![Biplot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Biplot.png> "Biplot")
+
+When two vectors are close, forming a small angle, the two variables they represent are positively correlated. This plot shows 3 distinct clusters affecting the creating/affecting the first two Principal Components. First, the number of Flooded Strand, Polluted Delta, and Scalding Tarn. These are 3 of the 4 Blue lands, the primary color of the Control Archetype. Next, the group with Bloodstained Mire, Arid Mesa, and Marsh Flats. These lands are all Black, Red, and White. These are the colors most associated with Aggro strategies. This is very interesting. Finally, the last group are the Green lands, which is the color most associated with Midrange strategies, which play slower than Aggro, faster than Control, sitting in the middle of the Archetypes, speedwise. It'll be interesting to see if the Midrange decks also sit in the middle, price wise! We may have found a new question. "Does the time it takes for your deck to win the game positively correlate with the price of the deck?"
 
 ![Biplot with 95% Confidence Ellipses](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Biplot_95_Confidence_Ellipses.png> "Biplot with 95% Confidence Ellipses")
