@@ -106,8 +106,8 @@ Eventually, as discussed in the Spoiler section above, we get the full ensemble 
 
 We settle on using the more robust ensemble, as it has a similar AUC to the highest achieving individual models. However, a few questions remain.
 
-	1. Would Cross Validation increase the Confusion Matrix machine learning metrics, such as Sensitivity, Specificity, and Accuracy?
-	2. Would dropping the less effective individual models from the ensemble model increase classification accuracy?
+1. Would Cross Validation increase the Confusion Matrix machine learning metrics, such as Sensitivity, Specificity, and Accuracy?
+2. Would dropping the less effective individual models from the ensemble model increase classification accuracy?
 
 ## Simple Ensemble vs Complex Ensemble (Cross-Validated)
 
