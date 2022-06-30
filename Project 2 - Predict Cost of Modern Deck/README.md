@@ -1,6 +1,16 @@
 # Project 2
 
-## The Goals
+## The Goal
+
+Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. Gain insight about the format as a whole through data visualization and summary statistics. See if some of the player beliefs about the game are true, such as specific deck Archetypes being more affordable than others.
+
+## Spoiler - "Please Tell Me the End of the Story"
+
+
+
+## How do I navigate this project?
+
+Here are the three main goals in the project, and the .R file that tackles the question.
 
 1. Summarize and visualize the data, seeking interesting relationships, such as the most played color in the format.
 	+ File: 1_Exploratory_Data_Analysis.R
@@ -30,3 +40,8 @@ Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data 
 
 ## Exploratory Data Analysis
 
+![Most Pervasive Color](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Percent_of_Decks_with_This_Color.png> "Most Pervasive Color")
+
+
+
+![](<> "")
