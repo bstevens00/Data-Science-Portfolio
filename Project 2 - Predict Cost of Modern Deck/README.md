@@ -48,15 +48,19 @@ Below we see which the number of appearances each Archetype has in the top 60 mo
 
 ![Which Archetypes in Top 60 Decks](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Which_Archetypes_in_Top_60.png> "Which Archetypes in Top 60 Decks")
 
-![Big Picture Stats](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Big_Picture_Stats.PNG> "Big Picture Stats")
+Now we'll consider Fetchlands. Below is a table showing the prevalence of different Fetchlands in the top 60 most played decks in Modern. In the first row, for example, we see that Bloodstained Mire, a Black/Red Fetchland, is absent from 46 of the top 60 most played decks, zero decks play it as a "1-off", three strategies play two copies of the card, four strategies play it in a set of three, and seven separate strategies out of the 60 most played decks choose to play 4 Bloodstained Mire.
 
-![Correlation Matrix](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Correlation_Matrix.png> "Correlation Matrix")
-
-![Fetchlands Count Barchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Barchart.png> "Fetchlands Count Barchart")
+In addition to this, we can see that Windswept Heath is often played in sets of four. Knowing a little trivia, this is likely because it was the only Fetchland from Khans of Tarkir that players could guarantee to get if - rather than purchase a booster pack with random cards - they bought the [Magic Origins: Clash Pack](https://mtg.fandom.com/wiki/Magic_Origins/Clash_pack).
 
 ![Fetchlands Count Table](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Table.PNG> "Fetchlands Count Table")
 
 ![Fetchlands Count Table with Marginal Totals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Table_with_Marginal_Totals.PNG> "Fetchlands Count Table with Marginal Totals")
+
+![Fetchlands Count Barchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Barchart.png> "Fetchlands Count Barchart")
+
+![Big Picture Stats](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Big_Picture_Stats.PNG> "Big Picture Stats")
+
+![Correlation Matrix](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Correlation_Matrix.png> "Correlation Matrix")
 
 ![Principal Component Analysis](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Principal_Component_Analysis.png> "Principal Component Analysis")
 
