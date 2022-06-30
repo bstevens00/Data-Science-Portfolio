@@ -54,9 +54,13 @@ In addition to this, we can see that Windswept Heath is often played in sets of 
 
 ![Fetchlands Count Table](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Table.PNG> "Fetchlands Count Table")
 
-![Fetchlands Count Table with Marginal Totals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Table_with_Marginal_Totals.PNG> "Fetchlands Count Table with Marginal Totals")
+While it's absolutely worth noting that many of the top decks don't run specific Fetchlands, that fact is misleading. If a deck doesn't run 10/11 of the Fetchlands from above, but still runs 4 of another, that's going to add to the price of the deck. We're interested in the effect a Fetchland has on the price, so let's ignore the "Zero Fetchlands of this Type" column, and visualize the other 4 columns. Especially since that column has numbers that are an order of magnitude higher than the other columns, and would make a bar chart harder to read.
 
 ![Fetchlands Count Barchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Barchart.png> "Fetchlands Count Barchart")
+
+As can be seen above, we've broken down the barchart in 3 dimensions. Number of Unique Deck Strategies on the y-axis, Number of Fetchlands on the x-axis, and the colors on the barchart further break down how many decks run each kind of fetchland and in specific allocations.
+
+Interestingly, Most decks that run Fetchlands do so in even multiples, with the most common number of *any* Fetchland in *any* strategy being 4, 2, 3, 1, in that order. Perhaps this is because people tend to like even numbers more than odd?
 
 ![Big Picture Stats](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Big_Picture_Stats.PNG> "Big Picture Stats")
 
