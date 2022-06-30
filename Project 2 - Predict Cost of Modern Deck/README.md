@@ -56,8 +56,7 @@ Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data 
 
 ![Which Archetypes in Top 60 Decks](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Which_Archetypes_in_Top_60.png> "Which Archetypes in Top 60 Decks")
 
-![Perfect Scree Plot Example](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg> =250x250 "Perfect Scree Plot Example")
-
+<img src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" data-canonical-src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" width="200" height="200" />
 
 ![Scree Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Scree_Plot.png> "Scree Plot")
 
