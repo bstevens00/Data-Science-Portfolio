@@ -147,7 +147,7 @@ We see above that at least 75% of Aggro decks are priced lower than $600 USD, wh
 
 ![Histogram of Anova Residuals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Histogram_of_Anova_Residuals_Looks_Normal.png> "Histogram of Anova Residuals")
 
-![QQ Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_QQ_Plot_Test_of_Normality_of_Residuals.png> "QQ Plot")
+![QQ Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_QQ_Plot_of_Normality_of_Residuals.png> "QQ Plot")
 
 ![Shapiro-Wilk Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Shapiro_Wilk_Test_of_Normality.PNG> "Shapiro-Wilk Test")
 
