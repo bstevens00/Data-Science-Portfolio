@@ -2,7 +2,7 @@
 
 ## The Goal
 
-Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. Gain insight about the format as a whole through data visualization and summary statistics. See if some of the player beliefs about the game are true, such as specific deck Archetypes being more affordable than others.
+Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. Gain insight about the format as a whole through data visualization and summary statistics. Investigate whether some of the player beliefs about the game are true, such as specific deck Archetypes - mainly "Aggro" versus "Control" - are more affordable than others.
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
@@ -27,7 +27,7 @@ There are a few things that the reader will need to understand in order to under
 
 * "Magic: the Gathering" is a collectible, trading card game, with huge tournaments in which people compete against one another using unique card strategies
 * A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own cards
-* Some decks are similar enough in their overarching strategies, like "stall the game out to win later", "win as fast as possible", or "assemble two different cards that work in combination to win the game instantly" that they're categorized into "Archetypes"
+* Some decks are similar enough in their overarching strategies, like "stall the game out to win later" (called "Control"), "win as fast as possible" (called "Aggro"), or "assemble two different cards that work in combination to win the game instantly" ("Combo") that they're categorized into "Archetypes"
 * A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, just assume it's 4)
 	
 ## Why these goals? Why do this?
