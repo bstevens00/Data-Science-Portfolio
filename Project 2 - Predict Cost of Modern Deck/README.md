@@ -6,7 +6,7 @@ Create a price prediction model for the cost of a Magic: the Gathering deck in t
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
-
+Players are correct about there being a difference between the price of Aggro and Control Archetypes. However, it's less about there being a difference between Aggro and Control, and more about Aggro just being cheaper than most everything else by a large margin. The only statistically significant differences in prices between Archetypes were Aggro versus Control, Aggro versus Aggro-Control, and Aggro versus Midrange. It's just cheap to play Aggro, so if you're a player trying to get into the format, that's a good way to start, budget-wise.
 
 ## How do I navigate this project?
 
