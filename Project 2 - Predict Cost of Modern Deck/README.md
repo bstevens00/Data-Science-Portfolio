@@ -155,10 +155,13 @@ We see above that at least 75% of Aggro decks are priced lower than $600 USD, wh
 
 ![Outliers in Price by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Outliers_of_Price_in_Archetypes.PNG> "Outliers in Price by Archetype")
 
+![Additional Summary Statistics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Additional_Summary_Statistics.PNG> "Additional Summary Statistics")
 
-![](<> "")
-![](<> "")
-![](<> "")
+![Homogeneity of the Variance](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Homogeneity_of_Variance.png> "Homogeneity of the Variance")
+
+![Individual QQ Plots](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Individual_QQ_Plots.png> "Individual QQ Plots")
+
+
 ![](<> "")
 ![](<> "")
 ![](<> "")
