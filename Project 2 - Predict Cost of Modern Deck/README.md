@@ -127,15 +127,19 @@ So, while we won't be able to reduce the number of numeric predictors using PCA,
 
 As we saw in the second bar chart at the beginning of the Exploratory Data Analysis, of the 60 most played decks in Modern, only one of them holds the unique Archetype of "Aggro-Combo". Since there aren't enough examples of this kind of Archetype to work with, we'll drop this deck from our list of 60. Moving forward with 59 unique decks, let's visualize the price to play each Archetype, in general. This would be interesting to know for any new player interested in joining the format, so they might have a general idea of how much they'll need to spend to get through the barrier of entry for their style of play.
 
-Here is a box plot showing the relationship between Archetype and Cost of a Deck.
+Here is a box plot showing the relationship between Archetypes and the Cost of a Deck in that Archtype, with the Control and Aggro strategies colored in yellow, as they're of particular interest to us. Again note that the Aggro-Combo Archetype is missing from this visualization, as it wouldn't have enough different decks to create a distribution (it would literally be a vertical line and look rather odd).
+
+![Box Plot Aggro vs Control](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype_Control_vs_Aggro.png> "Box Plot Aggro vs Control")
+
+We see above that at least 75% of Aggro decks are priced lower than $600 USD, whereas the top 75% of Control decks are above $900 USD. It's pretty apparent that there's a difference between these Archetype prices. The question is, is it a statistically significant difference. To find out, we'll need to do an Analysis of Variance (ANOVA) after checking the assumptions and then find the Contrasts between the mean price of each the Archetype pairs.
+
+### ANOVA Assumption 1 - Normality of ANOVA Residuals
 
 ![ANOVA Results](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_ANOVA_Between_Deck_Prices_Results.PNG> "Anova Results")
 
 ![Bartlett's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Bartletts_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Bartlett's Test")
 
 ![Levene's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Levenes_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Levene's Test")
-
-![Box Plot Aggro vs Control](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype_Control_vs_Aggro.png> "Box Plot Aggro vs Control")
 
 ![Contrasts](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Contrasts.PNG> "Contrasts")
 
@@ -149,7 +153,7 @@ Here is a box plot showing the relationship between Archetype and Cost of a Deck
 
 ![Archetype Meme](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/archetype_meme.jpg> "Archetype Meme")
 
-![](<> "")
+![Outliers in Price by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Outliers_of_Price_in_Archetypes.PNG> "Outliers in Price by Archetype")
 
 ![](<> "")
 ![](<> "")
