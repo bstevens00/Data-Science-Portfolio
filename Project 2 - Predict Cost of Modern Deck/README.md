@@ -6,7 +6,9 @@ Create a price prediction model for the cost of a Magic: the Gathering deck in t
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
-Players are correct about there being a difference between the price of Aggro and Control Archetypes. However, it's less about there being a difference between Aggro and Control, and more about Aggro just being cheaper than most everything else by a large margin. The only statistically significant differences in prices between Archetypes were Aggro versus Control, Aggro versus Aggro-Control, and Aggro versus Midrange. It's just cheap to play Aggro, so if you're a player trying to get into the format, that's a good way to start, budget-wise.
+Players are correct about there being a difference between the price of Aggro and Control Archetypes. However, it's less about there being a difference between Aggro and Control, and more about Aggro just being cheaper than most everything else by a large margin. The only statistically significant differences in prices between Archetypes were Aggro versus Control, Aggro versus Aggro-Control, and Aggro versus Midrange. Below are boxplots comparing the prices between different Archetypes. We can see it's just cheap to play Aggro, so if you're a player trying to get into the format, that's a good way to start, budget-wise.
+
+![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
 
 ## How do I navigate this project?
 
@@ -132,8 +134,6 @@ Here is a box plot showing the relationship between Archetype and Cost of a Deck
 ![Bartlett's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Bartletts_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Bartlett's Test")
 
 ![Levene's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Levenes_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Levene's Test")
-
-![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
 
 ![Box Plot Aggro vs Control](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype_Control_vs_Aggro.png> "Box Plot Aggro vs Control")
 
