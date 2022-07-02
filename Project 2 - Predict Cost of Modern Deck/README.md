@@ -123,13 +123,19 @@ While a little noisy, this graph confirms the sentiment "Aggro = Red" and "Contr
 
 So, while we won't be able to reduce the number of numeric predictors using PCA, it can't be stated that it wasn't without insight.
 
-## Analysis of Variance - The Assumptions
+## Analysis of Variance
+
+### The Assumptions
 
 As we saw in the second bar chart at the beginning of the Exploratory Data Analysis, of the 60 most played decks in Modern, only one of them holds the unique Archetype of "Aggro-Combo". Since there aren't enough examples of this kind of Archetype to work with, we'll drop this deck from our list of 60. Moving forward with 59 unique decks, let's visualize the price to play each Archetype, in general. This would be interesting to know for any new player interested in joining the format, so they might have a general idea of how much they'll need to spend to get through the barrier of entry for their style of play.
 
 Here is a box plot showing the relationship between Archetypes and the Cost of a Deck in that Archtype, with the Control and Aggro strategies colored in yellow, as they're of particular interest to us. Again note that the Aggro-Combo Archetype is missing from this visualization, as it wouldn't have enough different decks to create a distribution (it would literally be a vertical line and look rather odd).
 
 ![Box Plot Aggro vs Control](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype_Control_vs_Aggro.png> "Box Plot Aggro vs Control")
+
+Alternatively, using Density Plots...
+
+![Density Curve Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Density_Curve_Cost_by_Archetype.png> "Density Curve Cost by Archetype")
 
 We see above that at least 75% of Aggro decks are priced lower than $600 USD, whereas the top 75% of Control decks are above $900 USD. It's pretty apparent that there's a difference between these Archetype prices. The question is, is it a statistically significant difference. To find out, we'll need to do an Analysis of Variance (ANOVA) after checking the assumptions and then find the Contrasts between the mean price of each the Archetype pairs.
 
@@ -233,7 +239,7 @@ Looks good.
 
 Each of the ANOVA model assumptions have been met, so we may proceed with the Contrasts!
 
-## Analysis of Variance - Searching for Statistically Significant Differences Between Archetypes
+### Analysis of Variance - Searching for Statistically Significant Differences Between Archetypes
 
 Now we can create the model, and look at the Anova Table. The Analysis of Variance too has a Null and Alternative Hypothesis.
 - H0: The null hypothesis is that there is no difference between the average prices of decks based on archetype.
@@ -245,7 +251,7 @@ If the p-value is lower than 0.05, we reject the null hypothesis, and we may exa
 
 And sure enough, just as we expected, there exists at least one statistically significant difference between Archetypes. Let's go see where those differences lie.
 
-## The Contrasts
+### The Contrasts
 
 The following table shows the Contrasts between the Archetypes. Simply put, we find the average price of a deck in each Archetype, as in the literal mean. After this, we match every mean deck price with the others until every Archetype's mean price has been paired with all the others. Since there are 6 Archetypes, there should be 5+4+3+2+1= 15 Contrasts. Here they are, below.
 
@@ -257,13 +263,13 @@ In other words, there's a 5% chance we're wrong when we say that the price diffe
 
 Basically, Aggro decks are less expensive than Control decks, statistically - not anecdotally - speaking.
 
-We have an answer to Question 2. After viewing the box plots of Archetype vs price, we saw reason to consider there to be differences between the average prices of each deck based upon Archetype. After creating the contrasts, we now find that the average price of Aggro decks are significantly different than the average price of three of the other Archetypes. It should be noted that no other contrasts were significant. So stating, for example, that "Control decks are more expensive than Combo decks in modern" is not backed by any evidence present in this data.
+We have an answer to Question 2. After viewing the box plots of Archetype vs price, we saw reason to consider there to be differences between the average prices of each deck based upon Archetype. After creating the contrasts, it's not really that Control decks are more expensive than Aggro decks, it's that *everything* is more expensive than Aggro decks.
 
-![Density Curve Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Density_Curve_Cost_by_Archetype.png> "Density Curve Cost by Archetype")
-
+Aggro players after reading this with their smug nono-Aggro-playing friends:
 
 ![Archetype Meme](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/archetype_meme.jpg> "Archetype Meme")
 
+## The Prediction Model - How Much for a Modern Deck?!
 
 ![](<> "")
 ![](<> "")
