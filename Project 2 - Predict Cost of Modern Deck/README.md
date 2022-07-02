@@ -120,3 +120,41 @@ As a last exercise with the Exploratory Data Analysis, let's visualize the clust
 While a little noisy, this graph confirms the sentiment "Aggro = Red" and "Control = Blue", as we can see the "Aggro" ellipse is clustered around the Red Fetchlands, and the "Control" ellipse around the 3 Blue Fetchlands in the Southwest corner of the graph. Actually, part of the Control ellipse contains the Misty Rainforest and Prismatic Vista vectors, which also happen to be the only other 2 lands in the picture than help the player in their endeavors to produce Blue mana!
 
 So, while we won't be able to reduce the number of numeric predictors using PCA, it can't be stated that it wasn't without insight.
+
+## Analysis of Variance - Searching for Statistically Significant Differences Between Archetypes
+
+As we saw in the second bar chart at the beginning of the Exploratory Data Analysis, of the 60 most played decks in Modern, only one of them holds the unique Archetype of "Aggro-Combo". Since there aren't enough examples of this kind of Archetype to work with, we'll drop this deck from our list of 60. Moving forward with 59 unique decks, let's visualize the price to play each Archetype, in general. This would be interesting to know for any new player interested in joining the format, so they might have a general idea of how much they'll need to spend to get through the barrier of entry for their style of play.
+
+Here is a box plot showing the relationship between Archetype and Cost of a Deck.
+
+![ANOVA Results](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_ANOVA_Between_Deck_Prices_Results.PNG> "Anova Results")
+
+![Bartlett's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Bartletts_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Bartlett's Test")
+
+![Levene's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Levenes_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Levene's Test")
+
+![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
+
+![Box Plot Aggro vs Control](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype_Control_vs_Aggro.png> "Box Plot Aggro vs Control")
+
+![Contrasts](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Contrasts.PNG> "Contrasts")
+
+![Density Curve Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Density_Curve_Cost_by_Archetype.png> "Density Curve Cost by Archetype")
+
+![Histogram of Anova Residuals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Histogram_of_Anova_Residuals_Looks_Normal.png> "Histogram of Anova Residuals")
+
+![QQ Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_QQ_Plot_Test_of_Normality_of_Residuals.png> "QQ Plot")
+
+![Shapiro-Wilk Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Shapiro_Wilk_Test_of_Normality.PNG> "Shapiro-Wilk Test")
+
+![Archetype Meme](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/archetype_meme.jpg> "Archetype Meme")
+
+![](<> "")
+
+![](<> "")
+![](<> "")
+![](<> "")
+![](<> "")
+![](<> "")
+![](<> "")
+![](<> "")
