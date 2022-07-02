@@ -123,7 +123,7 @@ While a little noisy, this graph confirms the sentiment "Aggro = Red" and "Contr
 
 So, while we won't be able to reduce the number of numeric predictors using PCA, it can't be stated that it wasn't without insight.
 
-## Analysis of Variance - Searching for Statistically Significant Differences Between Archetypes
+## Analysis of Variance - The Assumptions
 
 As we saw in the second bar chart at the beginning of the Exploratory Data Analysis, of the 60 most played decks in Modern, only one of them holds the unique Archetype of "Aggro-Combo". Since there aren't enough examples of this kind of Archetype to work with, we'll drop this deck from our list of 60. Moving forward with 59 unique decks, let's visualize the price to play each Archetype, in general. This would be interesting to know for any new player interested in joining the format, so they might have a general idea of how much they'll need to spend to get through the barrier of entry for their style of play.
 
@@ -133,33 +133,136 @@ Here is a box plot showing the relationship between Archetypes and the Cost of a
 
 We see above that at least 75% of Aggro decks are priced lower than $600 USD, whereas the top 75% of Control decks are above $900 USD. It's pretty apparent that there's a difference between these Archetype prices. The question is, is it a statistically significant difference. To find out, we'll need to do an Analysis of Variance (ANOVA) after checking the assumptions and then find the Contrasts between the mean price of each the Archetype pairs.
 
-### ANOVA Assumption 1 - Normality of ANOVA Residuals
+The ANOVA test makes the following assumptions about the data:
 
-![ANOVA Results](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_ANOVA_Between_Deck_Prices_Results.PNG> "Anova Results")
+1. Independence of the observations. Each subject should belong to only one group. There is no relationship between the observations in each group. Having repeated measures for the same participants is not allowed.
+2. No significant outliers in any cell of the design
+3. Normality. the data for each design cell should be approximately normally distributed.
+4. Homogeneity of variances. The variance of the outcome variable should be equal in every cell of the design.
 
-![Bartlett's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Bartletts_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Bartlett's Test")
+We'll begin with Assumption 1 and work our way through.
 
-![Levene's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Levenes_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Levene's Test")
+### ANOVA Assumption 1 - Independence of the observations.
 
-![Contrasts](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Contrasts.PNG> "Contrasts")
+This assumption is verifying that none of the data from one observation is affected by another.
 
-![Density Curve Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Density_Curve_Cost_by_Archetype.png> "Density Curve Cost by Archetype")
+None of the data for the decks included were changed or otherwise altered due to the order in which they were entered or anything odd. Each deck was user submitted, and no users were changing their decklists due to other decks in the system or otherwise. Each observation was entirely independent. Also, no deck (observation) belongs to more than one Archetype (subgroup in which we're comparing Contrasts).
 
-![Histogram of Anova Residuals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Histogram_of_Anova_Residuals_Looks_Normal.png> "Histogram of Anova Residuals")
+### ANOVA Assumption 2 - Check for Outliers in any of the Archetypes
 
-![QQ Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_QQ_Test_of_Normality_of_Residuals.png> "QQ Plot")
+Based on the Boxplot from before, which uses Tukey's Fences to determine whether something is an outlier, we have at least 4 outliers. The question is,
+are any of them extreme? That is, are any of them further than 3 times the Interquartile Range away from the middle 50% of the Archetype? If so, we might consider dropping them from the model and noting that we did so.
 
-![Shapiro-Wilk Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Shapiro_Wilk_Test_of_Normality.PNG> "Shapiro-Wilk Test")
-
-![Archetype Meme](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/archetype_meme.jpg> "Archetype Meme")
-
-![Outliers in Price by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Outliers_of_Price_in_Archetypes.PNG> "Outliers in Price by Archetype")
+Below are relevant summary statistics that could have been included in the Exploratory Analysis, but are best left for consideration now. We see the average Control deck is almost twice the price of the average Aggro one. No surprise.
 
 ![Additional Summary Statistics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Additional_Summary_Statistics.PNG> "Additional Summary Statistics")
 
-![Homogeneity of the Variance](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Homogeneity_of_Variance.png> "Homogeneity of the Variance")
+But we need to keep this in mind while we're checking for outliers. We'll use [Tukey's Fences](https://www.youtube.com/watch?v=zY1WFMAA-ec) to determine the outliers. Below, we see that there are four, Mono-Red Aggro, Mill, Goblins, and Gifts Storm.
+
+![Outliers in Price by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Outliers_of_Price_in_Archetypes.PNG> "Outliers in Price by Archetype")
+
+Of the four, three aren't extreme, so we'll ignore them. However, the Goblins deck is an extreme outlier. It's much more expensive than the average Aggro deck at $957 on average.
+
+We could drop it, but we'll keep it. Why? Because that deck is going to increase the average price of Aggro decks in comparison to the other decks, which are all higher than Aggro in price. If, when including a deck that's inflating the price of the Archetype, we still find a statistically significant difference between the cost of Aggro decks and others, then we're certain that Aggro decks are cheaper than the other Archetypes by comparison. Because Aggro can't even compete in price when you let them cheat by including the Goblins deck in its price average!
+
+### ANOVA Assumption 3 - Normality of the Residuals
+
+The normality assumption can be checked by using one of the following two approaches:
+
+1. Analyzing the ANOVA model residuals to check the normality for all groups together. This approach is easier and it’s very handy when you have many
+groups or if there are few data points per group.
+2. Check normality for each group separately. This approach might be used when you have only a few groups and many data points per group.
+
+Let's do both methods, just to cover our bases.
+
+We'll check the distribution of the Histogram of Residuals.
+
+![Histogram of Anova Residuals](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Histogram_of_Anova_Residuals_Looks_Normal.png> "Histogram of Anova Residuals")
+
+As we see by the overlaid normal curve, in blue, this curve appears normal enough. It's not perfect, but if you squint your left eye and believe with all your heart, it'll do.
+
+In addition to this, we should check the Quantile-Quantile Plot to see if the errors/residuals we observed match what we would have expected, had these errors truly come from a normal distribution.
+
+![QQ Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_QQ_Test_of_Normality_of_Residuals.png> "QQ Plot")
+
+It looks like the residuals line up with what we would have expected.
+
+Another way to check for Normality is the Shapiro-Wilk Test. The Shapiro-Wilk test makes the following hypotheses:
+- H0: The null hypothesis is that the data comes from a normal distribution
+- H1: The alternative hypothesis is that the data does not come from a normal distribution.
+
+If we get a p-value less than 0.05, we'll reject the null hypothesis.
+
+![Shapiro-Wilk Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Shapiro_Wilk_Test_of_Normality.PNG> "Shapiro-Wilk Test")
+
+We fail to reject the null hypothesis. Again, seems normal.
+
+The other way to test normality is to do it in each of the individual Archetypes, instead of across all of them as a whole. We can do this with the same methods as above. Here are the individual Shapiro-Wilk Test results for each of the individual Archetypes.
+
+![Shapiro-Wilk Test by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Shapiro_Wilk_Test_of_Normality_by_Archetype.PNG> "Shapiro-Wilk Test by Archetype")
+
+All normal. And here are the individual QQ Plots when we separate the decks by Archetype.
 
 ![Individual QQ Plots](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Individual_QQ_Plots.png> "Individual QQ Plots")
+
+We see the same outliers from before in Control and Aggro decks, which we can ignore, but every other value falls inside of the grey 95% Confidence Region, so they're all normal.
+
+### Assumption 4 - Homogeneity of Variance
+
+The Anova model assumes the variance in deck price by archetype is significantly equal to the variance in deck price of the whole group, without archetype consideration. This assumption can be verified by plotting the fitted values against the residuals for the model as well as using Levene's Test.
+
+The plot.
+
+![Homogeneity of the Variance](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Homogeneity_of_Variance.png> "Homogeneity of the Variance")
+
+As we see, each of the vertical lines of dots climbs about as high and descends about as low from the red line (where the residual is zero). This means that the variance is homogenous. It's not perfect, but we're not looking for perfect, we're looking for "close enough".
+
+The other test is Levene's Test.
+- H0: The null hypothesis is that the archetype variances are the same as the overall group variances
+- H1: The alternative is that there is at least one archetype that has a significantly different variance than the rest of the group.
+
+![Levene's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Levenes_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Levene's Test")
+
+Fail to reject. Group variances are overall the same (homogenous).
+
+If you have strong evidence that your data do in fact come from a normal, or nearly normal, distribution, then Bartlett's test has better performance than Levene's Test. I don't know for sure, so just in case, Bartlett's test is below. It has the same null and alternative hypotheses as Levene's Test.
+
+![Bartlett's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Bartletts_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Bartlett's Test")
+
+Looks good.
+
+Each of the ANOVA model assumptions have been met, so we may proceed with the Contrasts!
+
+## Analysis of Variance - Searching for Statistically Significant Differences Between Archetypes
+
+Now we can create the model, and look at the Anova Table. The Analysis of Variance too has a Null and Alternative Hypothesis.
+- H0: The null hypothesis is that there is no difference between the average prices of decks based on archetype.
+- H1: The alternative is that there is a difference between at least two of the archetypes, though we'd need to do further testing to see where those differences lie, even if we intuitively expect that that difference lies between Aggro and Control based upon our preconceived notions and the side-by-side box plot visualization above.
+
+If the p-value is lower than 0.05, we reject the null hypothesis, and we may examine the Contrasts.
+
+![ANOVA Results](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_ANOVA_Between_Deck_Prices_Results.PNG> "Anova Results")
+
+And sure enough, just as we expected, there exists at least one statistically significant difference between Archetypes. Let's go see where those differences lie.
+
+## The Contrasts
+
+The following table shows the Contrasts between the Archetypes. Simply put, we find the average price of a deck in each Archetype, as in the literal mean. After this, we match every mean deck price with the others until every Archetype's mean price has been paired with all the others. Since there are 6 Archetypes, there should be 5+4+3+2+1= 15 Contrasts. Here they are, below.
+
+![Contrasts](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Contrasts.PNG> "Contrasts")
+
+Comparing the average prices of each deck (the contrasts) by their archetype, we can see that only three confidence intervals include zero at a 95% level of confidence. They are Aggro vs Control, Aggro vs (Control-Combo), and Aggro vs Midrange. The 95% level of confidence means that if this data were gathered again, and the same analysis was ran again, a total of ninety-nine more times (a total of 100 times), that we expect 95 of 100 of these confidence intervals to include the true value of the difference in Archetypes being compared.
+
+In other words, there's a 5% chance we're wrong when we say that the price difference between Aggro vs Control, Aggro vs Control-Combo, and Aggro vs Midrange is non-zero. It could be, but it's very likely not. 95% sure.
+
+Basically, Aggro decks are less expensive than Control decks, statistically - not anecdotally - speaking.
+
+We have an answer to Question 2. After viewing the box plots of Archetype vs price, we saw reason to consider there to be differences between the average prices of each deck based upon Archetype. After creating the contrasts, we now find that the average price of Aggro decks are significantly different than the average price of three of the other Archetypes. It should be noted that no other contrasts were significant. So stating, for example, that "Control decks are more expensive than Combo decks in modern" is not backed by any evidence present in this data.
+
+![Density Curve Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Density_Curve_Cost_by_Archetype.png> "Density Curve Cost by Archetype")
+
+
+![Archetype Meme](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/archetype_meme.jpg> "Archetype Meme")
 
 
 ![](<> "")
