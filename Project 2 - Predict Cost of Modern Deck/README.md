@@ -271,6 +271,20 @@ Aggro players after reading this with their smug nono-Aggro-playing friends:
 
 ## The Prediction Model - How Much for a Modern Deck?!
 
+Note that we've previously checked the correlation between the continuous predictors using a Pearson's Correlation Coefficient in the EDA for each pairwise comparison, and there were no signs of multicollinearity.
+
+And while, technically, multicollinearity isn't an issue when your only goal is to create a prediction model, its absence means that we can interpret the coefficients of the prediction model, which means the model can double as an explanatory model and predictive one.
+
+The following variables will be considered for price prediction of a deck:
+
+1. What is the Archetype? We already have evidence of statistically significant differences between Aggro prices and other decks.
+2. Which and how many Fetchlands does the deck run? During the Principal Component Analysis, there were three distinct Fetchland clusters affecting the variation in deck prices:
++ Blue lands
++ Green lands
++ Mardu lands (Red, White, and Black)
+3. What colors are played in the deck? This question is based off of informed speculation, as anecdotal experience has led me to believe that certain colors are more expensive to play overall (Blue and Black > Green > White and Red in price).
+4. How many decks of each strategy are reported? We saw that the deck count was negatively correlated with the price when doing the correlation analysis in the EDA, and it would both make sense that more people playing a deck indicates that its cheaper to buy into, but contradictingly more people playing a deck would increase demand of those cards. So an interesting include to the model!
+
 ![](<> "")
 ![](<> "")
 ![](<> "")
