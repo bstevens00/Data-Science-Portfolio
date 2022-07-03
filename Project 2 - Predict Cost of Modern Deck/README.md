@@ -277,7 +277,7 @@ And while, technically, multicollinearity isn't an issue when your only goal is 
 
 The following variables will be considered for price prediction of a deck:
 
-1. What is the Archetype? We already have evidence of statistically significant differences between Aggro prices and other decks.
+1. What is the Archetype? We already have evidence of statistically significant differences between Aggro prices and other decks from our Analysis of Variance and interpretation of subsequent Contrasts.
 2. Which and how many Fetchlands does the deck run? During the Principal Component Analysis, there were three distinct Fetchland clusters affecting the variation in deck prices:
 	+ Blue lands
 	+ Green lands
