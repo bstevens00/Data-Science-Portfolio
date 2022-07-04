@@ -279,7 +279,7 @@ The following variables will be considered for price prediction of a deck:
 
 1. What is the Archetype? We already have evidence of statistically significant differences between Aggro prices and other decks from our Analysis of Variance and interpretation of subsequent Contrasts.
 2. Which and how many Fetchlands does the deck run? During the Principal Component Analysis, there were three distinct Fetchland clusters affecting the variation in deck prices:
-	+ Blue lands
+	+ The Blue Fetchland cluster
 	+ Green lands
 	+ Mardu lands (Red, White, and Black)
 3. What colors are played in the deck? This question is based off of informed speculation, as anecdotal experience has led me to believe that certain colors are more expensive to play overall (Blue and Black > Green > White and Red in price).
