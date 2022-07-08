@@ -286,7 +286,7 @@ The following table shows the Contrasts between the Archetypes. Simply put, we f
 
 Comparing the average prices of each deck (the contrasts) by their archetype, we can see that only three confidence intervals include zero at a 95% level of confidence. They are Aggro vs Control, Aggro vs (Control-Combo), and Aggro vs Midrange. The 95% level of confidence means that if this data were gathered again, and the same analysis was ran again, a total of ninety-nine more times (100 times in total), we expect 95 of 100 of these confidence intervals to include the true value of the differences in Archetypes being compared.
 
-In other words, there's a 5% chance we're wrong when we say that the price difference between Aggro vs Control, Aggro vs Control-Combo, and Aggro vs Midrange is non-zero. It could be, but it's very likely not. 95% sure.
+In other words, there's a 5% chance we're wrong when we say that the price difference between Aggro vs Control, Aggro vs Control-Combo, and Aggro vs Midrange is non-zero, because for each of these confidence intervals, this could be one of the five times out of 100 in which we're wrong in saying the true difference lies within the interval. It could be, but it's very likely not. 95% sure. Plus, if we were wrong, the true value(s) aren't going to be far off of this/these interval(s) anyway.
 
 Basically, Aggro decks are less expensive than Control decks, statistically - not anecdotally - speaking.
 
