@@ -313,7 +313,7 @@ The following variables will be considered for price prediction:
 	+ The Blue Fetchland cluster
 	+ Green lands
 	+ Mardu lands (Red, White, and Black)
-3. What colors are played in the deck? This question is based off of informed speculation, as anecdotal experience has led me to believe that certain colors are more expensive to play overall (Blue and Black > Green > White and Red in price).
+3. What colors are played in the deck? This question is based off informed speculation, as many players believe that certain colors are more expensive to play overall (commonly, "Blue and Black > Green > White and Red in price").
 4. How many decks of each strategy are reported? We saw that the deck count was negatively correlated with the price when doing the correlation analysis in the EDA, and it would both make sense that more people playing a deck indicates that its cheaper to buy into, but contradictingly more people playing a deck would increase demand of those cards. So an interesting include to the model!
 
 ### Variable Selection - Yes, but which of the predictors is actually worth including?
