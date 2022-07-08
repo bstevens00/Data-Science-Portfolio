@@ -8,7 +8,7 @@ There are three goals, and three respective files for those goals.
 	+ filename: 1_Exploratory_Data_Analysis.R
 2. Investigate whether some player beliefs about the game are true, such as specific deck Archetypes being more affordable than others. This goal will leverage box plots, Analysis of Variance, and Archetype contrasts using pairwise comparisons.
 	+ filename: 2_Differences_in_Archetype_Prices.R
-3. Create a price prediction model for the cost of a Magic: the Gathering (MtG) deck in the Modern format. This involves deploying multiple different machine learning algorithms as well as creating a hybrid/ensemble model, and evaluating the best preditive model using the Root Mean Square Error and R-Squared of on the test data.
+3. Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. This involves deploying multiple different machine learning algorithms as well as creating a hybrid/ensemble model, and evaluating the best preditive model using the Root Mean Square Error and R-Squared of on the test data.
 	+ filename: 3_Deck_Price_Prediction_Model.R 
 
 ## Spoiler - "Please Tell Me the End of the Story"
@@ -21,11 +21,11 @@ Players are correct about there being a difference between the price of Aggro an
 
 The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoffs for acceptable RMSE and R2 scores in a model were RMSE < 131.4 and R2 > 0.6, which SVM satisfied. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
 
-## Necessary MtG Terminology for the Reader
+## Necessary Magic: the Gathering Terminology for the Reader
 
 There are a few things that the reader will need to understand in order to understand this README.
 
-* "Magic: the Gathering" is a collectible, trading card game, with huge tournaments in which people compete against one another using unique card strategies
+* "Magic: the Gathering" (MtG) is a collectible, trading card game, with huge tournaments in which people compete against one another using unique card strategies
 * A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own cards
 * Some decks are similar enough in their overarching strategies, like "stall the game out to win later" (called "Control"), "win as fast as possible" (called "Aggro"), or "assemble two different cards that work in combination to win the game instantly" ("Combo") that they're categorized into "Archetypes"
 * A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, just assume it's 4)
