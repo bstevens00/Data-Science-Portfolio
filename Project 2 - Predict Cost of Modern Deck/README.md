@@ -218,7 +218,7 @@ In addition to this, we should check the Quantile-Quantile Plot to see if the er
 
 ![QQ Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_QQ_Test_of_Normality_of_Residuals.png> "QQ Plot")
 
-It looks like the residuals line up with what we would have expected.
+It looks like the residuals line up with what we would have expected, as the points lie within the 95% confidence interval around the qqline.
 
 Another way to check for Normality is the Shapiro-Wilk Test. The Shapiro-Wilk test makes the following hypotheses:
 - H0: The null hypothesis is that the data comes from a normal distribution
