@@ -4,7 +4,7 @@
 
 Determine if the gender of a student can be predicted based upon their test grades in math, reading, and writing.
 
-As my background is in education, I found data to help me practice classification and data visualization skills
+As my background is in education, I was interested in finding data to help me practice classification and data visualization skills
 through the lens of an insightful question to better inform my teaching, and help me reach my students more efficiently.
 
 One of the most widely taught concepts in pedagogy is the "3 Types of Learners" - Auditory, Visual, and Kinesthetic. That is, students who learn best by listening, watching, or doing "hands-on", respectively. While all students are individually different, and learn in their own nuanced and individual way, there are non-trivial ways to group students into "like"-learners. One alleged truth I heard years ago was "boys are better at math and girls at reading". While I've personal taught my fair share of anecdotals that don't fit this hot take, I thought it would be fun to see if I could find some data and gather some insight myself. 
