@@ -47,13 +47,15 @@ There are a few things that the reader will need to understand in order to under
 	
 ## Why these goals? Why do this? Why?
 
+Well, that last question is a little more exestential than I'm prepared to answer, but let's answer those first two questions.
+
 I enjoy Magic: the Gathering. It's my favorite game! And in the years I've played the game, I've absorbed some "conventional wisdoms" from conversations with other players, including beliefs like, "Aggressive decks are cheap to build. I wouldn't want to build a control deck on my budget" and "Gas is cheap and Fetchlands are expensive, that's why I play Burn".
 
 So, I wanted to know. Are Control decks more expensive than Aggro? Can we visualize it? Also, is the difference *statistically significant*, indicating a real difference that is more than anecdotal. Does the popularity of a deck have any significant effect on the price? And, can a deck's price be predicted with any level of accuracy by only knowing the number of each Fetchland present in the deck, the total number of decks submitted of that type in the last year to the database (essentially the popularity of the deck), the colors present in the deck, and the Archetype of the deck?
 
 ## Where did this data come from?
 
-Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data aggregation website for Magic: the Gathering (MTG) on 8.6.2021 by myself, Brendan Stevens.
+Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data aggregation website for Magic: the Gathering (MTG) on August 6th, 2021 by myself, Brendan Stevens, in the middle of Covid-19 lockdowns, and an immediate need to find something to do.
 
 ## Exploratory Data Analysis
 
