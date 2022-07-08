@@ -204,7 +204,7 @@ The normality assumption can be checked by using one of the following two approa
 
 1. Analyzing the ANOVA model residuals to check the normality for all groups together. This approach is easier and it’s very handy when you have many
 groups or if there are few data points per group.
-2. Check normality for each group separately. This approach might be used when you have only a few groups and many data points per group.
+2. Checking the normality for each group separately. This approach might be used when you have only a few groups and many data points per group.
 
 Let's do both methods, just to cover our bases.
 
