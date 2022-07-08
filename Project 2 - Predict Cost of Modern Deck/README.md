@@ -221,7 +221,7 @@ In addition to this, we should check the Quantile-Quantile Plot to see if the er
 It looks like the residuals line up with what we would have expected, as the points lie within the 95% confidence interval around the qqline.
 
 Another way to check for Normality is the Shapiro-Wilk Test. The Shapiro-Wilk test makes the following hypotheses:
-- H0: The null hypothesis is that the data comes from a normal distribution
+- H0: The null hypothesis is that the data comes from a normal distribution.
 - H1: The alternative hypothesis is that the data does not come from a normal distribution.
 
 If we get a p-value less than 0.05, we'll reject the null hypothesis.
@@ -251,7 +251,7 @@ The plot.
 As we see, each of the vertical lines of dots climbs about as high and descends about as low from the red line (where the residual is zero). This means that the variance is homogenous. It's not perfect, but we're not looking for perfect, we're looking for "close enough".
 
 The other test is Levene's Test.
-- H0: The null hypothesis is that the archetype variances are the same as the overall group variances
+- H0: The null hypothesis is that the archetype variances are the same as the overall group variances.
 - H1: The alternative is that there is at least one archetype that has a significantly different variance than the rest of the group.
 
 ![Levene's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Levenes_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Levene's Test")
