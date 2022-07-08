@@ -164,7 +164,7 @@ Alternatively, using Density Plots...
 
 ![Density Curve Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Density_Curve_Cost_by_Archetype.png> "Density Curve Cost by Archetype")
 
-We see above that at least 75% of Aggro decks are priced lower than $600 USD, whereas the top 75% of Control decks are above $900 USD. It's pretty apparent that there's a difference between these Archetype prices. The question is, is it a statistically significant difference. To find out, we'll need to do an Analysis of Variance (ANOVA) after checking the assumptions and then find the Contrasts between the mean price of each the Archetype pairs.
+We see above that at least 75% of Aggro decks are priced lower than $600 USD, whereas the top 75% of Control decks are above $900 USD. It's pretty apparent that there's a difference between these Archetype prices. The question is, is it a statistically significant difference. To find out, we'll need to do an Analysis of Variance (ANOVA) after checking the assumptions and then find the Contrasts between the mean price of each the Archetype pairs (if it fails the assumptions, an alternative to ANOVA would be the Kruskal-Wallis test).
 
 The ANOVA test makes the following assumptions about the data:
 
