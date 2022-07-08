@@ -150,9 +150,9 @@ While a little noisy, this graph confirms the sentiment "Aggro = Red" and "Contr
 
 So, while we won't be able to reduce the number of numeric predictors using PCA, it can't be stated that it wasn't without insight.
 
-## Analysis of Variance
+## Analysis of Variance - Difference in Prices Amongst Archetypes?
 
-### The Assumptions
+### The Assumptions of Analysis of Variance (ANOVA)
 
 As we saw in the second bar chart at the beginning of the Exploratory Data Analysis, of the 60 most played decks in Modern, only one of them holds the unique Archetype of "Aggro-Combo". Since there aren't enough examples of this kind of Archetype to work with, we'll drop this deck from our list of 60. Moving forward with 59 unique decks, let's visualize the price to play each Archetype, in general. This would be interesting to know for any new player interested in joining the format, so they might have a general idea of how much they'll need to spend to get through the barrier of entry for their style of play.
 
