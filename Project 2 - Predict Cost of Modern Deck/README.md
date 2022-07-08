@@ -60,7 +60,7 @@ Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data 
 ## Exploratory Data Analysis
 
 ### Univariate Analysis
-The color that appeared in the most decks overall was Red, followed by Blue. It appears people like their Lightning Bolts and Thought Scours. Black made an appearance in the least amount of the top 60 most played decks. An important detail, however, is a single Red card in the deck would qualify that deck as having Red in it. So this data cannot claim which color is the most commonly played, only that Red and Blue are the two colors most likely to be used "on the splash".
+The color that appeared in the most decks overall was Red, followed by Blue. It appears people like their [Lightning Bolt](https://scryfall.com/search?q=multiverseid=397722)s and [Thought Scour](https://scryfall.com/search?q=multiverseid=262838)s. Black made an appearance in the least amount of the top 60 most played decks. However, it's important to detail that a deck marked "1" in the Red column makes no distinction between it having a single Red card or 25. The "1" just means that Red is present in the deck. Therefore this data substantiate any claims regarding which color is the most (un)commonly played, most densely played in the average deck, etc. It can only be used to state which colors are most likely to be used "on the splash". In the chart, we see that the "on the splash" colors are decidedly Red and Blue.
 
 ![Most Pervasive Color](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Percent_of_Decks_with_This_Color.png> "Most Pervasive Color")
 
