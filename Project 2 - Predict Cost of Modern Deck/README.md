@@ -74,7 +74,7 @@ Despite the popularity of the Hammer Time deck, when we do Analysis of Variance 
 
 Now we'll consider Fetchlands. Below is a table showing the prevalence of different Fetchlands in the top 60 most played decks in Modern. In the second row, for example, we see that Bloodstained Mire, the Black/Red Fetchland, is absent from 46 of the top 60 most played decks. Zero decks play it as a "one-off", three strategies play two copies of the card, four strategies play it in a set of three, and seven separate strategies out of the 60 most played decks choose to play four Bloodstained Mire.
 
-In addition to this, we can see that Windswept Heath is often played in sets of four. Knowing a little trivia, this is likely because it was the only Fetchland from Khans of Tarkir that players could guarantee to get if - rather than purchase a booster pack with random cards - they bought the [Magic Origins: Clash Pack](https://mtg.fandom.com/wiki/Magic_Origins/Clash_pack).
+In addition to this, we can see that Windswept Heath is often played in sets of four. Knowing a little trivia, this is likely because it was the only Fetchland from Khans of Tarkir that players could guarantee to get, if - rather than purchase a booster pack with random cards - they bought the [Magic Origins: Clash Pack](https://mtg.fandom.com/wiki/Magic_Origins/Clash_pack).
 
 ![Fetchlands Count Table](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Fetchland_Counts_Table.PNG> "Fetchlands Count Table")
 
