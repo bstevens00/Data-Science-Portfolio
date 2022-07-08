@@ -45,7 +45,7 @@ There are a few things that the reader will need to understand in order to under
 11. Prismatic Vista (honorary inclusion)
 
 	
-## Why these goals? Why do this?
+## Why these goals? Why do this? Why?
 
 I enjoy Magic: the Gathering. It's my favorite game! And in the years I've played the game, I've absorbed some "conventional wisdoms" from conversations with other players, including beliefs like, "Aggressive decks are cheap to build. I wouldn't want to build a control deck on my budget" and "Gas is cheap and Fetchlands are expensive, that's why I play Burn".
 
