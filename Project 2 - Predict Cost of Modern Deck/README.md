@@ -10,6 +10,8 @@ Players are correct about there being a difference between the price of Aggro an
 
 ![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
 
+The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoff for an acceptable RMSE and R2 were RMSE < 131.4 and R2 > 0.6, which we well exceeded. Overall this was a successful price prediction model. For details on why the RMSE and R2 cutoffs were chosen, read the "How to Evaluate the Models" section, close to the end of the README.
+
 ## How do I navigate this project?
 
 Here are the three main goals in the project, and the .R file that tackles the question.
@@ -338,8 +340,21 @@ The Root Mean Square Error is similar to the Standard Deviation. But instead of 
 
 RMSE Rule of Thumb for test data: Lower the better. The test set RMSE should be less than 10% of the range in the numeric response variable.
 
-![Top 3 Model Predictions](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_top_3_model_preds.PNG> "Top 3 Model Predictions")
+### The Results - JUST TELL ME ALREADY!
+
+Below are the RMSE and R-Squared results of the models. Remember, the lower, the better.
+
 ![RMSE and R-Squared Results](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_rmse_r2_results.PNG> "RMSE and R-Squared Results")
+
+Wow. It's clear that SVM is the best single model. It has the lowerst RMSE and the highest R-Squared by a mile. In addtion to this, when we create an Ensemble, we want to mix the best models together to get a stronger performance. None of the models come close to SVM, so that's not going to be much use in terms of predictive power.
+
+Here are the price predictions for the 12 hold out test decks. Note how much closer SVM is than the Ensemble model, which averages the prediction prices of the three best models for each observation.
+
+![Top 3 Model Predictions](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_top_3_model_preds.PNG> "Top 3 Model Predictions")
+
+Using this SVM as our "best model", we can predict the price of a random deck from our orignal data to illustrate the effectiveness of the winning model.
+
+The Support Vector Machine model predicts that the cost of deck 26, "Hardened Scales", will be 492.75 USD, when in reality, the deck averages a price of 526 USD. This prediction is only off by about 35 USD. That's incredible, considering the price of decks in for format range from 262 to 1576 USD.
 
 
 ![](<> "")
