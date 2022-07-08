@@ -171,7 +171,7 @@ The ANOVA test makes the following assumptions about the data:
 1. Independence of the observations. Each subject should belong to only one group. There is no relationship between the observations in each group. Having repeated measures for the same participants is not allowed.
 2. No significant outliers in any cell of the design ("cell" meaning Archetype, here).
 3. Normality. the data for each design cell should be approximately normally distributed.
-4. Homogeneity of variances. The variance of the outcome variable should be equal in every cell of the design.
+4. Homogeneity of variances. The variance of the outcome variable (Deck Price USD) should be equal in every cell of the design.
 
 We'll begin with Assumption 1 and work our way through.
 
