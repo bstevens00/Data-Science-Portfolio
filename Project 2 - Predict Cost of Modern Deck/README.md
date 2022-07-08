@@ -361,7 +361,7 @@ RMSE assumes that error are unbiased and follow a normal distribution. Here are 
 5. RMSE is highly affected by outlier values. Hence, make sure you've removed outliers from your data set prior to using this metric.
 6. As compared to mean absolute error, RMSE gives higher weightage and punishes large errors.
 
-The Root Mean Square Error is similar to the Standard Deviation. But instead of being calculated with respect to a single mean with a bunch of points dispersed around it, the RMSE is using the prediction line as the mean, and slowly moving along it and seeing how far the values are off of it on average.
+The Root Mean Square Error is similar to the Standard Deviation. But instead of being calculated with respect to a single mean with a bunch of points dispersed around it, the RMSE is using the prediction *line/cruve* as the mean, and slowly moving along it and seeing how far the values are off of it on average.
 
 RMSE Rule of Thumb for test data: Lower the better. The test set RMSE should be less than 10% of the range in the numeric response variable.
 
