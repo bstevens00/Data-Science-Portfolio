@@ -7,7 +7,7 @@ Hello! Welcome to my Data Science GitHub Portfolio. Please select a project from
 [Project 2 - Predicting Deck Prices in the Magic: the Gathering Modern Format with Archetype Analysis of Variance](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck)  
 
 ## What languages are in this portfolio?
-![R Statistical Programming Language](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/R_logo.png> "R Statistical Programming Language") ![RStudio](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_studio_logo.png> "RStudio")
+![R Statistical Programming Language](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_logo.png> "R Statistical Programming Language") ![RStudio](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_studio_logo.png> "RStudio")
 
 ## Emphasized Portfolio Skills
 :chart_with_upwards_trend: Statistics
