@@ -7,10 +7,9 @@ Hello! Welcome to my Data Science GitHub Portfolio. Please select a project from
 [Project 2 - Predicting Deck Prices in the Magic: the Gathering Modern Format with Archetype Analysis of Variance](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck)  
 
 ## What languages are in this portfolio?
-My projects are primarily written in Gibberish and English. But since you're likely asking about code, then R: Statistical Programming Language.
+My projects are primarily written in Gibberish and English.
+![R Statistical Programming Language](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/R_logo.png> "R Statistical Programming Language") ![RStudio](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_studio_logo.png> "RStudio")
 
-## Skills and Experience
+## Emphasized Portfolio Skills
 :chart_with_upwards_trend: Statistics
 :bar_chart: Data Visualization
-
-![R Statistical Programming Language](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/R_logo.png> "R Statistical Programming Language") ![RStudio](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_studio_logo.png> "RStudio")
