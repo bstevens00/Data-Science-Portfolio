@@ -13,7 +13,7 @@ Considering the possibly inflamitory subject matter, a disclaimer is in order. I
 
 ## Where the Data was Obtained
 
-The synthetic data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on 06/09/2022, for the purpose of practicing story telling with data.
+The synthetic data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022, for the purpose of practicing story telling with data.
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
