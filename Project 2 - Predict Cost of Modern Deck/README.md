@@ -124,7 +124,7 @@ We'll need to scale the values, since Deck Count is orders of magnitude larger t
 
 So what we're seeing above is the importance of the components. Multiple predictor variables combine to make PC1, multiple for PC2, etc. We can see the Proportion of the Variance in the data that is explained by each of these Components. What we want to see is a large first number, close to 0.6 or so, and ideally the first ~3 or so Principal Components accounting for a cumulative proportion of the variance in the high 70% to low 90%. This isn't the case. It looks like dimension reduction using PCA isn't happening.
 
-But we'll visualize this. Before we do that. Here is a picture of a mountain. Not random. I've Googled an image of a moutain and cliffside to help explain what we're looking for with a Scree Plot of the Principal Components.
+But we'll visualize this. Before we do that. Here is a picture of a mountain and cliffside to help understand what we're looking for with the upcoming visualization of the Principal Components using a Scree Plot.
 
 <img src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" data-canonical-src="https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/Perfect_Scree_Plot_Elbow.jpeg" width=50% height=50% />
 
