@@ -106,7 +106,7 @@ Eventually, as discussed in the Spoiler section above, we get the full ensemble 
 
 ![Combined ROC Graphs](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_combined_ROC_AUC.png> "Combined ROC Graphs")
 
-We settle on using the more robust ensemble, as it has a similar AUC to the highest achieving individual models. However, a few questions remain.
+We settle on using the more robust ensemble, as it has a similar AUC to the highest achieving individual models, but would make up for the complexity with theoretical consistency on truly new data. However, a few questions remain.
 
 1. Would Cross Validation increase the Confusion Matrix machine learning metrics, such as Sensitivity, Specificity, and Accuracy?
 2. Would dropping the less effective individual models from the ensemble model increase classification accuracy?
