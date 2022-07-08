@@ -1,13 +1,8 @@
 # Brendan Stevens' Data Science Portfolio
 Hello! Welcome to my Data Science GitHub Portfolio.
 
-Left click a selected project from above and scroll down to that project's README to learn about it. (Eventually, this page will be replaced by a table of contents)
+## Table of Contents
 
-Thank you.
+[Project 1 - Classifying Students as Female/Male Based on Math, Reading, and Writing Scores](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic)  
+[Project 2 - Predicting Deck Prices in the Magic: the Gathering Modern Format with Archetype Analysis of Variance](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck)  
 
-##### Table of Contents  
-[Headers](#headers)  
-[Emphasis](#emphasis)  
-...snip...    
-<a name="headers"/>
-## Headers
