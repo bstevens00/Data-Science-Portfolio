@@ -94,6 +94,8 @@ The boys appear to do better on the whole in math and the girls do better in rea
 
 ## Selected Results of the Individual Models
 
+The Area Under the ROC Curve (AUC) provides an aggregate measure of performance across all possible classification thresholds. One way of interpreting AUC is the probability that the model ranks a random positive example more highly than a random negative example.
+
 When the first model is created, k-NN, we see unpromising results. A terrible AUC of 55.8% for the model. This model can distinguish between girls and boys 55% of the time. May as well not even have a model, then.
 
 ![k-NN ROC](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/2_knn_roc.png> "k-NN ROC")
