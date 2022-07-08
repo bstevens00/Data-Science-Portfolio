@@ -8,7 +8,7 @@ There are three goals, and three respective files for those goals.
 	+ filename: 1_Exploratory_Data_Analysis.R
 2. Investigate whether some player beliefs about the game are true, such as specific deck Archetypes being more affordable than others. This goal will leverage box plots, Analysis of Variance, and Archetype contrasts using pairwise comparisons.
 	+ filename: 2_Differences_in_Archetype_Prices.R
-3. Create a price prediction model for the cost of a Magic: the Gathering (MTG) deck in the Modern format. This involves deploying multiple different machine learning algorithms as well as creating a hybrid/ensemble model, and evaluating the best preditive model using the Root Mean Square Error and R-Squared of on the test data.
+3. Create a price prediction model for the cost of a Magic: the Gathering (MtG) deck in the Modern format. This involves deploying multiple different machine learning algorithms as well as creating a hybrid/ensemble model, and evaluating the best preditive model using the Root Mean Square Error and R-Squared of on the test data.
 	+ filename: 3_Deck_Price_Prediction_Model.R 
 
 ## Spoiler - "Please Tell Me the End of the Story"
@@ -21,7 +21,7 @@ Players are correct about there being a difference between the price of Aggro an
 
 The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoffs for acceptable RMSE and R2 scores in a model were RMSE < 131.4 and R2 > 0.6, which SVM satisfied. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
 
-## Necessary MTG Terminology for the Reader
+## Necessary MtG Terminology for the Reader
 
 There are a few things that the reader will need to understand in order to understand this README.
 
