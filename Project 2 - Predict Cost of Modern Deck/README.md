@@ -13,6 +13,8 @@ There are three goals, and three respective files for those goals.
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
+In the Exploratory data analysis, we learn that Blue and Red cards are the most "splashed" (more decks run at least one card of these colors than White, Black, or Green). Black
+
 Players are correct about there being a difference between the price of Aggro and Control Archetypes. However, it's less about there being a difference between Aggro and Control, and more about Aggro just being cheaper than most everything else by a large margin. The only statistically significant differences in prices between Archetypes were Aggro versus Control, Aggro versus Aggro-Control, and Aggro versus Midrange. Below are boxplots comparing the prices between different Archetypes. We can see it's just cheap to play Aggro, so if you're a player trying to get into the format, that's a good way to start, budget-wise.
 
 ![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
