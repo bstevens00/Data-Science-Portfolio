@@ -21,17 +21,6 @@ Players are correct about there being a difference between the price of Aggro an
 
 The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoffs for acceptable RMSE and R2 scores in a model were RMSE < 131.4 and R2 > 0.6, which SVM satisfied. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
 
-## How do I navigate this project?
-
-Here are the three main goals in the project, and the .R file that tackles the question.
-
-1. Summarize and visualize the data, seeking interesting relationships, such as the most played color in the format.
-	+ File: 1_Exploratory_Data_Analysis.R
-2. Look for evidence that deck prices significantly differ based upon the archetype being played.
-	+ File: 2_Differences_in_Archetype_Prices.R
-3. Create an accurate deck price prediction model based on the the number of a specific Fetchlands being played and the deck's Archetype.
-	+ File: 3_modern_deck_prices.R.
-
 ## Simplified and Necessary Terminology and Understandings for the Reader
 
 There are a few things that the reader will need to understand in order to understand this README.
