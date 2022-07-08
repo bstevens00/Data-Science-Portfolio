@@ -19,7 +19,7 @@ The synthetic data was downloaded from the following website: http://roycekimmon
 
 Yes. We can classify the gender of a student knowing only their math, reading, and writing scores. According to the criterion from Hosmer & Lemeshow (2013) in Applied logistic regression, p.177:
 
-"So, what area under the ROC curve describes good discrimination? Unfortunately there is no "magic" number, only general guidelines. In general... use the following rule of thumb:
+"...what area under the ROC curve describes good discrimination? Unfortunately there is no "magic" number, only general guidelines. In general... use the following rule of thumb:
 
 * 0.5 = This suggests no discrimination, so we might as well flip a coin.
 * 0.5-0.7 = We consider this poor discrimination, not much better than a coin toss.
