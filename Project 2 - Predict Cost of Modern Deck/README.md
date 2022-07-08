@@ -94,7 +94,7 @@ In addition to this, we see that the mean and median cost of a deck in Modern is
 
 ### Bivariate Analysis
 
-Later, we're going to create a prediction model for the response, Deck Price. However, before doing so, since there are quite a few numeric predictors, we should check the correlation matrix to see if there are any highly correlated variables that might lead to multicollinearity, and if so, perhaps we can collapse these predictors into a subset using something like Principal Component Analysis.
+Later, we're going to create a prediction model for the response, Deck Price. However, before doing so, since there are quite a few numeric predictors, we should check the correlation matrix to see if there are any highly correlated variables. This will do a few things. First, we may have an idea of what predictors we will likely expect to see in the upcoming prediction models, as high correlation (negative or positive) with the Deck Price indicates a predictive relationship. ANd second, if some of the predictors are highly correlated, perhaps we can apply a dimensionality reduction technique, such as Principal Component Analysis.
 
 ![Correlation Matrix](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Correlation_Matrix.png> "Correlation Matrix")
 
