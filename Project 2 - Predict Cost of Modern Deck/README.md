@@ -363,7 +363,7 @@ RMSE assumes that error are unbiased and follow a normal distribution. Here are 
 
 The Root Mean Square Error is similar to the Standard Deviation. But instead of being calculated with respect to a single mean with a bunch of points dispersed around it, the RMSE is using the prediction *model* as the mean, and slowly moving along it and seeing how far the values are off of it on average.
 
-RMSE Rule of Thumb for test data: Lower the better. The test set RMSE should be less than 10% of the range in the numeric response variable.
+RMSE Rule of Thumb for test data: Lower the better. The test set RMSE should be less than 10% of the range in the numeric response variable, or in this case, the RMSE should be less than 10% of the range in deck prices.
 
 ### The Results - JUST TELL ME ALREADY!
 
