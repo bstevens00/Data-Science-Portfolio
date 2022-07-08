@@ -134,7 +134,7 @@ Now, let's compare a good Scree Plot (mountain above) to our Scree Plot (below).
 
 ![Scree Plot](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Scree_Plot.png> "Scree Plot")
 
-It's not the greatest. But we expected that. The best Principal Component cutoff here is the elbow at PC3. And that's not great, because the cumulative proportion of the variance explained by the first three components is only 51.87%.
+It's not the greatest. But we expected that. The best Principal Component cutoff here is the elbow at PC3. And that's not great, because the cumulative proportion of the variance explained by the first three components (from the table before the mountain photo introduced earlier) is only 51.87%.
 
 All is not lost, though. Let's plot the variance in the first and second Principal Components. This kind of a plot is known as a "Biplot". And it can sometimes tell us about interesting relationships or clusters in the data.
 
