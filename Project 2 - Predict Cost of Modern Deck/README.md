@@ -98,21 +98,27 @@ Later, we're going to create a prediction model for the response, Deck Price. Ho
 
 ![Correlation Matrix](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Correlation_Matrix.png> "Correlation Matrix")
 
-Here we see lower correlations across the board. For Fetchland-to-Fetchland relationships, a positive correlation means the more of one of the two Fetchlands is played in a strategy, the more the other is as well. We see no high correlations here, but the 0.49 correlation between Misty Rainforest and Prismatic Vista Fetchlands seems suspiciously reasonable, as Landfall strategies are strongest in Green, which both of these Fetchlands search.
+Using the following chart to assess the size of the correlations...
 
-More telling, however, is the relationships these predictor variables have with Deck Count. We see that as the number of people playing a strategy goes up, the less likely it is that that strategy plays Misty Rainforest, Flooded Strand, and Scalding Tarn. These are the most expensive Fetchlands, so less people play these strategies, as made clear by the data.
+![Correlation Cutoffs](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Correlation_Cutoffs.png> "Correlation Cutoffs")
+
+We see lower correlations across the board. For Fetchland-to-Fetchland relationships, most relatonships are negligible or low (positive or negative). We see, for example, a low positive correlation between Flooded Strand (W/U Colors) and Polluted Delta (U/B), which are both Blue lands that are not-uncommonly played together in 3-color (WUB) decks. We see a low negative correlation between Bloodstained Mire (B/R) and Misty Rainforest (U/G), which are two lands of two distinct color combinations, not often supporting similar strategies due to diverging color themes from a game design perspective. We have a moderate correlation (0.49) between Misty Rainforest and Prismatic Vista, which "[Landfall](https://mtg.fandom.com/wiki/Landfall)" players won't be surprised to hear!
+
+More telling, however, is the relationships these predictor variables have with Deck Count. We see that as the number of people playing a strategy goes up, the less likely it is that that strategy plays Misty Rainforest, Flooded Strand, and Scalding Tarn. These are the most expensive Fetchlands, and are *all Blue*, so less people play these strategies, as made clear by the data. This lends itself to supporting the claim that Control decks are expensive, as these decks usually tend to play Blue.
 
 Finally, We see a negative correlation between the number of playing a deck (Deck Count) and the price of playing that deck (Deck Price), further reinforcing the claims from before.
 
-It doesn't appear that there is any real multicollinearity, as none of the results are higher than 0.56, and most are lower than 0.20. Rule of Thumb for Multicollinearity: As a rule of thumb, one might suspect multicollinearity when the correlation between two (predictor) variables is below -0.9 or above +0.9.
+It doesn't appear that there is any real multicollinearity, as none of the results are higher than 0.56, and most are lower than 0.20. Rule of Thumb for Multicollinearity: Suspect multicollinearity when the correlation between two (predictor) variables is below -0.9 or above +0.9.
 
-### Dimension Reduction
+It appears that Principal Component Analysis, at least with regards to the purpose of Dimension Reduction, will not bear fruit, as there are no highly correlated variables that might be linearly combined (compressed into one simpler predictor that maintains most of the information from the multiple predictors of which it is constituted).
+
+### Principal Component Analysis - If not for Dimension Reduction, then what? For Clustering! And understanding relationships between predictors!
 
 A popular method of reducing the number of predictors to be considered in models or to gain insight into clustering and other bivariate relationships in the data is Principal Component Analysis. [StatQuest](https://www.youtube.com/watch?v=FgakZw6K1QQ) does a fantastic job of explaining this topic.
 
-Since there aren't any signs of multicollinearity (low correlation between the predictors is that sign), Principal Component Analysis may bear no fruit for dimension reduction, as most of the predictors are closer to orthogonal/perpendicular already. But, we can still try, and maybe even provide some insights by finding clusters that tell us more about the our data.
+Since there aren't any signs of multicollinearity Principal Component Analysis is not likely to bear fruit for dimension reduction, as most of the predictors are closer to orthogonal/perpendicular already. But, we can still try and gain some other insight by finding clusters that tell us more about the our data.
 
-We'll need to scale the values, since Deck Count is orders of magnitude larger than the Fetchland counts.
+We'll need to scale the values, since Deck Count is orders of magnitude larger than the Fetchland counts, and Principal Component Analysis uses Euclidean Distance to determine variances/similarity, an algorithm that would be rather ruined by one column of the data being vastly larger in size than the others. 
 
 ![Importance of Components](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_PCA.PNG> "Importance of Components")
 
@@ -375,5 +381,3 @@ Using this SVM as our "best model", we can predict the price of a random deck fr
 
 The Support Vector Machine model predicts that the cost of deck 26, "Hardened Scales", will be 492.75 USD, when in reality, the deck averages a price of 526 USD. This prediction is only off by about 35 USD. That's incredible, considering the price of decks in for format range from 262 to 1576 USD.
 
-
-![](<> "")
