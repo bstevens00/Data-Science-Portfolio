@@ -322,7 +322,7 @@ Let's consider a Variable Importance screening mechanism. Many algorithms do thi
 
 ![Variable Importance](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_variable_importance.png> "Variable Importance")
 
-As we can see above, there's a clear importance in the Archetype feature, as 4 of the top 6 features are levels from that feature out of 22 possible features from which to select. Another trend is there 3 distinct groups of importance. The first is whether the Archetype is Control Combo. The next in importance is the Archetype is whether the deck plays Blue (Floode Strand, Misty Rainforest, Scalding Tarn). Finally, It appears that the presence of Black in a deck is important for predicting price. The last group are the mediocre predictors or worse, which is everything from Arid Mesa down.
+As we can see above, there's a clear importance in the Archetype feature, as four of the top six features are levels from that feature out of 22 possible features from which to select. Another trend is there three distinct groups of importance. The first is whether the Archetype is Control-Combo. The next in importance is whether the deck plays Blue (Flooded Strand, Misty Rainforest, Scalding Tarn). Finally, It appears that the presence of Black in a deck is important for predicting price, perhaps it being the least splashed color makes for unique decklists with unique price lists? The last group are the mediocre predictors or worse, which is everything from Arid Mesa down.
 
 ### Training and Test Data
 
