@@ -4,11 +4,11 @@
 
 There are three goals, and three respective files for those goals.
 
-1. Gain insight about the format as a whole through data visualization and summary statistics.
+1. Use data visualization and summary statistics to gain unique insight into one of Magic: the Gathering's most played formats, Modern.
 	+ filename: 1_Exploratory_Data_Analysis.R
-2. Investigate whether some of the player beliefs about the game are true, such as specific deck Archetypes being more affordable than others. This goal leverages box plots, Analysis of Variance, and Archetype contrasts using pairwise comparisons.
+2. Investigate whether some player beliefs about the game are true, such as specific deck Archetypes being more affordable than others. This goal will leverage box plots, Analysis of Variance, and Archetype contrasts using pairwise comparisons.
 	+ filename: 2_Differences_in_Archetype_Prices.R
-3. Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. This involves deploying multiple difference machine learning algorithms as well as creating a hybrid/ensemble model, and letting them compete for the best model.
+3. Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. This involves deploying multiple different machine learning algorithms as well as creating a hybrid/ensemble model, and evaluating the best preditive model using the Root Mean Square Error and R-Squared of on the test data.
 	+ filename: 3_Deck_Price_Prediction_Model.R 
 
 ## Spoiler - "Please Tell Me the End of the Story"
