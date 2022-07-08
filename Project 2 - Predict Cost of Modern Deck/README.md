@@ -190,7 +190,7 @@ Below are relevant summary statistics that could have been included in the Explo
 
 ![Additional Summary Statistics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Additional_Summary_Statistics.PNG> "Additional Summary Statistics")
 
-But we need to keep this in mind while we're checking for outliers. We'll use [Tukey's Fences](https://www.youtube.com/watch?v=zY1WFMAA-ec) to determine the outliers. Below, we see that there are four, Mono-Red Aggro, Mill, Goblins, and Gifts Storm.
+But we need to keep this in mind while we're checking for outliers. We'll use [Tukey's Fences](https://www.youtube.com/watch?v=zY1WFMAA-ec) to determine the outliers. Below, we see that there are four: Mono-Red Aggro, Mill, Goblins, and Gifts Storm.
 
 ![Outliers in Price by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Outliers_of_Price_in_Archetypes.PNG> "Outliers in Price by Archetype")
 
