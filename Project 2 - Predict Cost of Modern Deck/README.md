@@ -284,7 +284,7 @@ The following table shows the Contrasts between the Archetypes. Simply put, we f
 
 ![Contrasts](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Contrasts.PNG> "Contrasts")
 
-Comparing the average prices of each deck (the contrasts) by their archetype, we can see that only three confidence intervals include zero at a 95% level of confidence. They are Aggro vs Control, Aggro vs (Control-Combo), and Aggro vs Midrange. The 95% level of confidence means that if this data were gathered again, and the same analysis was ran again, a total of ninety-nine more times (100 times in total), we expect 95 of 100 of these confidence intervals to include the true value of the difference in Archetypes being compared.
+Comparing the average prices of each deck (the contrasts) by their archetype, we can see that only three confidence intervals include zero at a 95% level of confidence. They are Aggro vs Control, Aggro vs (Control-Combo), and Aggro vs Midrange. The 95% level of confidence means that if this data were gathered again, and the same analysis was ran again, a total of ninety-nine more times (100 times in total), we expect 95 of 100 of these confidence intervals to include the true value of the differences in Archetypes being compared.
 
 In other words, there's a 5% chance we're wrong when we say that the price difference between Aggro vs Control, Aggro vs Control-Combo, and Aggro vs Midrange is non-zero. It could be, but it's very likely not. 95% sure.
 
