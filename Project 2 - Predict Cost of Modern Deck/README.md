@@ -354,8 +354,8 @@ We will also consider the Root Mean Squared Error (RMSE), which has gained popul
 
 RMSE assumes that error are unbiased and follow a normal distribution. Here are the key points to consider on RMSE:
 
-1. The power of 'square root'  empowers this metric to show large number deviations.
-2. The 'squared' nature of this metric helps to deliver more robust results which prevents cancelling the positive and negative error values. In other words, this metric aptly displays the plausible magnitude of error term.
+1. The use of a square root empowers RMSE to show large number deviations.
+2. The squared nature of this metric helps to deliver more robust results which prevents cancelling the positive and negative error values. In other words, this metric aptly displays the plausible magnitude of error term.
 3. It avoids the use of absolute error values which is highly undesirable in mathematical calculations.
 4. When we have more samples, reconstructing the error distribution using RMSE is considered to be more reliable.
 5. RMSE is highly affected by outlier values. Hence, make sure you've removed outliers from your data set prior to using this metric.
