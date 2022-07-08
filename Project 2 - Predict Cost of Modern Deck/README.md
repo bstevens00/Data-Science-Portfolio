@@ -304,7 +304,7 @@ We're going to try and create a price prediction model for a deck in the Modern 
 
 ### The Predictors - What We Assume to be Useful
 
-Note that we've previously checked the correlation between the continuous predictors using a Pearson's Correlation Coefficient in the EDA for each pairwise comparison, and there were no signs of multicollinearity. There was, however, signs of some predictors having strong correlation with the Price of a Deck.
+Note that we've previously checked the correlation between the continuous predictors using a Pearson's Correlation Coefficient in the EDA for each pairwise comparison, and there were no signs of multicollinearity. There were, however, signs of some predictors having strong correlation with the Price of a Deck.
 
 The following variables will be considered for price prediction:
 
