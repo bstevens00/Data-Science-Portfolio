@@ -258,7 +258,7 @@ The other test is Levene's Test.
 
 Fail to reject. Group variances are overall the same (homogenous).
 
-If you have strong evidence that your data do in fact come from a normal, or nearly normal, distribution, then Bartlett's test has better performance than Levene's Test. I don't know for sure, so just in case, Bartlett's test is below. It has the same null and alternative hypotheses as Levene's Test.
+If there is strong evidence that the data comes from a normal, or nearly normal, distribution, then Bartlett's test has better performance than Levene's Test. Here is Bartlett's test, which has the same null and alternative hypotheses as Levene's Test.
 
 ![Bartlett's Test](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Bartletts_Test_for_ANOVA_Between_Deck_Prices_Results.PNG> "Bartlett's Test")
 
