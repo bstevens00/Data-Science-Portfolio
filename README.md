@@ -14,3 +14,4 @@ Hello! Welcome to my Data Science GitHub Portfolio. Please select a project from
 
 :chart_with_upwards_trend: Statistics
 :bar_chart: Data Visualization
+:books: Story-Telling w/ Data
