@@ -1,5 +1,5 @@
 # Brendan Stevens' Data Science Portfolio
-Hello! Welcome to my Data Science GitHub Portfolio.
+Hello! Welcome to my Data Science GitHub Portfolio. Please select a project from the Table of Contents below. It will take you to a nice README with visualizations and great details about the project of your interest!
 
 ## Table of Contents
 
