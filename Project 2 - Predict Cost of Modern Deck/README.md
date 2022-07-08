@@ -344,7 +344,7 @@ There are many different machine learning algorithms applicable to our situation
 
 ### How to Evaluate the Models
 
-This is a prediction problem, so we're interested in how the model behaves on the testing data, not the training. The first is the domain of predictive analytics and the second of explanatory modeling. We want the second.
+This is a prediction problem, so we're interested in how the model behaves on the testing data, not the training. The first is the domain of predictive analytics and the second of explanatory modeling. We want the first one.
 
 Unlike Classification problems, there is no equivalent to a confusion matrix. When doing explanatory modeling, a popular method for testing model fit is the R-Squared, which ranges from 0-1. This has a different meaning when applied to the test data.
 
