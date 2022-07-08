@@ -8,6 +8,7 @@ Hello! Welcome to my Data Science GitHub Portfolio. Please select a project from
 
 ## What languages are in this portfolio?
 My projects are primarily written in Gibberish and English.
+
 ![R Statistical Programming Language](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/R_logo.png> "R Statistical Programming Language") ![RStudio](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_studio_logo.png> "RStudio")
 
 ## Emphasized Portfolio Skills
