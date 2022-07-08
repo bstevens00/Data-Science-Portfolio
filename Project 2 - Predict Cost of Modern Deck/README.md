@@ -116,7 +116,7 @@ It appears that Principal Component Analysis, at least with regards to the purpo
 
 A popular method of reducing the number of predictors to be considered in models or to gain insight into clustering and other bivariate relationships in the data is Principal Component Analysis. [StatQuest](https://www.youtube.com/watch?v=FgakZw6K1QQ) does a fantastic job of explaining this topic.
 
-Since there aren't any signs of multicollinearity Principal Component Analysis is not likely to bear fruit for dimension reduction, as most of the predictors are closer to orthogonal/perpendicular already. But, we can still try and gain some other insight by finding clusters that tell us more about the our data.
+Since there aren't any signs of multicollinearity, Principal Component Analysis is not likely to bear fruit for dimension reduction, as most of the predictors are closer to orthogonal/perpendicular already. But, we can still try and gain some other insight by finding clusters that tell us more about the our data.
 
 We'll need to scale the values, since Deck Count is orders of magnitude larger than the Fetchland counts, and Principal Component Analysis uses Euclidean Distance to determine variances/similarity, an algorithm that would be rather ruined by one column of the data being vastly larger in size than the others. 
 
