@@ -64,9 +64,13 @@ The color that appeared in the most decks overall was Red, followed by Blue. It 
 
 ![Most Pervasive Color](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Percent_of_Decks_with_This_Color.png> "Most Pervasive Color")
 
-Below we see which the number of appearances each Archetype has in the top 60 most played decks in the Modern Format. There are many different ways to play midrange. This bar chart doesn't show *how many of each deck*, so it would not be a good visualization for which Archetypes are the most popular, only the most diverse in build options.
+Thousands of decks are submitted by users to the MTGGoldfish database. Looking at the top 60 most played decks, we find that many of them have hundreds of repeated user submissions. For example, the deck "Eldrazi Tron", deck 8 in our dataset, has 281 decklist submissions. That means 281 people played this deck in some recordable fashion (likely a competition). However, Eldrazi Tron is only *one* of the *15 decks* belonging to the overarching Archetype, "Midrange".
+
+Below we see which the distribution of decks, collected by their umbrella Archetype. Midrange is very common. And "Aggro-Combo" is a one-off. Remember, this  bar chart doesn't show *how many of each deck*, so it would not be a good visualization for which Archetypes are the most popular, only the most diverse in build options. Case in point, the single entry for the Aggro-Combo Archetype is the deck, "Hammer Time", which was the 5th most submitted deck, at 325 submissions.
 
 ![Which Archetypes in Top 60 Decks](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/1_Which_Archetypes_in_Top_60.png> "Which Archetypes in Top 60 Decks")
+
+Despite the popularity of the Hammer Time deck, when we do Analysis of Variance and predictive modeling, this entry will have to be dropped, as there is no variance in the Archetype (only one deck in that umbrella).
 
 Now we'll consider Fetchlands. Below is a table showing the prevalence of different Fetchlands in the top 60 most played decks in Modern. In the first row, for example, we see that Bloodstained Mire, a Black/Red Fetchland, is absent from 46 of the top 60 most played decks, zero decks play it as a "1-off", three strategies play two copies of the card, four strategies play it in a set of three, and seven separate strategies out of the 60 most played decks choose to play 4 Bloodstained Mire.
 
