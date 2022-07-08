@@ -271,11 +271,15 @@ Aggro players after reading this with their smug nono-Aggro-playing friends:
 
 ## The Prediction Model - How Much for a Modern Deck?!
 
-Note that we've previously checked the correlation between the continuous predictors using a Pearson's Correlation Coefficient in the EDA for each pairwise comparison, and there were no signs of multicollinearity.
+### The Final Goal
 
-And while, technically, multicollinearity isn't an issue when your only goal is to create a prediction model, its absence means that we can interpret the coefficients of the prediction model, which means the model can double as an explanatory model and predictive one.
+We're going to try and create a price prediction model for a deck in the Modern Magic: the Gathering format.
 
-The following variables will be considered for price prediction of a deck:
+### The Predictors - What We Assume to be Useful
+
+Note that we've previously checked the correlation between the continuous predictors using a Pearson's Correlation Coefficient in the EDA for each pairwise comparison, and there were no signs of multicollinearity. There was, however, signs of some predictors having strong correlation with the Price of a Deck.
+
+The following variables will be considered for price prediction:
 
 1. What is the Archetype? We already have evidence of statistically significant differences between Aggro prices and other decks from our Analysis of Variance and interpretation of subsequent Contrasts.
 2. Which and how many Fetchlands does the deck run? During the Principal Component Analysis, there were three distinct Fetchland clusters affecting the variation in deck prices:
@@ -285,7 +289,57 @@ The following variables will be considered for price prediction of a deck:
 3. What colors are played in the deck? This question is based off of informed speculation, as anecdotal experience has led me to believe that certain colors are more expensive to play overall (Blue and Black > Green > White and Red in price).
 4. How many decks of each strategy are reported? We saw that the deck count was negatively correlated with the price when doing the correlation analysis in the EDA, and it would both make sense that more people playing a deck indicates that its cheaper to buy into, but contradictingly more people playing a deck would increase demand of those cards. So an interesting include to the model!
 
-![](<> "")
-![](<> "")
-![](<> "")
+### Variable Selection - Yes, but which of the predictors is actually worth including?
+
+Let's consider a Variable Importance screening mechanism. Many algorithms do this, but we'll use 10-Fold Cross Validation to get a feel for the "right" predictors. Below is a visualization of that result.
+
+![Variable Importance](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_variable_importance.png> "Variable Importance")
+
+As we can see above, there's a clear importance in the Archetype feature, as 4 of the top 6 features are levels from that feature out of 22 possible features from which to select. Another trend is there 3 distinct groups of importance. The first is whether the Archetype is Control Combo. The next in importance is the Archetype is whether the deck plays Blue (Floode Strand, Misty Rainforest, Scalding Tarn). Finally, It appears that the presence of Black in a deck is important for predicting price. The last group are the mediocre predictors or worse, which is everything from Arid Mesa down.
+
+### Training and Test Data
+
+We will split the data into a classic 80/20 split, with training holding most of the data. For a deeper, more robust analysis, Cross Validation could be applied to increase predictive power and stability of the model.
+
+### The Models
+
+There are many different machine learning algorithms applicable to our situation. We need a supervised, regession (numeric reponse) model. The following models will be considered. Since we have a nominal predictor with more than two levels, we're not going to use k-NN or Neural Nets. But, we can still use the following models:
+
+1. Multiple Linear Regression
+	+ This includes the many methods for model selection, such as Forward, Backward, and Exhaustive model searches, which utilize the R-Squared, Adjusted R-Squared, Mallow's Cp, and AIC metrics for determining best fit.
+2. Ridge Regression
+3. Lasso Regression
+4. Elastic Net (Ridge and Lasso Combined)
+5. Simple Regression Tree (Pruned)
+6. Random Forest
+7. Support Vector Machine
+8. Ensemble Model (An attempt at a stronger model that combines the strengths of the others)
+
+### How to Evaluate the Models
+
+This is a prediction problem, so we're interested in how the model behaves on the testing data, not the training. The first is the domain of predictive analytics and the second of explanatory modeling. We want the second.
+
+Unlike Classification problems, there is no equivalent to a confusion matrix. When doing explanatory modeling, a popular method for testing model fit is the R-Squared, which ranges from 0-1. This has a different meaning when applied to the test data.
+
+R-Squared Rule of Thumb for test data: High R2 is > 0.6. This ensures the model fits the data relatively well. You expect some loss in R-Squared when moving from the training to the test data.
+
+We will also consider the Root Mean Squared Error (RMSE), which has gained popularity as the de facto score with which predictive/regression models are measured against one another.
+
+RMSE assumes that error are unbiased and follow a normal distribution. Here are the key points to consider on RMSE:
+
+1. The power of 'square root'  empowers this metric to show large number deviations.
+2. The 'squared' nature of this metric helps to deliver more robust results which prevents cancelling the positive and negative error values. In other words, this metric aptly displays the plausible magnitude of error term.
+3. It avoids the use of absolute error values which is highly undesirable in mathematical calculations.
+4. When we have more samples, reconstructing the error distribution using RMSE is considered to be more reliable.
+5. RMSE is highly affected by outlier values. Hence, make sure you've removed outliers from your data set prior to using this metric.
+6. As compared to mean absolute error, RMSE gives higher weightage and punishes large errors.
+
+The Root Mean Square Error is similar to the Standard Deviation. But instead of being calculated with respect to a single mean with a bunch of points dispersed around it, the RMSE is using the prediction line as the mean, and slowly moving along it and seeing how far the values are off of it on average.
+
+RMSE Rule of Thumb for test data: Lower the better. The test set RMSE should be less than 10% of the range in the numeric response variable.
+
+![Top 3 Model Predictions](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_top_3_model_preds.PNG> "Top 3 Model Predictions")
+![RMSE and R-Squared Results](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/3_rmse_r2_results.PNG> "RMSE and R-Squared Results")
+
+
 ![](<> "")
