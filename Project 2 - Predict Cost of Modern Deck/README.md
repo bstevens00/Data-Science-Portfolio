@@ -32,17 +32,17 @@ There are a few things that the reader will need to understand in order to under
 * A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, so just assume it's 4). The 4 card limit will matter when we talk about Fetchlands.
 * "Fetchlands" are a specific set of cards that help the player smooth out their resource devopment and play the game more efficiently. There are ten primary lands being refered to when a player says "Fetchlands". Those cards, as well as an additional honorary inclusion are, by name:
 
-1. Arid Mesa
-2. Bloodstained Mire
-3. Flooded Strand
-4. Marsh Flats
-5. Misty Rainforest
-6. Polluted Delta
-7. Scalding Tarn
-8. Verdant Catacombs
-9. Windswept Heath
-10. Wooded Foothills
-11. Prismatic Vista (honorary inclusion)
+1. [Arid Mesa](https://scryfall.com/card/zen/211/arid-mesa)
+2. [Bloodstained Mire](https://scryfall.com/card/ktk/230/bloodstained-mire)
+3. [Flooded Strand](https://scryfall.com/card/ktk/233/flooded-strand)
+4. [Marsh Flats](https://scryfall.com/card/zen/219/marsh-flats)
+5. [Misty Rainforest](https://scryfall.com/card/zen/220/misty-rainforest)
+6. [Polluted Delta](https://scryfall.com/card/ktk/239/polluted-delta)
+7. [Scalding Tarn](https://scryfall.com/card/zen/223/scalding-tarn)
+8. [Verdant Catacombs](https://scryfall.com/card/zen/229/verdant-catacombs)
+9. [Windswept Heath](https://scryfall.com/card/ktk/248/windswept-heath)
+10. [Wooded Foothills](https://scryfall.com/card/ktk/249/wooded-foothills)
+11. [Prismatic Vista](https://scryfall.com/card/mh1/244/prismatic-vista) (honorary inclusion)
 
 	
 ## Why these goals? Why do this? Why?
@@ -72,7 +72,7 @@ Below we see which the distribution of decks, collected by their umbrella Archet
 
 Despite the popularity of the Hammer Time deck, when we do Analysis of Variance and predictive modeling, this entry will have to be dropped, as there is no variance in the Archetype (only one deck in that umbrella).
 
-Now we'll consider Fetchlands. Below is a table showing the prevalence of different Fetchlands in the top 60 most played decks in Modern. In the first row, for example, we see that Bloodstained Mire, a Black/Red Fetchland, is absent from 46 of the top 60 most played decks, zero decks play it as a "1-off", three strategies play two copies of the card, four strategies play it in a set of three, and seven separate strategies out of the 60 most played decks choose to play 4 Bloodstained Mire.
+Now we'll consider Fetchlands. Below is a table showing the prevalence of different Fetchlands in the top 60 most played decks in Modern. In the second row, for example, we see that Bloodstained Mire, the Black/Red Fetchland, is absent from 46 of the top 60 most played decks. Zero decks play it as a "one-off", three strategies play two copies of the card, four strategies play it in a set of three, and seven separate strategies out of the 60 most played decks choose to play four Bloodstained Mire.
 
 In addition to this, we can see that Windswept Heath is often played in sets of four. Knowing a little trivia, this is likely because it was the only Fetchland from Khans of Tarkir that players could guarantee to get if - rather than purchase a booster pack with random cards - they bought the [Magic Origins: Clash Pack](https://mtg.fandom.com/wiki/Magic_Origins/Clash_pack).
 
