@@ -19,7 +19,7 @@ Players are correct about there being a difference between the price of Aggro an
 
 ![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
 
-The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoff for an acceptable RMSE and R2 were RMSE < 131.4 and R2 > 0.6, which we well exceeded. Overall this was a successful price prediction model. For details on why the RMSE and R2 cutoffs were chosen, read the "How to Evaluate the Models" section, close to the end of the README.
+The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoffs for acceptable RMSE and R2 scores in a model were RMSE < 131.4 and R2 > 0.6, which SVM satisfied. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
 
 ## How do I navigate this project?
 
