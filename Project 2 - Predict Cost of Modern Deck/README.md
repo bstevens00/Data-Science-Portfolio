@@ -196,7 +196,7 @@ But we need to keep this in mind while we're checking for outliers. We'll use [T
 
 Of the four, three aren't extreme, so we'll ignore them. However, the Goblins deck is an extreme outlier. It's much more expensive than the average Aggro deck at $957 on average.
 
-We could drop it, but we'll keep it. Why? Because that deck is going to increase the average price of Aggro decks in comparison to the other decks, which are all higher than Aggro in price. If, when including a deck that's inflating the price of the Archetype, we still find a statistically significant difference between the cost of Aggro decks and others, then we're certain that Aggro decks are cheaper than the other Archetypes by comparison. Because Aggro can't even compete in price when you let them cheat by including the Goblins deck in its price average!
+We could drop it, but we'll keep it. Why? Because that deck is going to increase the average price of Aggro decks in comparison to the others, which are all higher than Aggro in price. If, when including a deck that's inflating the price of the Archetype, we still find a statistically significant difference between the cost of Aggro decks and others, when we've gone out of our way to include an observation that brings the lowest Archetype price *closer* to the mean price of the other decks, then we can be *certain* that Aggro decks are cheaper than the other Archetypes by comparison. Because Aggro would then not even be competing in price when we let it cheat by scooting clower to the other means!
 
 ### ANOVA Assumption 3 - Normality of the Residuals
 
