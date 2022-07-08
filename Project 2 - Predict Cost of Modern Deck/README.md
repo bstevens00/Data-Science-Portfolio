@@ -379,5 +379,5 @@ Here are the price predictions for the 12 hold out test decks. Note how much clo
 
 Using this SVM as our "best model", we can predict the price of a random deck from our orignal data to illustrate the effectiveness of the winning model.
 
-The Support Vector Machine model predicts that the cost of deck 26, "Hardened Scales", will be 492.75 USD, when in reality, the deck averages a price of 526 USD. This prediction is only off by about 35 USD. That's incredible, considering the price of decks in for format range from 262 to 1576 USD.
+The Support Vector Machine model predicts that the cost of deck 26, "Hardened Scales", will be 492.75 USD, when in reality, the deck averages a price of 526 USD. This prediction is only off by about 35 USD. That's incredible, considering the price of decks in for format range from 262 to 1576 USD. It's fair to say that this model is an effective price predictor!
 
