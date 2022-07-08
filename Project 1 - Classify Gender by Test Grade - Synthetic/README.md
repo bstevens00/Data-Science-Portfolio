@@ -17,7 +17,7 @@ The synthetic data was downloaded from the following website: http://roycekimmon
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
-Yes. We can predict/classify the gender of a student knowing only their math, reading, and writing scores. According to the criterion from Hosmer & Lemeshow (2013) in Applied logistic regression, p.177:
+Yes. We can classify the gender of a student knowing only their math, reading, and writing scores. According to the criterion from Hosmer & Lemeshow (2013) in Applied logistic regression, p.177:
 
 "So, what area under the ROC curve describes good discrimination? Unfortunately there is no "magic" number, only general guidelines. In general... use the following rule of thumb:
 
