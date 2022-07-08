@@ -290,7 +290,7 @@ In other words, there's a 5% chance we're wrong when we say that the price diffe
 
 Basically, Aggro decks are less expensive than Control decks, statistically - not anecdotally - speaking.
 
-We have an answer to Question 2. After viewing the box plots of Archetype vs price, we saw reason to consider there to be differences between the average prices of each deck based upon Archetype. After creating the contrasts, it's not really that Control decks are more expensive than Aggro decks, it's that *everything* is more expensive than Aggro decks.
+We have an answer to Question 2. After viewing the box plots of Archetype vs price, we saw reason to consider there to be differences between the average prices of each deck based upon Archetype. After creating the contrasts, it is however, not really that Control decks are more expensive than Aggro ones, it's that *everything* is more expensive than Aggro decks.
 
 Aggro players after reading this with their smug nono-Aggro-playing friends:
 
