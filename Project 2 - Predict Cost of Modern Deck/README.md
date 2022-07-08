@@ -21,20 +21,35 @@ Players are correct about there being a difference between the price of Aggro an
 
 The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoffs for acceptable RMSE and R2 scores in a model were RMSE < 131.4 and R2 > 0.6, which SVM satisfied. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
 
-## Necessary Magic: the Gathering Terminology for the Reader
+## Necessary Magic: the Gathering Terminology and Information for the Reader
 
 There are a few things that the reader will need to understand in order to understand this README.
 
-* "Magic: the Gathering" (MtG) is a collectible, trading card game, with huge tournaments in which people compete against one another using unique card strategies
-* A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own cards
-* Some decks are similar enough in their overarching strategies, like "stall the game out to win later" (called "Control"), "win as fast as possible" (called "Aggro"), or "assemble two different cards that work in combination to win the game instantly" ("Combo") that they're categorized into "Archetypes"
-* A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, just assume it's 4)
+* "Magic: the Gathering" (MtG) is a collectible, trading card game, with large tournaments in which people compete against one another using unique card strategies.
+* A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own unique cards and strategies.
+* Some deck strategies are similar *enough* in their goals, such as "stall the game out to win later" (called "Control"), "win as fast as possible" ("Aggro"), or "assemble two different cards that work in combination to win the game instantly" ("Combo") that these strategies fall under an grouping umbrella term, which this project will call "Archetypes".
+* There are five "Colors" in the game, White, Blue, Black, Red, and Green ("WUBRG"). Each color has unique mechanisms towards gaining advances in a game, and can be used creatively together to leverage combination strategies. Though unneeded for understanding this analysis, for a more in-depth read on the MtG colors, read [this](https://mtg.fandom.com/wiki/Color) article.
+* A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, so just assume it's 4). The 4 card limit will matter when we talk about Fetchlands.
+* "Fetchlands" are a specific set of cards that help the player smooth out their resource devopment and play the game more efficiently. There are ten primary lands being refered to when a player says "Fetchlands". Those cards, as well as an additional honorary inclusion are, by name:
+
+1. Arid Mesa
+2. Bloodstained Mire
+3. Flooded Strand
+4. Marsh Flats
+5. Misty Rainforest
+6. Polluted Delta
+7. Scalding Tarn
+8. Verdant Catacombs
+9. Windswept Heath
+10. Wooded Foothills
+11. Prismatic Vista (honorary inclusion)
+
 	
 ## Why these goals? Why do this?
 
 I enjoy Magic: the Gathering. It's my favorite game! And in the years I've played the game, I've absorbed some "conventional wisdoms" from conversations with other players, including beliefs like, "Aggressive decks are cheap to build. I wouldn't want to build a control deck on my budget" and "Gas is cheap and Fetchlands are expensive, that's why I play Burn".
 
-So, I wanted to know. Are Control decks more expensive than Aggro? Can we visualize it? Also, is the difference *statistically significant*, indicating a real difference that is more than anecdotal, it's an actual reality. Does the popularity of a deck have any significant effect on the price? And, can a deck's price be predicted with any level of accuracy by only knowing the number of each Fetchland present in the deck, the total number of decks submitted of that type in the last year to the database (essentially the popularity of the deck) and the Archetype of the deck?
+So, I wanted to know. Are Control decks more expensive than Aggro? Can we visualize it? Also, is the difference *statistically significant*, indicating a real difference that is more than anecdotal. Does the popularity of a deck have any significant effect on the price? And, can a deck's price be predicted with any level of accuracy by only knowing the number of each Fetchland present in the deck, the total number of decks submitted of that type in the last year to the database (essentially the popularity of the deck), the colors present in the deck, and the Archetype of the deck?
 
 ## Where did this data come from?
 
