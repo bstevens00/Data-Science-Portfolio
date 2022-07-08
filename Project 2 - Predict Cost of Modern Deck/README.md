@@ -1,8 +1,15 @@
 # Project 2
 
-## The Goal
+## The Goals
 
-Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. Gain insight about the format as a whole through data visualization and summary statistics. Investigate whether some of the player beliefs about the game are true, such as specific deck Archetypes - mainly "Aggro" versus "Control" - are more affordable than others.
+There are three goals, and three respective files for those goals.
+
+1. Gain insight about the format as a whole through data visualization and summary statistics.
+	+ filename: 1_Exploratory_Data_Analysis.R
+2. Investigate whether some of the player beliefs about the game are true, such as specific deck Archetypes - mainly "Aggro" versus "Control" - are more affordable than others. This file focuses on box plots, Analysis of Variance, and related contrasts.
+	+ filename: 2_Differences_in_Archetype_Prices.R
+3. Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. This involves deploying multiple difference machine learning algorithms as well as creating a hybrid/ensemble model, and letting them compete for the best model.
+	+ filename: 3_Deck_Price_Prediction_Model.R 
 
 ## Spoiler - "Please Tell Me the End of the Story"
 
