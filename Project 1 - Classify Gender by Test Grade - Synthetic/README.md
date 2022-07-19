@@ -1,31 +1,22 @@
 ## Spoiler - "Please Tell Me the End of the Story"
 
-Using my Ensemble Model created from nine other models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. There is enough of a difference between their performance on exams, that the model can determine the gender on scores alone! Boys are better at math and girls at reading and writing. But I can also predict that talking about this on a date might get you socked in the face. So be careful with how you use this information!
+Using my Ensemble Model created from nine other models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. Using the data available, boys are better at math and girls at reading and writing.
 
-The model is right 95% of the time. Nine of the ten models correctly classify a student's gender 80% of the time. Seven of the ten models more than 90% of the time. Multiple models have a separability of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
+The ensemble model is right 95% of the time. Seven of the ten simpler models are accurate more than 90% the time. Multiple models have a separability of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
 
-The models - and particularly the ensmble of them - perform(s) well with Confusion Matrix metrics, such as Sensitivity, Specificity, and Accuracy, with scores close to 0.90.
+## The Goals
 
-![Angry Woman](<> "Angry Woman")
+Determine if the gender of a student can be classified based upon their test grades in math, reading, and writing. Use this information to help inform other teachers of gender-based weaknesses and strengths to better reach students.
 
-## The Goal
-
-Determine if the gender of a student can be predicted based upon their test grades in math, reading, and writing.
-
-As my background is in education, I was interested in finding data to help me practice classification and data visualization skills
-through the lens of an insightful question to better inform my teaching, and help me reach my students more efficiently.
-
-One of the most widely taught concepts in pedagogy is the "3 Types of Learners" - Auditory, Visual, and Kinesthetic. That is, students who learn best by listening, watching, or doing "hands-on", respectively. While all students are individually different, and learn in their own nuanced and individual way, there are non-trivial ways to group students into "like"-learners. One claim I heard years ago was "boys are better at math and girls at reading". While I've personal taught my fair share of anecdotals that don't fit this hot take, I thought it would be fun to see if I could find some data and gather some insight myself. 
-
-Considering the possibly inflamitory subject matter, a disclaimer is in order. It is my understanding that the data used in this project was *resampled* from *real* student data. So, while the data used *resembles* real student test data (relatively similar summary statistics, including means, medians, ranges, and standard deviations for the student test score distributions), the data used here remains, itself, synthetic. Synthetic adjacent. My using this data was intentional, as I wanted to get the feel of *real* student data, but didn't have the right or the want to publish real student data here. As such, and again due to the possibly inflamatory nature of a question that might be unfortunately boiled down by some parties as being "sexist", "conclusions" drawn from this data are ficticious, and should - at most - be used as springboards into motivating further questions by myself and the reader, and not as ultimate "truths". This project exists for the sole purpose of practicing the art of story-telling with data.
+Visualize the data. Data is easier to understand when visualized.
 
 ## Where the Data was Obtained
 
-The synthetic data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022, for the purpose of practicing story telling with data.
+The data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022.
 
 ## Navigating this Project
 
-I have included a handy flowchart, "Project_1.drawio.png", to help visualize the path through this project. The rough order of the project goes:
+See the attached flowchart, "Project_1.drawio.png", to help visualize the path through this project. The rough order of the project goes:
 
 1. Exploratory Data Analysis
 	* 1_Exploratory_Data_Analysis.R
