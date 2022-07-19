@@ -1,3 +1,11 @@
+## Spoiler - "Please Tell Me the End of the Story"
+
+Using my Ensemble Model create from nine other simpler models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. There are distinct differences between girls and boys in data. Boys are better at math and girls at reading and writing. But I can also predict that talking about this on a date might get you socked in the face. So be careful with how you use this information!
+
+The majority of the models show a clear distinction between the genders. Nine of the ten models predict correctly 80% of the time and seven of the ten models more than 90% of the time. Multiple models have a separability (AUC) of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
+
+The models - and particularly the ensmble of them - perform(s) well with Confusion Matrix metrics, such as Sensitivity, Specificity, and Accuracy, with scores close to 0.90.
+
 ## The Goal
 
 Determine if the gender of a student can be predicted based upon their test grades in math, reading, and writing.
@@ -8,34 +16,6 @@ through the lens of an insightful question to better inform my teaching, and hel
 One of the most widely taught concepts in pedagogy is the "3 Types of Learners" - Auditory, Visual, and Kinesthetic. That is, students who learn best by listening, watching, or doing "hands-on", respectively. While all students are individually different, and learn in their own nuanced and individual way, there are non-trivial ways to group students into "like"-learners. One claim I heard years ago was "boys are better at math and girls at reading". While I've personal taught my fair share of anecdotals that don't fit this hot take, I thought it would be fun to see if I could find some data and gather some insight myself. 
 
 Considering the possibly inflamitory subject matter, a disclaimer is in order. It is my understanding that the data used in this project was *resampled* from *real* student data. So, while the data used *resembles* real student test data (relatively similar summary statistics, including means, medians, ranges, and standard deviations for the student test score distributions), the data used here remains, itself, synthetic. Synthetic adjacent. My using this data was intentional, as I wanted to get the feel of *real* student data, but didn't have the right or the want to publish real student data here. As such, and again due to the possibly inflamatory nature of a question that might be unfortunately boiled down by some parties as being "sexist", "conclusions" drawn from this data are ficticious, and should - at most - be used as springboards into motivating further questions by myself and the reader, and not as ultimate "truths". This project exists for the sole purpose of practicing the art of story-telling with data.
-
-## Spoiler - "Please Tell Me the End of the Story"
-
-Yes. We can classify the gender of a student knowing only their math, reading, and writing scores. According to the criterion from Hosmer & Lemeshow (2013) in Applied logistic regression, p.177:
-
-"...what area under the ROC curve describes good discrimination? Unfortunately there is no "magic" number, only general guidelines. In general... use the following rule of thumb:
-
-* 0.5 = This suggests no discrimination, so we might as well flip a coin.
-* 0.5-0.7 = We consider this poor discrimination, not much better than a coin toss.
-* 0.7-0.8 = Acceptable discrimination
-* 0.8-0.9= Excellent discrimination
-* \>0.9 = Outstanding discrimination"
-
-Here are ROC graphs for the nine single models and the simple ensemble model, which combined their individual results together.
-
-![Combined ROC Graphs](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_combined_ROC_AUC.png> "Combined ROC Graphs")
-
-Here are the results, interpreted:
-
-* 1 model rated poor, k-NN
-* 2 models rated excellent, Simple Classification Tree and Naive Bayes
-* 7 models rated outstanding, Logistic Regression, Random Forest, Support Vector Machine, Linear Discriminant Analysis, Quadratic Discriminant Analysis, Neural Net, and the Simple Ensemble
-
-Technically, the Simple Ensemble performs slightly worse than a few individual models in AUC. However, what we lose in AUC (<1%) we trade for model stability, ensuring the variance in performance on future data falls close in line with these "test" data.
-
-We also find that the overall model performs well with Confusion Matrix metrics, such as Sensitivity, Specificity, and Accuracy, which are all scores that range from 0 to 1, and are all stronger when closer to 1.
-
-![Simple Ensemble Confusion Matrix and Metrics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_simple_ensemble_confusion_matrix.PNG> "Simple Ensemble Confusion Matrix and Metrics")
 
 ## Where the Data was Obtained
 
