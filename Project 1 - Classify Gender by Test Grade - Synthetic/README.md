@@ -10,7 +10,7 @@ If the gender of a student can be classified based upon their test grades in mat
 
 ## Navigating this Project
 
-The flowchart below is a visualiztion of project. There were nine different machine learning algorithms deployed to solve the problem. An ensemble model was created out of them, and refined.
+The flowchart below shows a breakdown of the nine different machine learning algorithms deployed to solve the problem. An ensemble model was created out of them, and refined.
 
 ![Project 1 Flowchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project 1 - Classify Gender by Test Grade - Synthetic/Project_1.drawio.png> "Project 1 Flowchart")
 
