@@ -1,20 +1,3 @@
-# Project 1
-
-## The Goal
-
-Determine if the gender of a student can be predicted based upon their test grades in math, reading, and writing.
-
-As my background is in education, I was interested in finding data to help me practice classification and data visualization skills
-through the lens of an insightful question to better inform my teaching, and help me reach my students more efficiently.
-
-One of the most widely taught concepts in pedagogy is the "3 Types of Learners" - Auditory, Visual, and Kinesthetic. That is, students who learn best by listening, watching, or doing "hands-on", respectively. While all students are individually different, and learn in their own nuanced and individual way, there are non-trivial ways to group students into "like"-learners. One claim I heard years ago was "boys are better at math and girls at reading". While I've personal taught my fair share of anecdotals that don't fit this hot take, I thought it would be fun to see if I could find some data and gather some insight myself. 
-
-Considering the possibly inflamitory subject matter, a disclaimer is in order. It is my understanding that the data used in this project was *resampled* from *real* student data. So, while the data used *resembles* real student test data (relatively similar summary statistics, including means, medians, ranges, and standard deviations for the student test score distributions), the data used here remains, itself, synthetic. Synthetic adjacent. My using this data was intentional, as I wanted to get the feel of *real* student data, but didn't have the right or the want to publish real student data here. As such, and again due to the possibly inflamatory nature of a question that might be unfortunately boiled down by some parties as being "sexist", "conclusions" drawn from this data are ficticious, and should - at most - be used as springboards into motivating further questions by myself and the reader, and not as ultimate "truths". This project exists for the sole purpose of practicing the art of story-telling with data.
-
-## Where the Data was Obtained
-
-The synthetic data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022, for the purpose of practicing story telling with data.
-
 ## Spoiler - "Please Tell Me the End of the Story"
 
 Yes. We can classify the gender of a student knowing only their math, reading, and writing scores. According to the criterion from Hosmer & Lemeshow (2013) in Applied logistic regression, p.177:
@@ -42,6 +25,21 @@ Technically, the Simple Ensemble performs slightly worse than a few individual m
 We also find that the overall model performs well with Confusion Matrix metrics, such as Sensitivity, Specificity, and Accuracy, which are all scores that range from 0 to 1, and are all stronger when closer to 1.
 
 ![Simple Ensemble Confusion Matrix and Metrics](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_simple_ensemble_confusion_matrix.PNG> "Simple Ensemble Confusion Matrix and Metrics")
+
+## The Goal
+
+Determine if the gender of a student can be predicted based upon their test grades in math, reading, and writing.
+
+As my background is in education, I was interested in finding data to help me practice classification and data visualization skills
+through the lens of an insightful question to better inform my teaching, and help me reach my students more efficiently.
+
+One of the most widely taught concepts in pedagogy is the "3 Types of Learners" - Auditory, Visual, and Kinesthetic. That is, students who learn best by listening, watching, or doing "hands-on", respectively. While all students are individually different, and learn in their own nuanced and individual way, there are non-trivial ways to group students into "like"-learners. One claim I heard years ago was "boys are better at math and girls at reading". While I've personal taught my fair share of anecdotals that don't fit this hot take, I thought it would be fun to see if I could find some data and gather some insight myself. 
+
+Considering the possibly inflamitory subject matter, a disclaimer is in order. It is my understanding that the data used in this project was *resampled* from *real* student data. So, while the data used *resembles* real student test data (relatively similar summary statistics, including means, medians, ranges, and standard deviations for the student test score distributions), the data used here remains, itself, synthetic. Synthetic adjacent. My using this data was intentional, as I wanted to get the feel of *real* student data, but didn't have the right or the want to publish real student data here. As such, and again due to the possibly inflamatory nature of a question that might be unfortunately boiled down by some parties as being "sexist", "conclusions" drawn from this data are ficticious, and should - at most - be used as springboards into motivating further questions by myself and the reader, and not as ultimate "truths". This project exists for the sole purpose of practicing the art of story-telling with data.
+
+## Where the Data was Obtained
+
+The synthetic data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022, for the purpose of practicing story telling with data.
 
 ## Navigating this Project
 
