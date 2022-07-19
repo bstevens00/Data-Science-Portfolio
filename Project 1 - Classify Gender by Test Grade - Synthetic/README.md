@@ -6,7 +6,7 @@ The ensemble model correctly identifies a student as "girl" or "boy" 95% of the 
 
 ## The Goals
 
-If the gender of a student can be classified based upon their test grades in math, reading, and writing, use this information to help inform other teachers of gender-based weaknesses and strengths to better reach students better as teachers.
+If the gender of a student can be classified based upon their test grades in math, reading, and writing, use this information to help inform other teachers of gender-based weaknesses and strengths to better reach students.
 
 ## Navigating this Project
 
