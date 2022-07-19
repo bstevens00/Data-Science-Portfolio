@@ -14,7 +14,7 @@ The flowchart below shows a breakdown of the nine different machine learning alg
 
 ![Project 1 Flowchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project 1 - Classify Gender by Test Grade - Synthetic/Project_1.drawio.png> "Project 1 Flowchart")
 
-## Exploratory Data Analysis - Let's See What the Data Have to Say
+## Exploratory Data Analysis - Seeing is Believing
 
 Below we visualize the univariate relationships of the discrete and numeric data. We see that there are a similar number of male and female students, and the data is not sparse. We also see the student scores in math, reading, and writing are relatively normally distributed by test.
 
