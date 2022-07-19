@@ -1,10 +1,12 @@
 ## Spoiler - "Please Tell Me the End of the Story"
 
-Using my Ensemble Model create from nine other simpler models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. There are distinct differences between girls and boys in data. Boys are better at math and girls at reading and writing. But I can also predict that talking about this on a date might get you socked in the face. So be careful with how you use this information!
+Using my Ensemble Model created from nine other models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. There is enough of a difference between their performance on exams, that the model can determine the gender on scores alone! Boys are better at math and girls at reading and writing. But I can also predict that talking about this on a date might get you socked in the face. So be careful with how you use this information!
 
-The majority of the models show a clear distinction between the genders. Nine of the ten models predict correctly 80% of the time and seven of the ten models more than 90% of the time. Multiple models have a separability (AUC) of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
+The model is right 95% of the time. Nine of the ten models correctly classify a student's gender 80% of the time. Seven of the ten models more than 90% of the time. Multiple models have a separability of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
 
 The models - and particularly the ensmble of them - perform(s) well with Confusion Matrix metrics, such as Sensitivity, Specificity, and Accuracy, with scores close to 0.90.
+
+![Angry Woman](<> "Angry Woman")
 
 ## The Goal
 
