@@ -1,3 +1,5 @@
+# Let's Play Magic: the Gathering! Wait... HOW much is a deck?!
+
 ## Spoiler - The Bottom Line
 
 Magic: the Gathering players are right! Certain colors and archetypes are more expensive to play! But players are now also lucky, because with the help of machine learning, this model makes it easy to predict the price of a deck in the format.
