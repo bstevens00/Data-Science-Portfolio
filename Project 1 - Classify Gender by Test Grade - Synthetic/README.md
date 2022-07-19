@@ -2,7 +2,7 @@
 
 Using my Ensemble Model created from nine other models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. Using the data available, boys are better at math and girls at reading and writing.
 
-The ensemble model is right 95% of the time. Seven of the ten simpler models are accurate more than 90% the time. Multiple models have a separability of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
+The ensemble model correctly identifies a student as "girl" or "boy" 95% of the time. Seven of the ten simpler models are accurate more than 90% the time. Multiple models have a separability of 95%. From Logistic Regression and Random Forest to Support Vector Machine and a Neural Network, there is no question the data indicate a clear separation along these predictors.
 
 ## The Goals
 
