@@ -1,4 +1,4 @@
-## Spoiler - "Please Tell Me the End of the Story"
+## Spoiler - The Bottom Line
 
 Using my Ensemble Model created from nine other models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. Using the data available, boys are better at math and girls at reading and writing.
 
