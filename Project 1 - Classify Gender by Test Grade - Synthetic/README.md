@@ -6,13 +6,7 @@ The ensemble model correctly identifies a student as "girl" or "boy" 95% of the 
 
 ## The Goals
 
-Determine if the gender of a student can be classified based upon their test grades in math, reading, and writing. Use this information to help inform other teachers of gender-based weaknesses and strengths to better reach students.
-
-Visualize the data. Data is easier to understand when visualized.
-
-## Where the Data was Obtained
-
-The data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022.
+If the gender of a student can be classified based upon their test grades in math, reading, and writing, use this information to help inform other teachers of gender-based weaknesses and strengths to better reach students better as teachers.
 
 ## Navigating this Project
 
@@ -92,3 +86,6 @@ Here are the results of the Confusion Matrices for the Simple and Complex models
 
 As we can see, the Simple Ensemble Model is the best performing model in almost every category. Despite using Cross Validation, which is often a boon to a model, this time it decreased model efficacy. Sometimes simpler is better!
 
+## Where the Data was Obtained
+
+The data was downloaded from the following website: http://roycekimmons.com/tools/generated_data/exams on June 9th, 2022. The data is synthetic, meaning it was created for the purposes of practicing with projects like this.
