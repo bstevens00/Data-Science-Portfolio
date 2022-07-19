@@ -1,25 +1,16 @@
-# Project 2
+## Spoiler - The Bottom Line
 
-## The Goals
+Magic: the Gathering players are right! Certain colors and archetypes are more expensive to play! But players are now also lucky, because with the help of machine learning, this model makes it easy to predict the price of a deck in the format.
 
-There are three goals, and three respective files for those goals.
-
-1. Use data visualization and summary statistics to gain unique insight into one of Magic: the Gathering's most played formats, Modern.
-	+ filename: 1_Exploratory_Data_Analysis.R
-2. Investigate whether some player beliefs about the game are true, such as specific deck Archetypes being more affordable than others. This goal will leverage box plots, Analysis of Variance, and Archetype contrasts using pairwise comparisons.
-	+ filename: 2_Differences_in_Archetype_Prices.R
-3. Create a price prediction model for the cost of a Magic: the Gathering deck in the Modern format. This involves deploying multiple different machine learning algorithms as well as creating a hybrid/ensemble model, and evaluating the best preditive model using the Root Mean Square Error and R-Squared of on the test data.
-	+ filename: 3_Deck_Price_Prediction_Model.R 
-
-## Spoiler - "Please Tell Me the End of the Story"
-
-In the Exploratory data analysis, we learn that Blue and Red cards are the most "splashed" (meaning more decks run *at least one* card of these colors than White, Black, or Green). Black cards are the least splashed. We see that Blue Fetchlands are generally in the more expensive Archetypes, though the data gathered does not offer price breakdown beyond deck name, so it's impossible to tell if Blue Fetchlands being more expensive than their non-Blue counterparts is the sole driver for the price of Archetype expense differences or if its all the cards that aren't Fetchlands that are making the difference. It is likely some combination of the two. This is a further question that would require additional data.
-
-Players are correct about there being a difference between the price of Aggro and Control Archetypes, which is a common claim. However, it's less about there being a difference between Aggro and Control, and more about Aggro just being cheaper than most everything else by a large margin. The only statistically significant differences in prices between Archetypes were Aggro versus Control, Aggro versus Aggro-Control (otherwise known as "Tempo"), and Aggro versus Midrange. Below are boxplots comparing the prices between different Archetypes. We can see it's just cheap to play Aggro, so if you're a player trying to get into the format, that's a good way to start, budget-wise.
+Players have complained for years that there's a huge cost difference between playing Aggro and Control. However, in visualizing the data, it's less about there being a difference between Aggro and Control, and more about Aggro just being plain cheaper than most *everything else*. 
 
 ![Box Plot Cost by Archetype](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck/images/2_Box_Plot_Cost_by_Archetype.png> "Box Plot Cost by Archetype")
 
-The best price prediction model was the Support Vector Machine (SVM) - not the Ensemble. The SVM had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Our cutoffs for acceptable RMSE and R2 scores in a model were RMSE < 131.4 and R2 > 0.6, which SVM satisfied. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
+The best price prediction model found had a Root Mean Square Error (RMSE) of 31.85 and an R-Squared (R2) of 0.99, which is incredible. Overall this was a successful price prediction model. For details on why the RMSE and R2 were chosen, as well as their cutoffs, read the "How to Evaluate the Models" section, close to the end of the README.
+
+## The Goals - Why do this? Why?
+
+I enjoy Magic: the Gathering. It's my favorite game! And in the years I've played the game, I've absorbed some "conventional wisdoms" from conversations with other players, including beliefs like, "Aggressive decks are cheap to build. I wouldn't want to build a control deck on my budget" and "Gas is cheap and Fetchlands are expensive, that's why I play Burn". I want to use data visualization and summary statistics to understand my favorite way to play the game, the "Modern" format. I want to know if players are right about archetype pricing, and if there's any evidence to the conventional wisdom that Aggro decks are cheap and Control decks require a second mortgage. Finally, I want to create a useful price prediction model for the cost of a a Modern deck. This will involve trying out multiple different machine learning algorithms as well as potenially deploying an ensemble model.
 
 ## Necessary Magic: the Gathering Terminology and Information for the Reader
 
@@ -44,20 +35,7 @@ There are a few things that the reader will need to understand in order to under
 10. [Wooded Foothills](https://scryfall.com/card/ktk/249/wooded-foothills)
 11. [Prismatic Vista](https://scryfall.com/card/mh1/244/prismatic-vista) (honorary inclusion)
 
-	
-## Why these goals? Why do this? Why?
-
-Well, that last question is a little more exestential than I'm prepared to answer, but let's answer those first two questions.
-
-I enjoy Magic: the Gathering. It's my favorite game! And in the years I've played the game, I've absorbed some "conventional wisdoms" from conversations with other players, including beliefs like, "Aggressive decks are cheap to build. I wouldn't want to build a control deck on my budget" and "Gas is cheap and Fetchlands are expensive, that's why I play Burn".
-
-So, I wanted to know. Are Control decks more expensive than Aggro? Can we visualize it? Also, is the difference *statistically significant*, indicating a real difference that is more than anecdotal. Does the popularity of a deck have any significant effect on the price? And, can a deck's price be predicted with any level of accuracy by only knowing the number of each Fetchland present in the deck, the total number of decks submitted of that type in the last year to the database (essentially the popularity of the deck), the colors present in the deck, and the Archetype of the deck?
-
-## Where did this data come from?
-
-Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data aggregation website for Magic: the Gathering (MTG) on August 6th, 2021 by myself, Brendan Stevens, in the middle of Covid-19 lockdowns, and an immediate need to find something to do.
-
-## Exploratory Data Analysis
+## Exploratory Data Analysis - What Does the "Modern" Format Show Us?
 
 ### Univariate Analysis
 The color that appeared in the most decks overall was Red, followed by Blue. It appears people like their [Lightning Bolt](https://scryfall.com/search?q=multiverseid=397722)s and [Thought Scour](https://scryfall.com/search?q=multiverseid=262838)s. Black made an appearance in the least amount of the top 60 most played decks. However, it's important to detail that a deck marked "1" in the Red column makes no distinction between it having a single Red card or 25. The "1" just means that Red is present in the deck. Therefore this data substantiate any claims regarding which color is the most (un)commonly played, most densely played in the average deck, etc. It can only be used to state which colors are most likely to be used "on the splash". In the chart, we see that the "on the splash" colors are decidedly Red and Blue.
@@ -381,3 +359,6 @@ Using this SVM as our "best model", we can predict the price of a random deck fr
 
 The Support Vector Machine model predicts that the cost of deck 26, "Hardened Scales", will be 492.75 USD, when in reality, the deck averages a price of 526 USD. This prediction is only off by about 35 USD. That's incredible, considering the price of decks in for format range from 262 to 1576 USD. It's fair to say that this model is an effective price predictor!
 
+## Where did this data come from?
+
+Data was collected from www.mtggoldfish.com (MTGG), a popular strategy and data aggregation website for Magic: the Gathering (MTG) on August 6th, 2021 by myself, Brendan Stevens, in the middle of Covid-19 lockdowns, and an immediate need to find something to do.
