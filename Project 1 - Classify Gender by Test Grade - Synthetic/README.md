@@ -10,24 +10,7 @@ If the gender of a student can be classified based upon their test grades in mat
 
 ## Navigating this Project
 
-See the attached flowchart, "Project_1.drawio.png", to help visualize the path through this project. The rough order of the project goes:
-
-1. Exploratory Data Analysis
-	* 1_Exploratory_Data_Analysis.R
-2. Individual Model Analyses
-	* 2a_k_nearest_neighbors.R
-	* 2b_simple_classification_tree.R
-	* 2c_logistic_regression.R
-	* 2d_random_forest.R
-	* 2e_naive_bayes.R
-	* 2f_support_vector_machine.R
-	* 2g_linear_discriminant_analysis.R
-	* 2h_quadratic_discriminant_analysis.R
-	* 2i_neural_net.R
-3. Simple Ensemble Model
-	* 3_simple_ensemble.R
-4. Complex Ensemble
-	* 4_complex_ensemble.R
+The flowchart below is a visualiztion of project. There were nine different machine learning algorithms deployed to solve the problem. An ensemble model was created out of them, and refined.
 
 ![Project 1 Flowchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project 1 - Classify Gender by Test Grade - Synthetic/Project_1.drawio.png> "Project 1 Flowchart")
 
