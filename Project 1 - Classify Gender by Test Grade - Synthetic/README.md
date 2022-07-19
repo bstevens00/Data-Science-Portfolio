@@ -14,17 +14,7 @@ The flowchart below is a visualiztion of project. There were nine different mach
 
 ![Project 1 Flowchart](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project 1 - Classify Gender by Test Grade - Synthetic/Project_1.drawio.png> "Project 1 Flowchart")
 
-## Methods for Models
-
-In step 1, we find summary statistics and visualize the data, including histograms to check test score normality and box plots to visualize differences between genders on scores on the whole.
-
-In step 2, nine models (2a, 2b... 2i) are individually created to classify the gender. The original data had 1000 observations, so a simple 80/20 split is used, with 800 observations used to train the models and the remaining 200 used to test them. The same splits are used in each model.
-
-In step 3, the results of those 200 observations for each of the nine models from step 2 are tallied, and a majority vote is used to determine a more robust classification. This is done using the mode of each column of the full, combined results table. We literally let every one of the nine models cast a single vote, "male/female" for every one of the 200 test observations, and we take the most voted choice for each observation. 
-
-In step 4, cross validation is deployed to increase model stability, artificially increasing the size of the dataset with which we create the model. Then we do everything else the same, except we have nine models giving 1000 predictions.
-
-## Exploratory Data Analysis
+## Exploratory Data Analysis - Let's See What the Data Have to Say
 
 Below we visualize the univariate relationships of the discrete and numeric data. We see that there are a similar number of male and female students, and the data is not sparse. We also see the student scores in math, reading, and writing are relatively normally distributed by test.
 
