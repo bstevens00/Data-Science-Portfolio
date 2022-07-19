@@ -30,21 +30,15 @@ Finally, we start to visualize student scores by test when controlling for gende
 
 The boys appear to do better on the whole in math and the girls do better in reading and writing.
 
-## Selected Results of the Individual Models
+## Comparing the Results of Each Model Using the ROC and AUC
 
-It's always a good idea to start with models that are simpler to interpret. The first model is k-NN. Below are the unpromising results of the model. A terrible AUC of 55.8%. This model can distinguish between girls and boys 55% of the time. May as well not even have a model, then.
-
-![k-NN ROC](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/2_knn_roc.png> "k-NN ROC")
-
-Logistic Regression, however, shows promise. An AUC of 95.2% is incredible. There might be something here after all!
-
-![Logistic Regression ROC](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/2_logistic_ROC.png> "Logistic Regression ROC")
-
-Comparing each of the nine models to the full ensemble model.
+Below is a visualization of the efficiency in model discrimination.
 
 ![Combined ROC Graphs](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_combined_ROC_AUC.png> "Combined ROC Graphs")
 
-We settle on using the more robust ensemble, as it has a similar AUC to the highest achieving individual models, but would make up for the complexity with theoretical consistency on truly new data. However, a few questions remain:
+Multiple models have promising curves.
+
+Theoretically, if the goal is classification accuracy over model simplicify in understandability, the ensemble is the choice, as it has a similar AUC to the highest achieving individual models, but would make up for the added complexity with variance consistency on truly new data. However, a few questions remain:
 
 1. Would Cross Validation increase the Confusion Matrix machine learning metrics, such as Sensitivity, Specificity, and Accuracy?
 2. Would dropping the less effective individual models from the ensemble model increase classification accuracy?
