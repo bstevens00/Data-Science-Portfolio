@@ -32,17 +32,15 @@ The boys appear to do better on the whole in math and the girls do better in rea
 
 ## Selected Results of the Individual Models
 
-The Area Under the ROC Curve (AUC) provides an aggregate measure of performance across all possible classification thresholds. One way of interpreting AUC is the probability that the model ranks a random positive example more highly than a random negative example.
-
-When the first model is created, k-NN, we see unpromising results. A terrible AUC of 55.8% for the model. This model can distinguish between girls and boys 55% of the time. May as well not even have a model, then.
+It's always a good idea to start with models that are simpler to interpret. The first model is k-NN. Below are the unpromising results of the model. A terrible AUC of 55.8%. This model can distinguish between girls and boys 55% of the time. May as well not even have a model, then.
 
 ![k-NN ROC](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/2_knn_roc.png> "k-NN ROC")
 
-When we get to the third model, Logistic Regression, things change, however. An AUC of 95.2% is incredible. There might be something here after all!
+Logistic Regression, however, shows promise. An AUC of 95.2% is incredible. There might be something here after all!
 
 ![Logistic Regression ROC](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/2_logistic_ROC.png> "Logistic Regression ROC")
 
-Eventually, as discussed in the Spoiler section above, we get the full ensemble model, shown here again for convenience.
+Comparing each of the nine models to the full ensemble model.
 
 ![Combined ROC Graphs](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic/images/3_combined_ROC_AUC.png> "Combined ROC Graphs")
 
