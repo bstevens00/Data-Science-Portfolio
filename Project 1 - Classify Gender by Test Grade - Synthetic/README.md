@@ -1,3 +1,5 @@
+# Who's Smarter - Boys or Girls?... Boys. Nuh uh! Girls.
+
 ## Spoiler - The Bottom Line
 
 Using my Ensemble Model created from nine other models, I can correctly predict the gender of a student based on only their math, reading, and writing scores. Based on the data, boys are better at math and girls at reading and writing.
