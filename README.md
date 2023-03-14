@@ -4,7 +4,8 @@ Hello! Please select a project from the Table of Contents below. It will take yo
 ## Table of Contents
 
 1. [Who's Smarter - Boys or Girls?... Boys. Nuh uh! Girls.](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%201%20-%20Classify%20Gender%20by%20Test%20Grade%20-%20Synthetic)  
-2. [Let's Play Magic: the Gathering! Wait... HOW much is a deck?!](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck)  
+2. [Let's Play Magic: the Gathering! Wait... HOW much is a deck?!](https://github.com/bstevens00/Data-Science-Portfolio/tree/main/Project%202%20-%20Predict%20Cost%20of%20Modern%20Deck)
+3. <a href="https://public.tableau.com/app/profile/brendan.stevens5478/viz/TheAustinTexasAirBnBMarket___ItsSOHOTrightnow/Dashboard1">The Austin Texas AirBnB Market... It's SO HOT right now</a>
 
 ## Tools and Languages in this Portfolio
 
