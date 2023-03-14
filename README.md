@@ -9,7 +9,7 @@ Hello! Please select a project from the Table of Contents below. It will take yo
 ## Programming Languages in this Portfolio
 
 ![R Statistical Programming Language](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_logo.png> "R Statistical Programming Language") ![RStudio](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/r_studio_logo.png> "RStudio")
-![Tableau](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/Tableau_Icon.png> "Tableau" width=100)
+![Tableau](<https://github.com/bstevens00/Data-Science-Portfolio/blob/main/images/Tableau_Icon.png width=100> "Tableau")
 
 ## Emphasized Portfolio Skills
 
