@@ -1,26 +1,32 @@
-# Comparing Countries, Continents, and Communities during COVID
+# Comparing Countries, Continents, Communities, and... Conspiracies during COVID
 
 ## Spoiler - The Bottom Line
 
-While the United States has had 
-
-The pandemic has had a major influence on all of our lives. This project was born out of my natural instinct to "see for myself". We all have family members who trust the vaccinations, as well as those who seem to find a conspiracy in everything.
+While the United States has had almost twice the deaths as any other country from Covid in raw numbers, the percentage of deaths out of the total population and out of the total of those infected are both in line with the rest of the world. In fact, the one could make a reasonable case that the single group that has handled the pandemic the worst would be the European continent, as 8 of 10 of the highest infection rates per population and death rates per infected have occurred there.
 
 ## The Goals - Why do this? Why?
 
-I enjoy Magic: the Gathering. It's my favorite game! And in the years I've played the game, I've absorbed some "conventional wisdoms" from conversations with other players, including beliefs like, "Aggressive decks are cheap to build. I wouldn't want to build a control deck on my budget" and "Gas is cheap and Fetchlands are expensive, that's why I play Burn". I want to use data visualization and summary statistics to understand my favorite way to play the game, the "Modern" format. I want to know if players are right about archetype pricing, and if there's any evidence to the conventional wisdom that Aggro decks are cheap and Control decks require a second mortgage. Finally, I want to create a useful price prediction model for the cost of a a Modern deck. This will involve trying out multiple different machine learning algorithms as well as potenially deploying an ensemble model.
+The pandemic has had a major influence on all of our lives. This project was born out of my natural instinct to "see for myself" what the infection rates, death counts, and side-by-side comparisons at the country, continent, and world level have been. We all have family members who trust the government and the vaccinations as well as those who seem to think there's a conspiracy afoot.
 
-## Necessary Magic: the Gathering Terminology and Information for the Reader
+So as to be impartial, I thought it prudent to analyze the United States in isolation first, lining up a list of queries that I wanted to ask the data, including:
 
-There are a few things that the reader will need to understand in order to understand this README.
+* How many people have gotten sick with Covid as a raw number?
+* How many people have gotten sick with Covid out of the total population as a percentage?
+* How many people have died with Covid as a raw number?
+* How many people have died with Covid out of the total population as a percentage?
+* How many people have died with Covid out of the total who have gotten sick?
 
-* "Magic: the Gathering" (MtG) is a collectible, trading card game, with large tournaments in which people compete against one another using unique card strategies.
-* A "Deck" is a player's 60 card strategy, and the player uses this deck in 1-on-1 matches to defeat opponents who also have decks of their own unique cards and strategies.
-* Some deck strategies are similar *enough* in their goals, such as "stall the game out to win later" (called "Control"), "win as fast as possible" ("Aggro"), or "assemble two different cards that work in combination to win the game instantly" ("Combo") that these strategies fall under an grouping umbrella term, which this project will call "Archetypes".
-* There are five "Colors" in the game, White, Blue, Black, Red, and Green ("WUBRG"). Each color has unique mechanisms towards gaining advances in a game, and can be used creatively together to leverage combination strategies. Though unneeded for understanding this analysis, for a more in-depth read on the MtG colors, read [this](https://mtg.fandom.com/wiki/Color) article.
-* A deck may only have 4 copies of the same card (unless it's a "Basic Land", but that doesn't matter for this analysis, so just assume it's 4). The 4 card limit will matter when we talk about Fetchlands.
-* "Fetchlands" are a specific set of cards that help the player smooth out their resource devopment and play the game more efficiently. There are ten primary lands being refered to when a player says "Fetchlands". Those cards, as well as an additional honorary inclusion are, by name:
+After setting up these questions, I decided to ask the very same questions of all the other countries, and compare them to the USA.
 
-1. [Arid Mesa](https://scryfall.com/card/zen/211/arid-mesa)
-2. [Bloodstained Mire](https://scryfall.com/card/ktk/230/bloodstained-mire)
-3. [Flooded Strand](https://scryfall.com/card/ktk/233/flooded-strand)
+## The Results
+
+When comparing the United States to all the other countries in the world, the United States has recorded almost *double* the death count of the next highest country. This, by itself, was alarming. And if I'm being honest, it made me wonder for a brief second about those conspiracies!
+
+However, almost immediately to the contrary, I was shown that there was no reason to assume anything out of the ordinary, as the USA recorded a "normal" death rate as a percentage of the population in when compared to the other countries in the dataset. That is to say, the United States had a death rate percentage close to the mean or average of all the countries in comparison, indicating relative normality. Well, as normal as a widespread pandemic *can* be.
+
+In addition to this, the percentage of those who have contracted and tested positive for COVID in the USA is relatively similar to the rest of the countries.
+
+This analysis was a great example of how large numbers, when out of context and only shown without the "whole" they are a part of, can be misleading. It doesn't make sense to compare the total deaths in the USA to the total deaths of Canada, because Canada has 1/10th the population of the United States. It makes much more sense to compare the percentages.
+
+## Going Further
+If I were to go further with this analysis, I would break down the COVID numbers by demographics and population density. In addition, I would analyze the data with the help of a geographic map tool, such as the one in Tableau, taking into consideration the climate of the country, as research has shown COVID to be sensitive to heat, lasting a shorter amount of time on surfaces in hotter climates.
